@@ -1,0 +1,30 @@
+[
+    {
+        "name": "TB_Bookmark_Group",
+        "seq": 1
+    },
+    {
+        "name": "TB_LastUpdate",
+        "seq": 1
+    },
+    {
+        "name": "TB_SurahInfoContent",
+        "seq": 0
+    },
+    {
+        "name": "TB_Bookmark",
+        "seq": 1
+    },
+    {
+        "name": "TB_AyahNote",
+        "seq": 0
+    },
+    {
+        "name": "TB_Quran",
+        "seq": 53822
+    },
+    {
+        "name": "TB_Glyph",
+        "seq": 176938
+    }
+]

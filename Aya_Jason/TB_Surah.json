@@ -1,0 +1,914 @@
+[
+    {
+        "ID": 1,
+        "englishName": "Al-Faatiha",
+        "englishNameTranslation": "The Opening",
+        "name": "سُورَةُ الفَاتِحَةِ",
+        "numberOfAyahs": 7,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 2,
+        "englishName": "Al-Baqara",
+        "englishNameTranslation": "The Cow",
+        "name": "سُورَةُ البَقَرَةِ",
+        "numberOfAyahs": 286,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 3,
+        "englishName": "Aal-i-Imraan",
+        "englishNameTranslation": "The Family of Imraan",
+        "name": "سُورَةُ آلِ عِمْرَانَ",
+        "numberOfAyahs": 200,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 4,
+        "englishName": "An-Nisaa",
+        "englishNameTranslation": "The Women",
+        "name": "سُورَةُ النِّسَاءِ",
+        "numberOfAyahs": 176,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 5,
+        "englishName": "Al-Maaida",
+        "englishNameTranslation": "The Table",
+        "name": "سُورَةُ المَائـِدَةِ",
+        "numberOfAyahs": 120,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 6,
+        "englishName": "Al-An'aam",
+        "englishNameTranslation": "The Cattle",
+        "name": "سُورَةُ الأَنْعَامِ",
+        "numberOfAyahs": 165,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 7,
+        "englishName": "Al-A'raaf",
+        "englishNameTranslation": "The Heights",
+        "name": "سُورَةُ الأَعْرَافِ",
+        "numberOfAyahs": 206,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 8,
+        "englishName": "Al-Anfaal",
+        "englishNameTranslation": "The Spoils of War",
+        "name": "سُورَةُ الأَنفَالِ",
+        "numberOfAyahs": 75,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 9,
+        "englishName": "At-Tawba",
+        "englishNameTranslation": "The Repentance",
+        "name": "سُورَةُ التَّوْبَةِ",
+        "numberOfAyahs": 129,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 10,
+        "englishName": "Yunus",
+        "englishNameTranslation": "Jonas",
+        "name": "سُورَةُ يُونُسَ",
+        "numberOfAyahs": 109,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 11,
+        "englishName": "Hud",
+        "englishNameTranslation": "Hud",
+        "name": "سُورَةُ هُودٍ",
+        "numberOfAyahs": 123,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 12,
+        "englishName": "Yusuf",
+        "englishNameTranslation": "Joseph",
+        "name": "سُورَةُ يُوسُفَ",
+        "numberOfAyahs": 111,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 13,
+        "englishName": "Ar-Ra'd",
+        "englishNameTranslation": "The Thunder",
+        "name": "سُورَةُ الرَّعْدِ",
+        "numberOfAyahs": 43,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 14,
+        "englishName": "Ibrahim",
+        "englishNameTranslation": "Abraham",
+        "name": "سُورَةُ إِبْرَاهِيمَ",
+        "numberOfAyahs": 52,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 15,
+        "englishName": "Al-Hijr",
+        "englishNameTranslation": "The Rock",
+        "name": "سُورَةُ الحِجْرِ",
+        "numberOfAyahs": 99,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 16,
+        "englishName": "An-Nahl",
+        "englishNameTranslation": "The Bee",
+        "name": "سُورَةُ النَّحْلِ",
+        "numberOfAyahs": 128,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 17,
+        "englishName": "Al-Israa",
+        "englishNameTranslation": "The Night Journey",
+        "name": "سُورَةُ الإِسْرَاءِ",
+        "numberOfAyahs": 111,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 18,
+        "englishName": "Al-Kahf",
+        "englishNameTranslation": "The Cave",
+        "name": "سُورَةُ الكَهْفِ",
+        "numberOfAyahs": 110,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 19,
+        "englishName": "Maryam",
+        "englishNameTranslation": "Mary",
+        "name": "سُورَةُ مَرْيَمَ",
+        "numberOfAyahs": 98,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 20,
+        "englishName": "Taa-Haa",
+        "englishNameTranslation": "Taa-Haa",
+        "name": "سُورَةُ طه",
+        "numberOfAyahs": 135,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 21,
+        "englishName": "Al-Anbiyaa",
+        "englishNameTranslation": "The Prophets",
+        "name": "سُورَةُ الأَنبِيَاءِ",
+        "numberOfAyahs": 112,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 22,
+        "englishName": "Al-Hajj",
+        "englishNameTranslation": "The Pilgrimage",
+        "name": "سُورَةُ الحَجِّ",
+        "numberOfAyahs": 78,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 23,
+        "englishName": "Al-Muminoon",
+        "englishNameTranslation": "The Believers",
+        "name": "سُورَةُ المُؤْمِنُونَ",
+        "numberOfAyahs": 118,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 24,
+        "englishName": "An-Noor",
+        "englishNameTranslation": "The Light",
+        "name": "سُورَةُ النُّورِ",
+        "numberOfAyahs": 64,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 25,
+        "englishName": "Al-Furqaan",
+        "englishNameTranslation": "The Criterion",
+        "name": "سُورَةُ الفُرْقَانِ",
+        "numberOfAyahs": 77,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 26,
+        "englishName": "Ash-Shu'araa",
+        "englishNameTranslation": "The Poets",
+        "name": "سُورَةُ الشُّعَرَاءِ",
+        "numberOfAyahs": 227,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 27,
+        "englishName": "An-Naml",
+        "englishNameTranslation": "The Ant",
+        "name": "سُورَةُ النَّمْلِ",
+        "numberOfAyahs": 93,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 28,
+        "englishName": "Al-Qasas",
+        "englishNameTranslation": "The Stories",
+        "name": "سُورَةُ القَصَصِ",
+        "numberOfAyahs": 88,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 29,
+        "englishName": "Al-Ankaboot",
+        "englishNameTranslation": "The Spider",
+        "name": "سُورَةُ العَنكَبُوتِ",
+        "numberOfAyahs": 69,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 30,
+        "englishName": "Ar-Room",
+        "englishNameTranslation": "The Romans",
+        "name": "سُورَةُ الرُّومِ",
+        "numberOfAyahs": 60,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 31,
+        "englishName": "Luqman",
+        "englishNameTranslation": "Luqman",
+        "name": "سُورَةُ لُقْمَانَ",
+        "numberOfAyahs": 34,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 32,
+        "englishName": "As-Sajda",
+        "englishNameTranslation": "The Prostration",
+        "name": "سُورَةُ السَّجْدَةِ",
+        "numberOfAyahs": 30,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 33,
+        "englishName": "Al-Ahzaab",
+        "englishNameTranslation": "The Clans",
+        "name": "سُورَةُ الأَحْزَابِ",
+        "numberOfAyahs": 73,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 34,
+        "englishName": "Saba",
+        "englishNameTranslation": "Sheba",
+        "name": "سُورَةُ سَبَإٍ",
+        "numberOfAyahs": 54,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 35,
+        "englishName": "Faatir",
+        "englishNameTranslation": "The Originator",
+        "name": "سُورَةُ فَاطِرٍ",
+        "numberOfAyahs": 45,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 36,
+        "englishName": "Yaseen",
+        "englishNameTranslation": "Yaseen",
+        "name": "سُورَةُ يسٓ",
+        "numberOfAyahs": 83,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 37,
+        "englishName": "As-Saaffaat",
+        "englishNameTranslation": "Those drawn up in Ranks",
+        "name": "سُورَةُ الصَّافَّاتِ",
+        "numberOfAyahs": 182,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 38,
+        "englishName": "Saad",
+        "englishNameTranslation": "The letter Saad",
+        "name": "سُورَةُ صٓ",
+        "numberOfAyahs": 88,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 39,
+        "englishName": "Az-Zumar",
+        "englishNameTranslation": "The Groups",
+        "name": "سُورَةُ الزُّمَرِ",
+        "numberOfAyahs": 75,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 40,
+        "englishName": "Ghafir",
+        "englishNameTranslation": "The Forgiver",
+        "name": "سُورَةُ غَافِرٍ",
+        "numberOfAyahs": 85,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 41,
+        "englishName": "Fussilat",
+        "englishNameTranslation": "Explained in detail",
+        "name": "سُورَةُ فُصِّلَتْ",
+        "numberOfAyahs": 54,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 42,
+        "englishName": "Ash-Shura",
+        "englishNameTranslation": "Consultation",
+        "name": "سُورَةُ الشُّورَىٰ",
+        "numberOfAyahs": 53,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 43,
+        "englishName": "Az-Zukhruf",
+        "englishNameTranslation": "Ornaments of gold",
+        "name": "سُورَةُ الزُّخْرُفِ",
+        "numberOfAyahs": 89,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 44,
+        "englishName": "Ad-Dukhaan",
+        "englishNameTranslation": "The Smoke",
+        "name": "سُورَةُ الدُّخَانِ",
+        "numberOfAyahs": 59,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 45,
+        "englishName": "Al-Jaathiya",
+        "englishNameTranslation": "Crouching",
+        "name": "سُورَةُ الجَاثِيَةِ",
+        "numberOfAyahs": 37,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 46,
+        "englishName": "Al-Ahqaf",
+        "englishNameTranslation": "The Dunes",
+        "name": "سُورَةُ الأَحْقَافِ",
+        "numberOfAyahs": 35,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 47,
+        "englishName": "Muhammad",
+        "englishNameTranslation": "Muhammad",
+        "name": "سُورَةُ مُحَمَّدٍ",
+        "numberOfAyahs": 38,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 48,
+        "englishName": "Al-Fath",
+        "englishNameTranslation": "The Victory",
+        "name": "سُورَةُ الفَتْحِ",
+        "numberOfAyahs": 29,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 49,
+        "englishName": "Al-Hujuraat",
+        "englishNameTranslation": "The Inner Apartments",
+        "name": "سُورَةُ الحُجُرَاتِ",
+        "numberOfAyahs": 18,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 50,
+        "englishName": "Qaaf",
+        "englishNameTranslation": "The letter Qaaf",
+        "name": "سُورَةُ قٓ",
+        "numberOfAyahs": 45,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 51,
+        "englishName": "Adh-Dhaariyat",
+        "englishNameTranslation": "The Winnowing Winds",
+        "name": "سُورَةُ الذَّارِيَاتِ",
+        "numberOfAyahs": 60,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 52,
+        "englishName": "At-Tur",
+        "englishNameTranslation": "The Mount",
+        "name": "سُورَةُ الطُّورِ",
+        "numberOfAyahs": 49,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 53,
+        "englishName": "An-Najm",
+        "englishNameTranslation": "The Star",
+        "name": "سُورَةُ النَّجْمِ",
+        "numberOfAyahs": 62,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 54,
+        "englishName": "Al-Qamar",
+        "englishNameTranslation": "The Moon",
+        "name": "سُورَةُ القَمَرِ",
+        "numberOfAyahs": 55,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 55,
+        "englishName": "Ar-Rahmaan",
+        "englishNameTranslation": "The Beneficent",
+        "name": "سُورَةُ الرَّحْمَٰن",
+        "numberOfAyahs": 78,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 56,
+        "englishName": "Al-Waaqia",
+        "englishNameTranslation": "The Inevitable",
+        "name": "سُورَةُ الوَاقِعَةِ",
+        "numberOfAyahs": 96,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 57,
+        "englishName": "Al-Hadid",
+        "englishNameTranslation": "The Iron",
+        "name": "سُورَةُ الحَدِيدِ",
+        "numberOfAyahs": 29,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 58,
+        "englishName": "Al-Mujaadila",
+        "englishNameTranslation": "The Pleading Woman",
+        "name": "سُورَةُ المُجَادلَةِ",
+        "numberOfAyahs": 22,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 59,
+        "englishName": "Al-Hashr",
+        "englishNameTranslation": "The Exile",
+        "name": "سُورَةُ الحَشْرِ",
+        "numberOfAyahs": 24,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 60,
+        "englishName": "Al-Mumtahana",
+        "englishNameTranslation": "She that is to be examined",
+        "name": "سُورَةُ المُمْتَحنَةِ",
+        "numberOfAyahs": 13,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 61,
+        "englishName": "As-Saff",
+        "englishNameTranslation": "The Ranks",
+        "name": "سُورَةُ الصَّفِّ",
+        "numberOfAyahs": 14,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 62,
+        "englishName": "Al-Jumu'a",
+        "englishNameTranslation": "Friday",
+        "name": "سُورَةُ الجُمُعَةِ",
+        "numberOfAyahs": 11,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 63,
+        "englishName": "Al-Munaafiqoon",
+        "englishNameTranslation": "The Hypocrites",
+        "name": "سُورَةُ المُنَافِقُونَ",
+        "numberOfAyahs": 11,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 64,
+        "englishName": "At-Taghaabun",
+        "englishNameTranslation": "Mutual Disillusion",
+        "name": "سُورَةُ التَّغَابُنِ",
+        "numberOfAyahs": 18,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 65,
+        "englishName": "At-Talaaq",
+        "englishNameTranslation": "Divorce",
+        "name": "سُورَةُ الطَّلَاقِ",
+        "numberOfAyahs": 12,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 66,
+        "englishName": "At-Tahrim",
+        "englishNameTranslation": "The Prohibition",
+        "name": "سُورَةُ التَّحْرِيمِ",
+        "numberOfAyahs": 12,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 67,
+        "englishName": "Al-Mulk",
+        "englishNameTranslation": "The Sovereignty",
+        "name": "سُورَةُ المُلْكِ",
+        "numberOfAyahs": 30,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 68,
+        "englishName": "Al-Qalam",
+        "englishNameTranslation": "The Pen",
+        "name": "سُورَةُ القَلَمِ",
+        "numberOfAyahs": 52,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 69,
+        "englishName": "Al-Haaqqa",
+        "englishNameTranslation": "The Reality",
+        "name": "سُورَةُ الحَاقَّةِ",
+        "numberOfAyahs": 52,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 70,
+        "englishName": "Al-Ma'aarij",
+        "englishNameTranslation": "The Ascending Stairways",
+        "name": "سُورَةُ المَعَارِجِ",
+        "numberOfAyahs": 44,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 71,
+        "englishName": "Nooh",
+        "englishNameTranslation": "Noah",
+        "name": "سُورَةُ نُوحٍ",
+        "numberOfAyahs": 28,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 72,
+        "englishName": "Al-Jinn",
+        "englishNameTranslation": "The Jinn",
+        "name": "سُورَةُ الجِنِّ",
+        "numberOfAyahs": 28,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 73,
+        "englishName": "Al-Muzzammil",
+        "englishNameTranslation": "The Enshrouded One",
+        "name": "سُورَةُ المُزَّمِّلِ",
+        "numberOfAyahs": 20,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 74,
+        "englishName": "Al-Muddaththir",
+        "englishNameTranslation": "The Cloaked One",
+        "name": "سُورَةُ المُدَّثِّرِ",
+        "numberOfAyahs": 56,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 75,
+        "englishName": "Al-Qiyaama",
+        "englishNameTranslation": "The Resurrection",
+        "name": "سُورَةُ القِيَامَةِ",
+        "numberOfAyahs": 40,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 76,
+        "englishName": "Al-Insaan",
+        "englishNameTranslation": "Man",
+        "name": "سُورَةُ الإِنسَانِ",
+        "numberOfAyahs": 31,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 77,
+        "englishName": "Al-Mursalaat",
+        "englishNameTranslation": "The Emissaries",
+        "name": "سُورَةُ المُرْسَلَاتِ",
+        "numberOfAyahs": 50,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 78,
+        "englishName": "An-Naba",
+        "englishNameTranslation": "The Announcement",
+        "name": "سُورَةُ النَّبَإِ",
+        "numberOfAyahs": 40,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 79,
+        "englishName": "An-Naazi'aat",
+        "englishNameTranslation": "Those who drag forth",
+        "name": "سُورَةُ النَّازِعَاتِ",
+        "numberOfAyahs": 46,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 80,
+        "englishName": "Abasa",
+        "englishNameTranslation": "He frowned",
+        "name": "سُورَةُ عَبَسَ",
+        "numberOfAyahs": 42,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 81,
+        "englishName": "At-Takwir",
+        "englishNameTranslation": "The Overthrowing",
+        "name": "سُورَةُ التَّكْوِيرِ",
+        "numberOfAyahs": 29,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 82,
+        "englishName": "Al-Infitaar",
+        "englishNameTranslation": "The Cleaving",
+        "name": "سُورَةُ الانفِطَارِ",
+        "numberOfAyahs": 19,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 83,
+        "englishName": "Al-Mutaffifin",
+        "englishNameTranslation": "Defrauding",
+        "name": "سُورَةُ المُطَفِّفِينَ",
+        "numberOfAyahs": 36,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 84,
+        "englishName": "Al-Inshiqaaq",
+        "englishNameTranslation": "The Splitting Open",
+        "name": "سُورَةُ الانشِقَاقِ",
+        "numberOfAyahs": 25,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 85,
+        "englishName": "Al-Burooj",
+        "englishNameTranslation": "The Constellations",
+        "name": "سُورَةُ البُرُوجِ",
+        "numberOfAyahs": 22,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 86,
+        "englishName": "At-Taariq",
+        "englishNameTranslation": "The Morning Star",
+        "name": "سُورَةُ الطَّارِقِ",
+        "numberOfAyahs": 17,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 87,
+        "englishName": "Al-A'laa",
+        "englishNameTranslation": "The Most High",
+        "name": "سُورَةُ الأَعْلَىٰ",
+        "numberOfAyahs": 19,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 88,
+        "englishName": "Al-Ghaashiya",
+        "englishNameTranslation": "The Overwhelming",
+        "name": "سُورَةُ الغَاشِيَةِ",
+        "numberOfAyahs": 26,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 89,
+        "englishName": "Al-Fajr",
+        "englishNameTranslation": "The Dawn",
+        "name": "سُورَةُ الفَجْرِ",
+        "numberOfAyahs": 30,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 90,
+        "englishName": "Al-Balad",
+        "englishNameTranslation": "The City",
+        "name": "سُورَةُ البَلَدِ",
+        "numberOfAyahs": 20,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 91,
+        "englishName": "Ash-Shams",
+        "englishNameTranslation": "The Sun",
+        "name": "سُورَةُ الشَّمْسِ",
+        "numberOfAyahs": 15,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 92,
+        "englishName": "Al-Lail",
+        "englishNameTranslation": "The Night",
+        "name": "سُورَةُ اللَّيْلِ",
+        "numberOfAyahs": 21,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 93,
+        "englishName": "Ad-Dhuhaa",
+        "englishNameTranslation": "The Morning Hours",
+        "name": "سُورَةُ الضُّحَىٰ",
+        "numberOfAyahs": 11,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 94,
+        "englishName": "Ash-Sharh",
+        "englishNameTranslation": "The Consolation",
+        "name": "سُورَةُ الشَّرْحِ",
+        "numberOfAyahs": 8,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 95,
+        "englishName": "At-Tin",
+        "englishNameTranslation": "The Fig",
+        "name": "سُورَةُ التِّينِ",
+        "numberOfAyahs": 8,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 96,
+        "englishName": "Al-Alaq",
+        "englishNameTranslation": "The Clot",
+        "name": "سُورَةُ العَلَقِ",
+        "numberOfAyahs": 19,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 97,
+        "englishName": "Al-Qadr",
+        "englishNameTranslation": "The Power, Fate",
+        "name": "سُورَةُ القَدْرِ",
+        "numberOfAyahs": 5,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 98,
+        "englishName": "Al-Bayyina",
+        "englishNameTranslation": "The Evidence",
+        "name": "سُورَةُ البَيِّنَةِ",
+        "numberOfAyahs": 8,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 99,
+        "englishName": "Az-Zalzala",
+        "englishNameTranslation": "The Earthquake",
+        "name": "سُورَةُ الزَّلْزَلَةِ",
+        "numberOfAyahs": 8,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 100,
+        "englishName": "Al-Aadiyaat",
+        "englishNameTranslation": "The Chargers",
+        "name": "سُورَةُ العَادِيَاتِ",
+        "numberOfAyahs": 11,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 101,
+        "englishName": "Al-Qaari'a",
+        "englishNameTranslation": "The Calamity",
+        "name": "سُورَةُ القَارِعَةِ",
+        "numberOfAyahs": 11,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 102,
+        "englishName": "At-Takaathur",
+        "englishNameTranslation": "Competition",
+        "name": "سُورَةُ التَّكَاثُرِ",
+        "numberOfAyahs": 8,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 103,
+        "englishName": "Al-Asr",
+        "englishNameTranslation": "The Declining Day, Epoch",
+        "name": "سُورَةُ العَصْرِ",
+        "numberOfAyahs": 3,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 104,
+        "englishName": "Al-Humaza",
+        "englishNameTranslation": "The Traducer",
+        "name": "سُورَةُ الهُمَزَةِ",
+        "numberOfAyahs": 9,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 105,
+        "englishName": "Al-Fil",
+        "englishNameTranslation": "The Elephant",
+        "name": "سُورَةُ الفِيلِ",
+        "numberOfAyahs": 5,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 106,
+        "englishName": "Quraish",
+        "englishNameTranslation": "Quraysh",
+        "name": "سُورَةُ قُرَيْشٍ",
+        "numberOfAyahs": 4,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 107,
+        "englishName": "Al-Maa'un",
+        "englishNameTranslation": "Almsgiving",
+        "name": "سُورَةُ المَاعُونِ",
+        "numberOfAyahs": 7,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 108,
+        "englishName": "Al-Kawthar",
+        "englishNameTranslation": "Abundance",
+        "name": "سُورَةُ الكَوْثَرِ",
+        "numberOfAyahs": 3,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 109,
+        "englishName": "Al-Kaafiroon",
+        "englishNameTranslation": "The Disbelievers",
+        "name": "سُورَةُ الكَافِرُونَ",
+        "numberOfAyahs": 6,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 110,
+        "englishName": "An-Nasr",
+        "englishNameTranslation": "Divine Support",
+        "name": "سُورَةُ النَّصْرِ",
+        "numberOfAyahs": 3,
+        "revelationType": "Medinan"
+    },
+    {
+        "ID": 111,
+        "englishName": "Al-Masad",
+        "englishNameTranslation": "The Palm Fibre",
+        "name": "سُورَةُ المَسَدِ",
+        "numberOfAyahs": 5,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 112,
+        "englishName": "Al-Ikhlaas",
+        "englishNameTranslation": "Sincerity",
+        "name": "سُورَةُ الإِخْلَاصِ",
+        "numberOfAyahs": 4,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 113,
+        "englishName": "Al-Falaq",
+        "englishNameTranslation": "The Dawn",
+        "name": "سُورَةُ الفَلَقِ",
+        "numberOfAyahs": 5,
+        "revelationType": "Meccan"
+    },
+    {
+        "ID": 114,
+        "englishName": "An-Naas",
+        "englishNameTranslation": "Mankind",
+        "name": "سُورَةُ النَّاسِ",
+        "numberOfAyahs": 6,
+        "revelationType": "Meccan"
+    }
+]

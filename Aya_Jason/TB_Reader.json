@@ -1,0 +1,602 @@
+[
+    {
+        "ID": 1,
+        "english_name": "Abdul basit (tajweed)",
+        "haveWordTiming": 1,
+        "link": "http://everyayah.com/data/Abdul_Basit_Mujawwad_128kbps/",
+        "name": "عبد الباسط عبد الصمد (مجود)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 2,
+        "english_name": "Abdul basit",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Abdul_Basit_Murattal_64kbps/",
+        "name": "عبد الباسط عبد الصمد",
+        "ruayaId": 1
+    },
+    {
+        "ID": 4,
+        "english_name": "Mohamed Minshawi",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Minshawy_Murattal_128kbps/",
+        "name": "محمد صديق المنشاوي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 5,
+        "english_name": "Mohamed Minshawi (tajweed)",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Minshawy_Mujawwad_64kbps/",
+        "name": "محمد صديق المنشاوي (مجود)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 6,
+        "english_name": "Mishary Alafasy",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Alafasy_64kbps/",
+        "name": "مشاري العفاسي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 8,
+        "english_name": "Abdurrahmaan Al Sudais",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Abdurrahmaan_As-Sudais_64kbps/",
+        "name": "عبد الرحمن السديس",
+        "ruayaId": 1
+    },
+    {
+        "ID": 10,
+        "english_name": "Abu Bakr Ash-Shaatree",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Abu_Bakr_Ash-Shaatree_64kbps/",
+        "name": "أبو بكر الشاطري",
+        "ruayaId": 1
+    },
+    {
+        "ID": 12,
+        "english_name": "Mahmoud Al-Husary",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Husary_128kbps/",
+        "name": "محمود الحصري",
+        "ruayaId": 1
+    },
+    {
+        "ID": 13,
+        "english_name": "Mahmoud Al-Husary (Muallim)",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Husary_Muallim_128kbps/",
+        "name": "محمود الحصري (المصحف المعلم)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 14,
+        "english_name": "Hani Rifai",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Hani_Rifai_64kbps/",
+        "name": "هاني الرفاعي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 15,
+        "english_name": "Mohammad al-Tablaway",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Mohammad_al_Tablaway_64kbps/",
+        "name": "محمد الطبلاوي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 16,
+        "english_name": "Saud Al-Shuraim",
+        "haveWordTiming": 1,
+        "link": "https://everyayah.com/data/Saood_ash-Shuraym_64kbps/",
+        "name": "سعود الشريم",
+        "ruayaId": 1
+    },
+    {
+        "ID": 17,
+        "english_name": "Maher Al Muaiqly",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/tvquran/maher_al_mu3aiqly/",
+        "name": "ماهر المعيقلي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 18,
+        "english_name": "Nasser Alqatami",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/nasser_bin_ali_alqatami/",
+        "name": "ناصر القطامي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 19,
+        "english_name": "Abdullah Al-Juhaynee",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/abdullaah_3awwaad_al-juhaynee/mobile/",
+        "name": "عبد الله الجهني",
+        "ruayaId": 1
+    },
+    {
+        "ID": 20,
+        "english_name": "Abdullah Basfar",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/abdullaah_basfar/archive/",
+        "name": "عبد الله بصفر",
+        "ruayaId": 1
+    },
+    {
+        "ID": 21,
+        "english_name": "Yassin. Al Jazaery (Warsh)",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/mp3quran/warsh/yasser_jazairy/",
+        "name": "ياسين الجزائري (رواية ورش)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 22,
+        "english_name": "Ibrahim Al Dossary (Warsh)",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/mp3quran/warsh/ibrahim_dosari/",
+        "name": "إبراهيم الدوسري (رواية ورش)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 23,
+        "english_name": "Abdullah Matroud",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/abdullah_matroud/",
+        "name": "عبد الله مطرود",
+        "ruayaId": 1
+    },
+    {
+        "ID": 24,
+        "english_name": "Ahmed Naina",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/ahmad_nauina/",
+        "name": "أحمد نعينع",
+        "ruayaId": 1
+    },
+    {
+        "ID": 25,
+        "english_name": "Ahmed Al Ajamy",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/ahmed_ibn_3ali_al-3ajamy/",
+        "name": "أحمد العجمي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 26,
+        "english_name": "Akram Al Aalakmi",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/akram_al_alaqmi/",
+        "name": "أكرم العلاقمي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 27,
+        "english_name": "Ali Hajjaj ALSuesy",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/ali_hajjaj_alsouasi/",
+        "name": "علي حجاج السويسي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 28,
+        "english_name": "Ali Jaber",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/ali_jaber/",
+        "name": "علي جابر",
+        "ruayaId": 1
+    },
+    {
+        "ID": 29,
+        "english_name": "Fares Abbad",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/fares/reencode/",
+        "name": "فارس عباد",
+        "ruayaId": 1
+    },
+    {
+        "ID": 30,
+        "english_name": "Saad Al Ghamadi",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/sa3d_al-ghaamidi/complete/128kbps/",
+        "name": "سعد الغامدي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 31,
+        "english_name": "Ali Al-Hudhaify",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/qurancomplex/ali_hudhayfi/",
+        "name": "علي الحذيفي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 32,
+        "english_name": "Ibrahim Al Akhdar",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/qurancomplex/ibrahim_alakhdar/",
+        "name": "إبراهيم الأخضر",
+        "ruayaId": 1
+    },
+    {
+        "ID": 34,
+        "english_name": "Khalid Al-Qahtaanee",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/khaalid_al-qahtaanee/",
+        "name": "خالد عبد الله القحطاني",
+        "ruayaId": 1
+    },
+    {
+        "ID": 36,
+        "english_name": "Muhammad Ayyoub",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/muhammad_ayyoob/",
+        "name": "محمد ايوب",
+        "ruayaId": 1
+    },
+    {
+        "ID": 37,
+        "english_name": "Muhammad Jibreel",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/muhammad_jibreel/complete/reencoded/",
+        "name": "محمد جبريل",
+        "ruayaId": 1
+    },
+    {
+        "ID": 38,
+        "english_name": "Abdul Muhsin Al Qasim",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/abdul_muhsin_alqasim/",
+        "name": "عبد المحسن القاسم",
+        "ruayaId": 1
+    },
+    {
+        "ID": 39,
+        "english_name": "Mahmoud Al-Husary (tajweed)",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/generated/husary_mujawwad/",
+        "name": "محمود الحصري (مجود)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 40,
+        "english_name": "Sahl Yasin",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/sahl_yaaseen/",
+        "name": "سهل ياسين",
+        "ruayaId": 1
+    },
+    {
+        "ID": 41,
+        "english_name": "Salaah Bukhatir",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/salaah_bukhaatir/",
+        "name": "صلاح بوخاطر ",
+        "ruayaId": 1
+    },
+    {
+        "ID": 42,
+        "english_name": "Salah Al-Budair",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/salahbudair/",
+        "name": "صلاح البدير",
+        "ruayaId": 1
+    },
+    {
+        "ID": 43,
+        "english_name": "Yaser Salamah",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/ayahapp/yasser_salama_hadr/",
+        "name": "ياسر سلامة (حدر)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 44,
+        "english_name": "Yasser Ad-Dussary",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/yasser_ad-dussary/",
+        "name": "ياسر الدوسري",
+        "ruayaId": 1
+    },
+    {
+        "ID": 45,
+        "english_name": "Aziz Alili",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/aziz_alili/",
+        "name": "عزيز العليلي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 46,
+        "english_name": "Khalefa Al Tunaiji",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/mp3quran/khalifah_taniji/",
+        "name": "خليفة الطنيجي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 47,
+        "english_name": "Mahmoud Al Banna",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/mahmood_ali_albana/",
+        "name": "محمود البنا",
+        "ruayaId": 1
+    },
+    {
+        "ID": 48,
+        "english_name": "Ayman Sowaid (Muallim/Learning)",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/tvquran/ayman_suwaid/",
+        "name": "أيمن سويد (تعليمي)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 49,
+        "english_name": "Maher Al Muaiqly (Muallim/Learning)",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/qurancomplex/maher_muaiqly/",
+        "name": "ماهر المعيقلي (تعليمي)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 50,
+        "english_name": "Mishary Alafasy (California)",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/mishaari_california/",
+        "name": "مشاري العفاسي (كاليفورنيا)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 51,
+        "english_name": "Wadee Al-Yamani",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/wadee_hammadi_al-yamani/",
+        "name": "وديع اليمني",
+        "ruayaId": 1
+    },
+    {
+        "ID": 52,
+        "english_name": "Khaled Almuhanna",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/qurancomplex/khaled_almuhanna/",
+        "name": "خالد المهنا",
+        "ruayaId": 1
+    },
+    {
+        "ID": 53,
+        "english_name": "Tafsir Mokhtasar (Arabic)",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/ayahapp/mokhtasar_asmari/",
+        "name": "المختصر صوتي (عبدالله الأسمري)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 54,
+        "english_name": "Abdulaziz Al-Zahrani",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/abdulaziz_bin_saleh_alzahrani/",
+        "name": "عبدالعزيز الزهراني",
+        "ruayaId": 1
+    },
+    {
+        "ID": 57,
+        "english_name": "Abdulrahman Al Shahat",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/abdulrahman_al_shahat/",
+        "name": "عبدالرحمن الشحات",
+        "ruayaId": 1
+    },
+    {
+        "ID": 59,
+        "english_name": "Mishary Alafasy & Ibrahim Walk (Arabic - English)",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/mishaari_w_ibrahim_walk_si/",
+        "name": "العفاسي وإبراهيم والك (عربي-انجليزي)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 60,
+        "english_name": "Hady Toure",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/tvquran/hady_toure/",
+        "name": "محمد هادي توري",
+        "ruayaId": 1
+    },
+    {
+        "ID": 61,
+        "english_name": "Nabil Rifa3i",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/nabil_rifa3i/reencode/",
+        "name": "نبيل الرفاعي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 62,
+        "english_name": "Abdulrahman Aloosi",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/mp3quran/abdulrahman_aloosi/",
+        "name": "عبدالرحمن العوسي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 63,
+        "english_name": "Abdurrashid Sufi",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/abdurrashid_sufi/128kbps/",
+        "name": "عبدالرشيد صوفي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 64,
+        "english_name": "Tawfeeq As Sayegh",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/tawfeeq_bin_saeed-as-sawaaigh/",
+        "name": "توفيق الصائغ",
+        "ruayaId": 1
+    },
+    {
+        "ID": 65,
+        "english_name": "Mahmoud Al-Husary (Muallim)",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/generated/husary_muallim/",
+        "name": "محمود الحصري (تعليمي)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 66,
+        "english_name": "Mostafa Ismaeel",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/mostafa_ismaeel/128kbps/",
+        "name": "مصطفى إسماعيل",
+        "ruayaId": 1
+    },
+    {
+        "ID": 67,
+        "english_name": "Muhammad Rashad Al-Shereef",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/mp3quran/muhammad_rashad_alshereef/",
+        "name": "محمد رشاد الشريف",
+        "ruayaId": 1
+    },
+    {
+        "ID": 68,
+        "english_name": "Sabir Abdulhakam",
+        "haveWordTiming": 0,
+        "link": "https://resources.surahpedia.com/abdulhakam/",
+        "name": "صابر عبدالحكم",
+        "ruayaId": 1
+    },
+    {
+        "ID": 69,
+        "english_name": "Abdul basit (Warsh)",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/alsabeel/warsh/abdulbasit_abdulsamad/",
+        "name": "عبد الباسط عبد الصمد (ورش)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 70,
+        "english_name": "Khalid Al Juhaimy",
+        "haveWordTiming": 0,
+        "link": "https://audio.ayah.app/juhaim/$surahId-1.mp3",
+        "name": "خالد الجهيمي",
+        "ruayaId": 1
+    },
+    {
+        "ID": 71,
+        "english_name": "Abdullah Ghailan",
+        "haveWordTiming": 0,
+        "link": "https://audio.ayah.app/ghailan/$surahId-1.mp3",
+        "name": "عبدالله غيلان",
+        "ruayaId": 1
+    },
+    {
+        "ID": 72,
+        "english_name": "Omar Al Qazabri (Warsh)",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/tvquran/warsh/omar_alqazabri/",
+        "name": "عمر القزابري (ورش)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 73,
+        "english_name": "Bandar Baleela",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/bandar_baleela/complete/",
+        "name": "بندر بليلة",
+        "ruayaId": 1
+    },
+    {
+        "ID": 74,
+        "english_name": "Mahmoud Al-Husary (Iza3a)",
+        "haveWordTiming": 0,
+        "link": "https://download.quranicaudio.com/quran/mahmood_khaleel_al-husaree_iza3a/128kbps/",
+        "name": "محمود الحصري (إذاعة)",
+        "ruayaId": 1
+    },
+    {
+        "ID": 75,
+        "english_name": "Ahmed Khalil Shahin",
+        "haveWordTiming": 0,
+        "link": "https://audio.ayah.app/shahin/$surahId-1.mp3",
+        "name": "أحمد خليل شاهين",
+        "ruayaId": 1
+    },
+    {
+        "ID": 76,
+        "english_name": "Khalid Al-Jalil",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/tvquran/khalid_jalil/",
+        "name": "خالد الجليل",
+        "ruayaId": 1
+    },
+    {
+        "ID": 77,
+        "english_name": "Abdulrahman Benmoussa",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/tvquran/warsh/abderrahmane_benmoussa/",
+        "name": "عبد الرحمن بن موسى",
+        "ruayaId": 2
+    },
+    {
+        "ID": 78,
+        "english_name": "Abdul basit",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/alsabeel/warsh/abdulbasit_abdulsamad/",
+        "name": "عبد الباسط عبد الصمد",
+        "ruayaId": 2
+    },
+    {
+        "ID": 79,
+        "english_name": "Mahmoud Al-Husary",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/islamway/warsh/husary/64kbps/",
+        "name": "محمود الحصري",
+        "ruayaId": 2
+    },
+    {
+        "ID": 80,
+        "english_name": "Ibrahim Al Dossary",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/mp3quran/warsh/ibrahim_dosari/",
+        "name": "إبراهيم الدوسري",
+        "ruayaId": 2
+    },
+    {
+        "ID": 81,
+        "english_name": "Al-Ayoune Al-Kouchi",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/tvquran/warsh/laayoun_kouchi/",
+        "name": "العيون الكوشي",
+        "ruayaId": 2
+    },
+    {
+        "ID": 82,
+        "english_name": "Mustapha Gharbi",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/alsabeel/warsh/mustapha_gharbi/",
+        "name": "مصطفى الغربي",
+        "ruayaId": 2
+    },
+    {
+        "ID": 83,
+        "english_name": "Omar Al Qazabri",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/tvquran/warsh/omar_alqazabri/",
+        "name": "عمر القزابري",
+        "ruayaId": 2
+    },
+    {
+        "ID": 84,
+        "english_name": "Yassin. Al Jazaery",
+        "haveWordTiming": 0,
+        "link": "https://mirrors.quranicaudio.com/mp3quran/warsh/yasser_jazairy/",
+        "name": "ياسين الجزائري",
+        "ruayaId": 2
+    }
+]

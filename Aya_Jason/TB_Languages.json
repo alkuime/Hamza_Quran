@@ -1,0 +1,422 @@
+[
+    {
+        "ID": 1,
+        "language_code": "ara",
+        "name": "Arabic",
+        "name_original": "العربية"
+    },
+    {
+        "ID": 2,
+        "language_code": "sqi",
+        "name": "Albanian",
+        "name_original": "Shqip"
+    },
+    {
+        "ID": 3,
+        "language_code": "aze",
+        "name": "Azerbaijani",
+        "name_original": "azərbaycan dili"
+    },
+    {
+        "ID": 4,
+        "language_code": "ben",
+        "name": "Bengali",
+        "name_original": "বাংলা"
+    },
+    {
+        "ID": 5,
+        "language_code": "bos",
+        "name": "Bosnian",
+        "name_original": "bosanski jezik"
+    },
+    {
+        "ID": 6,
+        "language_code": "bul",
+        "name": "Bulgarian",
+        "name_original": "български език"
+    },
+    {
+        "ID": 7,
+        "language_code": "zho",
+        "name": "Chinese (Simplified)",
+        "name_original": "中文 (简体)"
+    },
+    {
+        "ID": 8,
+        "language_code": "ces",
+        "name": "Czech",
+        "name_original": "čeština"
+    },
+    {
+        "ID": 9,
+        "language_code": "nld",
+        "name": "Dutch",
+        "name_original": "Nederlands"
+    },
+    {
+        "ID": 10,
+        "language_code": "eng",
+        "name": "English",
+        "name_original": "English"
+    },
+    {
+        "ID": 11,
+        "language_code": "fin",
+        "name": "Finnish",
+        "name_original": "suomi"
+    },
+    {
+        "ID": 12,
+        "language_code": "ind",
+        "name": "Indonesian",
+        "name_original": "Bahasa Indonesia"
+    },
+    {
+        "ID": 13,
+        "language_code": "fra",
+        "name": "French",
+        "name_original": "français"
+    },
+    {
+        "ID": 14,
+        "language_code": "deu",
+        "name": "German",
+        "name_original": "Deutsch"
+    },
+    {
+        "ID": 15,
+        "language_code": "ita",
+        "name": "Italian",
+        "name_original": "Italiano"
+    },
+    {
+        "ID": 16,
+        "language_code": "hau",
+        "name": "Hausa",
+        "name_original": "Hausa"
+    },
+    {
+        "ID": 17,
+        "language_code": "jpn",
+        "name": "Japanese",
+        "name_original": "日本語"
+    },
+    {
+        "ID": 18,
+        "language_code": "kor",
+        "name": "Korean",
+        "name_original": "한국어"
+    },
+    {
+        "ID": 19,
+        "language_code": "kur",
+        "name": "Kurdish",
+        "name_original": "Kurdî"
+    },
+    {
+        "ID": 20,
+        "language_code": "msa",
+        "name": "Malay",
+        "name_original": "Bahasa Melayu"
+    },
+    {
+        "ID": 21,
+        "language_code": "mal",
+        "name": "Malayalam",
+        "name_original": "മലയാളം"
+    },
+    {
+        "ID": 22,
+        "language_code": "tat",
+        "name": "Tatar",
+        "name_original": "татар теле"
+    },
+    {
+        "ID": 23,
+        "language_code": "nor",
+        "name": "Norwegian",
+        "name_original": "Norsk"
+    },
+    {
+        "ID": 24,
+        "language_code": "fas",
+        "name": "Persian",
+        "name_original": "فارسی"
+    },
+    {
+        "ID": 25,
+        "language_code": "pol",
+        "name": "Polish",
+        "name_original": "Polszczyzna"
+    },
+    {
+        "ID": 26,
+        "language_code": "por",
+        "name": "Portuguese",
+        "name_original": "Português"
+    },
+    {
+        "ID": 27,
+        "language_code": "ron",
+        "name": "Romanian",
+        "name_original": "Română"
+    },
+    {
+        "ID": 28,
+        "language_code": "rus",
+        "name": "Russian",
+        "name_original": "русский"
+    },
+    {
+        "ID": 29,
+        "language_code": "som",
+        "name": "Somali",
+        "name_original": "Soomaaliga"
+    },
+    {
+        "ID": 30,
+        "language_code": "spa",
+        "name": "Spanish",
+        "name_original": "Español"
+    },
+    {
+        "ID": 31,
+        "language_code": "swa",
+        "name": "Swahili",
+        "name_original": "Kiswahili"
+    },
+    {
+        "ID": 32,
+        "language_code": "swe",
+        "name": "Swedish",
+        "name_original": "Svenska"
+    },
+    {
+        "ID": 33,
+        "language_code": "tam",
+        "name": "Tamil",
+        "name_original": "தமிழ்"
+    },
+    {
+        "ID": 34,
+        "language_code": "urd",
+        "name": "Urdu",
+        "name_original": "اردو"
+    },
+    {
+        "ID": 35,
+        "language_code": "tha",
+        "name": "Thai",
+        "name_original": "ไทย"
+    },
+    {
+        "ID": 36,
+        "language_code": "tur",
+        "name": "Turkish",
+        "name_original": "Türkçe"
+    },
+    {
+        "ID": 37,
+        "language_code": "uzb",
+        "name": "Uzbek",
+        "name_original": "Oʻzbek"
+    },
+    {
+        "ID": 39,
+        "language_code": "",
+        "name": "Maranao",
+        "name_original": ""
+    },
+    {
+        "ID": 40,
+        "language_code": "hin",
+        "name": "Hindi",
+        "name_original": "हिन्दी"
+    },
+    {
+        "ID": 41,
+        "language_code": "inh",
+        "name": "Ingush",
+        "name_original": "ʁəlʁɑj mot"
+    },
+    {
+        "ID": 42,
+        "language_code": "ukr",
+        "name": "Ukrainian",
+        "name_original": "українська"
+    },
+    {
+        "ID": 43,
+        "language_code": "amh",
+        "name": "Amharic",
+        "name_original": "አማርኛ"
+    },
+    {
+        "ID": 44,
+        "language_code": "orm",
+        "name": "Oromo",
+        "name_original": "Afaan Oromoo"
+    },
+    {
+        "ID": 45,
+        "language_code": "kin",
+        "name": "Kinyarwanda",
+        "name_original": "Ikinyarwanda"
+    },
+    {
+        "ID": 46,
+        "language_code": "mkd",
+        "name": "Macedonian",
+        "name_original": "македонски"
+    },
+    {
+        "ID": 47,
+        "language_code": "asm",
+        "name": "Assamese",
+        "name_original": "অসমীয়া"
+    },
+    {
+        "ID": 48,
+        "language_code": "bam",
+        "name": "Bambara",
+        "name_original": "Bámánánkán"
+    },
+    {
+        "ID": 49,
+        "language_code": "",
+        "name": "Yau,Yuw",
+        "name_original": "Yau,Yuw"
+    },
+    {
+        "ID": 50,
+        "language_code": "kan",
+        "name": "Kannada",
+        "name_original": "ಕನ್ನಡ"
+    },
+    {
+        "ID": 51,
+        "language_code": "nep",
+        "name": "Nepali",
+        "name_original": "नेपाली"
+    },
+    {
+        "ID": 52,
+        "language_code": "yor",
+        "name": "Yoruba",
+        "name_original": "Èdè Yorùbá"
+    },
+    {
+        "ID": 53,
+        "language_code": "che",
+        "name": "Chechen",
+        "name_original": "Нохчийн мотт"
+    },
+    {
+        "ID": 54,
+        "language_code": "snd",
+        "name": "Sindhi",
+        "name_original": "سنڌي"
+    },
+    {
+        "ID": 55,
+        "language_code": "khm",
+        "name": "Central Khmer",
+        "name_original": "ខេមរភាសា"
+    },
+    {
+        "ID": 56,
+        "language_code": "sin",
+        "name": "Sinhala, Sinhalese",
+        "name_original": "සිංහල"
+    },
+    {
+        "ID": 57,
+        "language_code": "div",
+        "name": "Divehi, Dhivehi, Maldivian",
+        "name_original": "ދިވެހި"
+    },
+    {
+        "ID": 58,
+        "language_code": "lug",
+        "name": "Ganda",
+        "name_original": "Oluganda"
+    },
+    {
+        "ID": 59,
+        "language_code": "heb",
+        "name": "Hebrew",
+        "name_original": "עִבְרִית‎"
+    },
+    {
+        "ID": 60,
+        "language_code": "",
+        "name": "Berbers / Amazighs",
+        "name_original": "Tamazight"
+    },
+    {
+        "ID": 61,
+        "language_code": "guj",
+        "name": "Gujarati",
+        "name_original": "ગુજરાતી"
+    },
+    {
+        "ID": 62,
+        "language_code": "mar",
+        "name": "Marathi",
+        "name_original": "मराठी"
+    },
+    {
+        "ID": 63,
+        "language_code": "tel",
+        "name": "Telugu",
+        "name_original": "తెలుగు"
+    },
+    {
+        "ID": 64,
+        "language_code": "vie",
+        "name": "Vietnamese",
+        "name_original": "Tiếng Việt"
+    },
+    {
+        "ID": 65,
+        "language_code": "tgl",
+        "name": "Tagalog",
+        "name_original": "ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔"
+    },
+    {
+        "ID": 66,
+        "language_code": "kaz",
+        "name": "Kazakh",
+        "name_original": "қазақша"
+    },
+    {
+        "ID": 67,
+        "language_code": "tgk",
+        "name": "Tajik",
+        "name_original": "Тоҷикӣ (Tojikī)"
+    },
+    {
+        "ID": 68,
+        "language_code": "pus",
+        "name": "Pashto",
+        "name_original": "پښتو"
+    },
+    {
+        "ID": 69,
+        "language_code": "uig",
+        "name": "Uyghur",
+        "name_original": "ئۇيغۇر"
+    },
+    {
+        "ID": 70,
+        "language_code": "",
+        "name": "Dari",
+        "name_original": "دری"
+    },
+    {
+        "ID": 71,
+        "language_code": "zho",
+        "name": "Chinese (Traditional)",
+        "name_original": "中文 (繁體)"
+    }
+]

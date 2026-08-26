@@ -1,0 +1,2162 @@
+[
+    {
+        "ID": 1,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 1,
+        "type": 1,
+        "value": 1
+    },
+    {
+        "ID": 2,
+        "ayah_number": 1,
+        "parentId": 1,
+        "surah_number": 1,
+        "type": 2,
+        "value": 1
+    },
+    {
+        "ID": 3,
+        "ayah_number": 26,
+        "parentId": 2,
+        "surah_number": 2,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 4,
+        "ayah_number": 44,
+        "parentId": 2,
+        "surah_number": 2,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 5,
+        "ayah_number": 60,
+        "parentId": 2,
+        "surah_number": 2,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 6,
+        "ayah_number": 75,
+        "parentId": 1,
+        "surah_number": 2,
+        "type": 2,
+        "value": 2
+    },
+    {
+        "ID": 7,
+        "ayah_number": 92,
+        "parentId": 6,
+        "surah_number": 2,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 8,
+        "ayah_number": 106,
+        "parentId": 6,
+        "surah_number": 2,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 9,
+        "ayah_number": 124,
+        "parentId": 6,
+        "surah_number": 2,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 10,
+        "ayah_number": 142,
+        "parentId": null,
+        "surah_number": 2,
+        "type": 1,
+        "value": 2
+    },
+    {
+        "ID": 11,
+        "ayah_number": 142,
+        "parentId": 10,
+        "surah_number": 2,
+        "type": 2,
+        "value": 3
+    },
+    {
+        "ID": 12,
+        "ayah_number": 158,
+        "parentId": 11,
+        "surah_number": 2,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 13,
+        "ayah_number": 177,
+        "parentId": 11,
+        "surah_number": 2,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 14,
+        "ayah_number": 189,
+        "parentId": 11,
+        "surah_number": 2,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 15,
+        "ayah_number": 203,
+        "parentId": 10,
+        "surah_number": 2,
+        "type": 2,
+        "value": 4
+    },
+    {
+        "ID": 16,
+        "ayah_number": 219,
+        "parentId": 15,
+        "surah_number": 2,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 17,
+        "ayah_number": 233,
+        "parentId": 15,
+        "surah_number": 2,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 18,
+        "ayah_number": 243,
+        "parentId": 15,
+        "surah_number": 2,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 19,
+        "ayah_number": 253,
+        "parentId": null,
+        "surah_number": 2,
+        "type": 1,
+        "value": 3
+    },
+    {
+        "ID": 20,
+        "ayah_number": 253,
+        "parentId": 19,
+        "surah_number": 2,
+        "type": 2,
+        "value": 5
+    },
+    {
+        "ID": 21,
+        "ayah_number": 263,
+        "parentId": 20,
+        "surah_number": 2,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 22,
+        "ayah_number": 272,
+        "parentId": 20,
+        "surah_number": 2,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 23,
+        "ayah_number": 283,
+        "parentId": 20,
+        "surah_number": 2,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 24,
+        "ayah_number": 15,
+        "parentId": 19,
+        "surah_number": 3,
+        "type": 2,
+        "value": 6
+    },
+    {
+        "ID": 25,
+        "ayah_number": 33,
+        "parentId": 24,
+        "surah_number": 3,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 26,
+        "ayah_number": 52,
+        "parentId": 24,
+        "surah_number": 3,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 27,
+        "ayah_number": 75,
+        "parentId": 24,
+        "surah_number": 3,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 28,
+        "ayah_number": 93,
+        "parentId": null,
+        "surah_number": 3,
+        "type": 1,
+        "value": 4
+    },
+    {
+        "ID": 29,
+        "ayah_number": 93,
+        "parentId": 28,
+        "surah_number": 3,
+        "type": 2,
+        "value": 7
+    },
+    {
+        "ID": 30,
+        "ayah_number": 113,
+        "parentId": 29,
+        "surah_number": 3,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 31,
+        "ayah_number": 133,
+        "parentId": 29,
+        "surah_number": 3,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 32,
+        "ayah_number": 153,
+        "parentId": 29,
+        "surah_number": 3,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 33,
+        "ayah_number": 171,
+        "parentId": 28,
+        "surah_number": 3,
+        "type": 2,
+        "value": 8
+    },
+    {
+        "ID": 34,
+        "ayah_number": 186,
+        "parentId": 33,
+        "surah_number": 3,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 35,
+        "ayah_number": 1,
+        "parentId": 33,
+        "surah_number": 4,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 36,
+        "ayah_number": 12,
+        "parentId": 33,
+        "surah_number": 4,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 37,
+        "ayah_number": 24,
+        "parentId": null,
+        "surah_number": 4,
+        "type": 1,
+        "value": 5
+    },
+    {
+        "ID": 38,
+        "ayah_number": 24,
+        "parentId": 37,
+        "surah_number": 4,
+        "type": 2,
+        "value": 9
+    },
+    {
+        "ID": 39,
+        "ayah_number": 36,
+        "parentId": 38,
+        "surah_number": 4,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 40,
+        "ayah_number": 58,
+        "parentId": 38,
+        "surah_number": 4,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 41,
+        "ayah_number": 74,
+        "parentId": 38,
+        "surah_number": 4,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 42,
+        "ayah_number": 88,
+        "parentId": 37,
+        "surah_number": 4,
+        "type": 2,
+        "value": 10
+    },
+    {
+        "ID": 43,
+        "ayah_number": 100,
+        "parentId": 42,
+        "surah_number": 4,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 44,
+        "ayah_number": 114,
+        "parentId": 42,
+        "surah_number": 4,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 45,
+        "ayah_number": 135,
+        "parentId": 42,
+        "surah_number": 4,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 46,
+        "ayah_number": 148,
+        "parentId": null,
+        "surah_number": 4,
+        "type": 1,
+        "value": 6
+    },
+    {
+        "ID": 47,
+        "ayah_number": 148,
+        "parentId": 46,
+        "surah_number": 4,
+        "type": 2,
+        "value": 11
+    },
+    {
+        "ID": 48,
+        "ayah_number": 163,
+        "parentId": 47,
+        "surah_number": 4,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 49,
+        "ayah_number": 1,
+        "parentId": 47,
+        "surah_number": 5,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 50,
+        "ayah_number": 12,
+        "parentId": 47,
+        "surah_number": 5,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 51,
+        "ayah_number": 27,
+        "parentId": 46,
+        "surah_number": 5,
+        "type": 2,
+        "value": 12
+    },
+    {
+        "ID": 52,
+        "ayah_number": 41,
+        "parentId": 51,
+        "surah_number": 5,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 53,
+        "ayah_number": 51,
+        "parentId": 51,
+        "surah_number": 5,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 54,
+        "ayah_number": 67,
+        "parentId": 51,
+        "surah_number": 5,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 55,
+        "ayah_number": 82,
+        "parentId": null,
+        "surah_number": 5,
+        "type": 1,
+        "value": 7
+    },
+    {
+        "ID": 56,
+        "ayah_number": 82,
+        "parentId": 55,
+        "surah_number": 5,
+        "type": 2,
+        "value": 13
+    },
+    {
+        "ID": 57,
+        "ayah_number": 97,
+        "parentId": 56,
+        "surah_number": 5,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 58,
+        "ayah_number": 109,
+        "parentId": 56,
+        "surah_number": 5,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 59,
+        "ayah_number": 13,
+        "parentId": 56,
+        "surah_number": 6,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 60,
+        "ayah_number": 36,
+        "parentId": 55,
+        "surah_number": 6,
+        "type": 2,
+        "value": 14
+    },
+    {
+        "ID": 61,
+        "ayah_number": 59,
+        "parentId": 60,
+        "surah_number": 6,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 62,
+        "ayah_number": 74,
+        "parentId": 60,
+        "surah_number": 6,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 63,
+        "ayah_number": 95,
+        "parentId": 60,
+        "surah_number": 6,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 64,
+        "ayah_number": 111,
+        "parentId": null,
+        "surah_number": 6,
+        "type": 1,
+        "value": 8
+    },
+    {
+        "ID": 65,
+        "ayah_number": 111,
+        "parentId": 64,
+        "surah_number": 6,
+        "type": 2,
+        "value": 15
+    },
+    {
+        "ID": 66,
+        "ayah_number": 127,
+        "parentId": 65,
+        "surah_number": 6,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 67,
+        "ayah_number": 141,
+        "parentId": 65,
+        "surah_number": 6,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 68,
+        "ayah_number": 151,
+        "parentId": 65,
+        "surah_number": 6,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 69,
+        "ayah_number": 1,
+        "parentId": 64,
+        "surah_number": 7,
+        "type": 2,
+        "value": 16
+    },
+    {
+        "ID": 70,
+        "ayah_number": 31,
+        "parentId": 69,
+        "surah_number": 7,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 71,
+        "ayah_number": 47,
+        "parentId": 69,
+        "surah_number": 7,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 72,
+        "ayah_number": 65,
+        "parentId": 69,
+        "surah_number": 7,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 73,
+        "ayah_number": 88,
+        "parentId": null,
+        "surah_number": 7,
+        "type": 1,
+        "value": 9
+    },
+    {
+        "ID": 74,
+        "ayah_number": 88,
+        "parentId": 73,
+        "surah_number": 7,
+        "type": 2,
+        "value": 17
+    },
+    {
+        "ID": 75,
+        "ayah_number": 117,
+        "parentId": 74,
+        "surah_number": 7,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 76,
+        "ayah_number": 142,
+        "parentId": 74,
+        "surah_number": 7,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 77,
+        "ayah_number": 156,
+        "parentId": 74,
+        "surah_number": 7,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 78,
+        "ayah_number": 171,
+        "parentId": 73,
+        "surah_number": 7,
+        "type": 2,
+        "value": 18
+    },
+    {
+        "ID": 79,
+        "ayah_number": 189,
+        "parentId": 78,
+        "surah_number": 7,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 80,
+        "ayah_number": 1,
+        "parentId": 78,
+        "surah_number": 8,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 81,
+        "ayah_number": 22,
+        "parentId": 78,
+        "surah_number": 8,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 82,
+        "ayah_number": 41,
+        "parentId": null,
+        "surah_number": 8,
+        "type": 1,
+        "value": 10
+    },
+    {
+        "ID": 83,
+        "ayah_number": 41,
+        "parentId": 82,
+        "surah_number": 8,
+        "type": 2,
+        "value": 19
+    },
+    {
+        "ID": 84,
+        "ayah_number": 61,
+        "parentId": 83,
+        "surah_number": 8,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 85,
+        "ayah_number": 1,
+        "parentId": 83,
+        "surah_number": 9,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 86,
+        "ayah_number": 19,
+        "parentId": 83,
+        "surah_number": 9,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 87,
+        "ayah_number": 34,
+        "parentId": 82,
+        "surah_number": 9,
+        "type": 2,
+        "value": 20
+    },
+    {
+        "ID": 88,
+        "ayah_number": 46,
+        "parentId": 87,
+        "surah_number": 9,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 89,
+        "ayah_number": 60,
+        "parentId": 87,
+        "surah_number": 9,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 90,
+        "ayah_number": 75,
+        "parentId": 87,
+        "surah_number": 9,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 91,
+        "ayah_number": 93,
+        "parentId": null,
+        "surah_number": 9,
+        "type": 1,
+        "value": 11
+    },
+    {
+        "ID": 92,
+        "ayah_number": 93,
+        "parentId": 91,
+        "surah_number": 9,
+        "type": 2,
+        "value": 21
+    },
+    {
+        "ID": 93,
+        "ayah_number": 111,
+        "parentId": 92,
+        "surah_number": 9,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 94,
+        "ayah_number": 122,
+        "parentId": 92,
+        "surah_number": 9,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 95,
+        "ayah_number": 11,
+        "parentId": 92,
+        "surah_number": 10,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 96,
+        "ayah_number": 26,
+        "parentId": 91,
+        "surah_number": 10,
+        "type": 2,
+        "value": 22
+    },
+    {
+        "ID": 97,
+        "ayah_number": 53,
+        "parentId": 96,
+        "surah_number": 10,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 98,
+        "ayah_number": 71,
+        "parentId": 96,
+        "surah_number": 10,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 99,
+        "ayah_number": 90,
+        "parentId": 96,
+        "surah_number": 10,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 100,
+        "ayah_number": 6,
+        "parentId": null,
+        "surah_number": 11,
+        "type": 1,
+        "value": 12
+    },
+    {
+        "ID": 101,
+        "ayah_number": 6,
+        "parentId": 100,
+        "surah_number": 11,
+        "type": 2,
+        "value": 23
+    },
+    {
+        "ID": 102,
+        "ayah_number": 24,
+        "parentId": 101,
+        "surah_number": 11,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 103,
+        "ayah_number": 41,
+        "parentId": 101,
+        "surah_number": 11,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 104,
+        "ayah_number": 61,
+        "parentId": 101,
+        "surah_number": 11,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 105,
+        "ayah_number": 84,
+        "parentId": 100,
+        "surah_number": 11,
+        "type": 2,
+        "value": 24
+    },
+    {
+        "ID": 106,
+        "ayah_number": 108,
+        "parentId": 105,
+        "surah_number": 11,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 107,
+        "ayah_number": 7,
+        "parentId": 105,
+        "surah_number": 12,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 108,
+        "ayah_number": 30,
+        "parentId": 105,
+        "surah_number": 12,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 109,
+        "ayah_number": 53,
+        "parentId": null,
+        "surah_number": 12,
+        "type": 1,
+        "value": 13
+    },
+    {
+        "ID": 110,
+        "ayah_number": 53,
+        "parentId": 109,
+        "surah_number": 12,
+        "type": 2,
+        "value": 25
+    },
+    {
+        "ID": 111,
+        "ayah_number": 77,
+        "parentId": 110,
+        "surah_number": 12,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 112,
+        "ayah_number": 101,
+        "parentId": 110,
+        "surah_number": 12,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 113,
+        "ayah_number": 5,
+        "parentId": 110,
+        "surah_number": 13,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 114,
+        "ayah_number": 19,
+        "parentId": 109,
+        "surah_number": 13,
+        "type": 2,
+        "value": 26
+    },
+    {
+        "ID": 115,
+        "ayah_number": 35,
+        "parentId": 114,
+        "surah_number": 13,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 116,
+        "ayah_number": 10,
+        "parentId": 114,
+        "surah_number": 14,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 117,
+        "ayah_number": 28,
+        "parentId": 114,
+        "surah_number": 14,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 118,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 15,
+        "type": 1,
+        "value": 14
+    },
+    {
+        "ID": 119,
+        "ayah_number": 1,
+        "parentId": 118,
+        "surah_number": 15,
+        "type": 2,
+        "value": 27
+    },
+    {
+        "ID": 120,
+        "ayah_number": 49,
+        "parentId": 119,
+        "surah_number": 15,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 121,
+        "ayah_number": 1,
+        "parentId": 119,
+        "surah_number": 16,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 122,
+        "ayah_number": 30,
+        "parentId": 119,
+        "surah_number": 16,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 123,
+        "ayah_number": 51,
+        "parentId": 118,
+        "surah_number": 16,
+        "type": 2,
+        "value": 28
+    },
+    {
+        "ID": 124,
+        "ayah_number": 75,
+        "parentId": 123,
+        "surah_number": 16,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 125,
+        "ayah_number": 90,
+        "parentId": 123,
+        "surah_number": 16,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 126,
+        "ayah_number": 111,
+        "parentId": 123,
+        "surah_number": 16,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 127,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 17,
+        "type": 1,
+        "value": 15
+    },
+    {
+        "ID": 128,
+        "ayah_number": 1,
+        "parentId": 127,
+        "surah_number": 17,
+        "type": 2,
+        "value": 29
+    },
+    {
+        "ID": 129,
+        "ayah_number": 23,
+        "parentId": 128,
+        "surah_number": 17,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 130,
+        "ayah_number": 50,
+        "parentId": 128,
+        "surah_number": 17,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 131,
+        "ayah_number": 70,
+        "parentId": 128,
+        "surah_number": 17,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 132,
+        "ayah_number": 99,
+        "parentId": 127,
+        "surah_number": 17,
+        "type": 2,
+        "value": 30
+    },
+    {
+        "ID": 133,
+        "ayah_number": 17,
+        "parentId": 132,
+        "surah_number": 18,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 134,
+        "ayah_number": 32,
+        "parentId": 132,
+        "surah_number": 18,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 135,
+        "ayah_number": 51,
+        "parentId": 132,
+        "surah_number": 18,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 136,
+        "ayah_number": 75,
+        "parentId": null,
+        "surah_number": 18,
+        "type": 1,
+        "value": 16
+    },
+    {
+        "ID": 137,
+        "ayah_number": 75,
+        "parentId": 136,
+        "surah_number": 18,
+        "type": 2,
+        "value": 31
+    },
+    {
+        "ID": 138,
+        "ayah_number": 99,
+        "parentId": 137,
+        "surah_number": 18,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 139,
+        "ayah_number": 22,
+        "parentId": 137,
+        "surah_number": 19,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 140,
+        "ayah_number": 59,
+        "parentId": 137,
+        "surah_number": 19,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 141,
+        "ayah_number": 1,
+        "parentId": 136,
+        "surah_number": 20,
+        "type": 2,
+        "value": 32
+    },
+    {
+        "ID": 142,
+        "ayah_number": 55,
+        "parentId": 141,
+        "surah_number": 20,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 143,
+        "ayah_number": 83,
+        "parentId": 141,
+        "surah_number": 20,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 144,
+        "ayah_number": 111,
+        "parentId": 141,
+        "surah_number": 20,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 145,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 21,
+        "type": 1,
+        "value": 17
+    },
+    {
+        "ID": 146,
+        "ayah_number": 1,
+        "parentId": 145,
+        "surah_number": 21,
+        "type": 2,
+        "value": 33
+    },
+    {
+        "ID": 147,
+        "ayah_number": 29,
+        "parentId": 146,
+        "surah_number": 21,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 148,
+        "ayah_number": 51,
+        "parentId": 146,
+        "surah_number": 21,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 149,
+        "ayah_number": 83,
+        "parentId": 146,
+        "surah_number": 21,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 150,
+        "ayah_number": 1,
+        "parentId": 145,
+        "surah_number": 22,
+        "type": 2,
+        "value": 34
+    },
+    {
+        "ID": 151,
+        "ayah_number": 19,
+        "parentId": 150,
+        "surah_number": 22,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 152,
+        "ayah_number": 38,
+        "parentId": 150,
+        "surah_number": 22,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 153,
+        "ayah_number": 60,
+        "parentId": 150,
+        "surah_number": 22,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 154,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 23,
+        "type": 1,
+        "value": 18
+    },
+    {
+        "ID": 155,
+        "ayah_number": 1,
+        "parentId": 154,
+        "surah_number": 23,
+        "type": 2,
+        "value": 35
+    },
+    {
+        "ID": 156,
+        "ayah_number": 36,
+        "parentId": 155,
+        "surah_number": 23,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 157,
+        "ayah_number": 75,
+        "parentId": 155,
+        "surah_number": 23,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 158,
+        "ayah_number": 1,
+        "parentId": 155,
+        "surah_number": 24,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 159,
+        "ayah_number": 21,
+        "parentId": 154,
+        "surah_number": 24,
+        "type": 2,
+        "value": 36
+    },
+    {
+        "ID": 160,
+        "ayah_number": 35,
+        "parentId": 159,
+        "surah_number": 24,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 161,
+        "ayah_number": 53,
+        "parentId": 159,
+        "surah_number": 24,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 162,
+        "ayah_number": 1,
+        "parentId": 159,
+        "surah_number": 25,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 163,
+        "ayah_number": 21,
+        "parentId": null,
+        "surah_number": 25,
+        "type": 1,
+        "value": 19
+    },
+    {
+        "ID": 164,
+        "ayah_number": 21,
+        "parentId": 163,
+        "surah_number": 25,
+        "type": 2,
+        "value": 37
+    },
+    {
+        "ID": 165,
+        "ayah_number": 53,
+        "parentId": 164,
+        "surah_number": 25,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 166,
+        "ayah_number": 1,
+        "parentId": 164,
+        "surah_number": 26,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 167,
+        "ayah_number": 52,
+        "parentId": 164,
+        "surah_number": 26,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 168,
+        "ayah_number": 111,
+        "parentId": 163,
+        "surah_number": 26,
+        "type": 2,
+        "value": 38
+    },
+    {
+        "ID": 169,
+        "ayah_number": 181,
+        "parentId": 168,
+        "surah_number": 26,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 170,
+        "ayah_number": 1,
+        "parentId": 168,
+        "surah_number": 27,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 171,
+        "ayah_number": 27,
+        "parentId": 168,
+        "surah_number": 27,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 172,
+        "ayah_number": 56,
+        "parentId": null,
+        "surah_number": 27,
+        "type": 1,
+        "value": 20
+    },
+    {
+        "ID": 173,
+        "ayah_number": 56,
+        "parentId": 172,
+        "surah_number": 27,
+        "type": 2,
+        "value": 39
+    },
+    {
+        "ID": 174,
+        "ayah_number": 82,
+        "parentId": 173,
+        "surah_number": 27,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 175,
+        "ayah_number": 12,
+        "parentId": 173,
+        "surah_number": 28,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 176,
+        "ayah_number": 29,
+        "parentId": 173,
+        "surah_number": 28,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 177,
+        "ayah_number": 51,
+        "parentId": 172,
+        "surah_number": 28,
+        "type": 2,
+        "value": 40
+    },
+    {
+        "ID": 178,
+        "ayah_number": 76,
+        "parentId": 177,
+        "surah_number": 28,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 179,
+        "ayah_number": 1,
+        "parentId": 177,
+        "surah_number": 29,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 180,
+        "ayah_number": 26,
+        "parentId": 177,
+        "surah_number": 29,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 181,
+        "ayah_number": 46,
+        "parentId": null,
+        "surah_number": 29,
+        "type": 1,
+        "value": 21
+    },
+    {
+        "ID": 182,
+        "ayah_number": 46,
+        "parentId": 181,
+        "surah_number": 29,
+        "type": 2,
+        "value": 41
+    },
+    {
+        "ID": 183,
+        "ayah_number": 1,
+        "parentId": 182,
+        "surah_number": 30,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 184,
+        "ayah_number": 31,
+        "parentId": 182,
+        "surah_number": 30,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 185,
+        "ayah_number": 54,
+        "parentId": 182,
+        "surah_number": 30,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 186,
+        "ayah_number": 22,
+        "parentId": 181,
+        "surah_number": 31,
+        "type": 2,
+        "value": 42
+    },
+    {
+        "ID": 187,
+        "ayah_number": 11,
+        "parentId": 186,
+        "surah_number": 32,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 188,
+        "ayah_number": 1,
+        "parentId": 186,
+        "surah_number": 33,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 189,
+        "ayah_number": 18,
+        "parentId": 186,
+        "surah_number": 33,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 190,
+        "ayah_number": 31,
+        "parentId": null,
+        "surah_number": 33,
+        "type": 1,
+        "value": 22
+    },
+    {
+        "ID": 191,
+        "ayah_number": 31,
+        "parentId": 190,
+        "surah_number": 33,
+        "type": 2,
+        "value": 43
+    },
+    {
+        "ID": 192,
+        "ayah_number": 51,
+        "parentId": 191,
+        "surah_number": 33,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 193,
+        "ayah_number": 60,
+        "parentId": 191,
+        "surah_number": 33,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 194,
+        "ayah_number": 10,
+        "parentId": 191,
+        "surah_number": 34,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 195,
+        "ayah_number": 24,
+        "parentId": 190,
+        "surah_number": 34,
+        "type": 2,
+        "value": 44
+    },
+    {
+        "ID": 196,
+        "ayah_number": 46,
+        "parentId": 195,
+        "surah_number": 34,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 197,
+        "ayah_number": 15,
+        "parentId": 195,
+        "surah_number": 35,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 198,
+        "ayah_number": 41,
+        "parentId": 195,
+        "surah_number": 35,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 199,
+        "ayah_number": 28,
+        "parentId": null,
+        "surah_number": 36,
+        "type": 1,
+        "value": 23
+    },
+    {
+        "ID": 200,
+        "ayah_number": 28,
+        "parentId": 199,
+        "surah_number": 36,
+        "type": 2,
+        "value": 45
+    },
+    {
+        "ID": 201,
+        "ayah_number": 60,
+        "parentId": 200,
+        "surah_number": 36,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 202,
+        "ayah_number": 22,
+        "parentId": 200,
+        "surah_number": 37,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 203,
+        "ayah_number": 83,
+        "parentId": 200,
+        "surah_number": 37,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 204,
+        "ayah_number": 145,
+        "parentId": 199,
+        "surah_number": 37,
+        "type": 2,
+        "value": 46
+    },
+    {
+        "ID": 205,
+        "ayah_number": 21,
+        "parentId": 204,
+        "surah_number": 38,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 206,
+        "ayah_number": 52,
+        "parentId": 204,
+        "surah_number": 38,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 207,
+        "ayah_number": 8,
+        "parentId": 204,
+        "surah_number": 39,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 208,
+        "ayah_number": 32,
+        "parentId": null,
+        "surah_number": 39,
+        "type": 1,
+        "value": 24
+    },
+    {
+        "ID": 209,
+        "ayah_number": 32,
+        "parentId": 208,
+        "surah_number": 39,
+        "type": 2,
+        "value": 47
+    },
+    {
+        "ID": 210,
+        "ayah_number": 53,
+        "parentId": 209,
+        "surah_number": 39,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 211,
+        "ayah_number": 1,
+        "parentId": 209,
+        "surah_number": 40,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 212,
+        "ayah_number": 21,
+        "parentId": 209,
+        "surah_number": 40,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 213,
+        "ayah_number": 41,
+        "parentId": 208,
+        "surah_number": 40,
+        "type": 2,
+        "value": 48
+    },
+    {
+        "ID": 214,
+        "ayah_number": 66,
+        "parentId": 213,
+        "surah_number": 40,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 215,
+        "ayah_number": 9,
+        "parentId": 213,
+        "surah_number": 41,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 216,
+        "ayah_number": 25,
+        "parentId": 213,
+        "surah_number": 41,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 217,
+        "ayah_number": 47,
+        "parentId": null,
+        "surah_number": 41,
+        "type": 1,
+        "value": 25
+    },
+    {
+        "ID": 218,
+        "ayah_number": 47,
+        "parentId": 217,
+        "surah_number": 41,
+        "type": 2,
+        "value": 49
+    },
+    {
+        "ID": 219,
+        "ayah_number": 13,
+        "parentId": 218,
+        "surah_number": 42,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 220,
+        "ayah_number": 27,
+        "parentId": 218,
+        "surah_number": 42,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 221,
+        "ayah_number": 51,
+        "parentId": 218,
+        "surah_number": 42,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 222,
+        "ayah_number": 24,
+        "parentId": 217,
+        "surah_number": 43,
+        "type": 2,
+        "value": 50
+    },
+    {
+        "ID": 223,
+        "ayah_number": 57,
+        "parentId": 222,
+        "surah_number": 43,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 224,
+        "ayah_number": 17,
+        "parentId": 222,
+        "surah_number": 44,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 225,
+        "ayah_number": 12,
+        "parentId": 222,
+        "surah_number": 45,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 226,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 46,
+        "type": 1,
+        "value": 26
+    },
+    {
+        "ID": 227,
+        "ayah_number": 1,
+        "parentId": 226,
+        "surah_number": 46,
+        "type": 2,
+        "value": 51
+    },
+    {
+        "ID": 228,
+        "ayah_number": 21,
+        "parentId": 227,
+        "surah_number": 46,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 229,
+        "ayah_number": 10,
+        "parentId": 227,
+        "surah_number": 47,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 230,
+        "ayah_number": 33,
+        "parentId": 227,
+        "surah_number": 47,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 231,
+        "ayah_number": 18,
+        "parentId": 226,
+        "surah_number": 48,
+        "type": 2,
+        "value": 52
+    },
+    {
+        "ID": 232,
+        "ayah_number": 1,
+        "parentId": 231,
+        "surah_number": 49,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 233,
+        "ayah_number": 14,
+        "parentId": 231,
+        "surah_number": 49,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 234,
+        "ayah_number": 27,
+        "parentId": 231,
+        "surah_number": 50,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 235,
+        "ayah_number": 31,
+        "parentId": null,
+        "surah_number": 51,
+        "type": 1,
+        "value": 27
+    },
+    {
+        "ID": 236,
+        "ayah_number": 31,
+        "parentId": 235,
+        "surah_number": 51,
+        "type": 2,
+        "value": 53
+    },
+    {
+        "ID": 237,
+        "ayah_number": 24,
+        "parentId": 236,
+        "surah_number": 52,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 238,
+        "ayah_number": 26,
+        "parentId": 236,
+        "surah_number": 53,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 239,
+        "ayah_number": 9,
+        "parentId": 236,
+        "surah_number": 54,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 240,
+        "ayah_number": 1,
+        "parentId": 235,
+        "surah_number": 55,
+        "type": 2,
+        "value": 54
+    },
+    {
+        "ID": 241,
+        "ayah_number": 1,
+        "parentId": 240,
+        "surah_number": 56,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 242,
+        "ayah_number": 75,
+        "parentId": 240,
+        "surah_number": 56,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 243,
+        "ayah_number": 16,
+        "parentId": 240,
+        "surah_number": 57,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 244,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 58,
+        "type": 1,
+        "value": 28
+    },
+    {
+        "ID": 245,
+        "ayah_number": 1,
+        "parentId": 244,
+        "surah_number": 58,
+        "type": 2,
+        "value": 55
+    },
+    {
+        "ID": 246,
+        "ayah_number": 14,
+        "parentId": 245,
+        "surah_number": 58,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 247,
+        "ayah_number": 11,
+        "parentId": 245,
+        "surah_number": 59,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 248,
+        "ayah_number": 7,
+        "parentId": 245,
+        "surah_number": 60,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 249,
+        "ayah_number": 1,
+        "parentId": 244,
+        "surah_number": 62,
+        "type": 2,
+        "value": 56
+    },
+    {
+        "ID": 250,
+        "ayah_number": 4,
+        "parentId": 249,
+        "surah_number": 63,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 251,
+        "ayah_number": 1,
+        "parentId": 249,
+        "surah_number": 65,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 252,
+        "ayah_number": 1,
+        "parentId": 249,
+        "surah_number": 66,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 253,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 67,
+        "type": 1,
+        "value": 29
+    },
+    {
+        "ID": 254,
+        "ayah_number": 1,
+        "parentId": 253,
+        "surah_number": 67,
+        "type": 2,
+        "value": 57
+    },
+    {
+        "ID": 255,
+        "ayah_number": 1,
+        "parentId": 254,
+        "surah_number": 68,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 256,
+        "ayah_number": 1,
+        "parentId": 254,
+        "surah_number": 69,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 257,
+        "ayah_number": 19,
+        "parentId": 254,
+        "surah_number": 70,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 258,
+        "ayah_number": 1,
+        "parentId": 253,
+        "surah_number": 72,
+        "type": 2,
+        "value": 58
+    },
+    {
+        "ID": 259,
+        "ayah_number": 20,
+        "parentId": 258,
+        "surah_number": 73,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 260,
+        "ayah_number": 1,
+        "parentId": 258,
+        "surah_number": 75,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 261,
+        "ayah_number": 19,
+        "parentId": 258,
+        "surah_number": 76,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 262,
+        "ayah_number": 1,
+        "parentId": null,
+        "surah_number": 78,
+        "type": 1,
+        "value": 30
+    },
+    {
+        "ID": 263,
+        "ayah_number": 1,
+        "parentId": 262,
+        "surah_number": 78,
+        "type": 2,
+        "value": 59
+    },
+    {
+        "ID": 264,
+        "ayah_number": 1,
+        "parentId": 263,
+        "surah_number": 80,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 265,
+        "ayah_number": 1,
+        "parentId": 263,
+        "surah_number": 82,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 266,
+        "ayah_number": 1,
+        "parentId": 263,
+        "surah_number": 84,
+        "type": 5,
+        "value": null
+    },
+    {
+        "ID": 267,
+        "ayah_number": 1,
+        "parentId": 262,
+        "surah_number": 87,
+        "type": 2,
+        "value": 60
+    },
+    {
+        "ID": 268,
+        "ayah_number": 1,
+        "parentId": 267,
+        "surah_number": 90,
+        "type": 3,
+        "value": null
+    },
+    {
+        "ID": 269,
+        "ayah_number": 1,
+        "parentId": 267,
+        "surah_number": 94,
+        "type": 4,
+        "value": null
+    },
+    {
+        "ID": 270,
+        "ayah_number": 9,
+        "parentId": 267,
+        "surah_number": 100,
+        "type": 5,
+        "value": null
+    }
+]
