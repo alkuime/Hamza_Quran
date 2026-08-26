@@ -3,201 +3,1829 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quran Engine v4 - QUL Powered</title>
+    <title>مصحف التجويد التفاعلي - المنصة الشاملة والملازم</title>
     
+    <!-- المكتبات والخطوط -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&family=Amiri:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap');
-
-        /* إعداد خط التجويد الملون المحمل من QUL */
-        @font-face {
-            font-family: 'QUL_Tajweed_Font';
-            /* استبدل المسار بملف الخط الخاص بـ QUL بعد تحميله */
-            src: url('fonts/qul-tajweed-colored.woff2') format('woff2');
-            font-display: swap;
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        @keyframes pulse-red { 
+            0%, 100% { background-color: rgba(220, 38, 38, 1); } 
+            50% { background-color: rgba(153, 27, 27, 1); } 
+        }
+        .recording-active { 
+            animation: pulse-red 1.5s infinite; 
+            color: white !important; 
+            border-color: transparent !important; 
+        }
+        
+        .checker-bg {
+            background-color: #e5e5f7;
+            background-image: repeating-linear-gradient(45deg, #c5c5c5 25%, transparent 25%, transparent 75%, #c5c5c5 75%, #c5c5c5), repeating-linear-gradient(45deg, #c5c5c5 25%, #e5e5f7 25%, #e5e5f7 75%, #c5c5c5 75%, #c5c5c5);
+            background-position: 0 0, 10px 10px;
+            background-size: 20px 20px;
         }
 
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: #f8f6f2; /* لون مريح للعين */
+        /* Active word highlighting class */
+        .word-box.active-play { 
+            background-color: #fef3c7 !important; 
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(217, 119, 6, 0.4);
+            transform: scale(1.03);
+            transition: all 0.2s ease-in-out;
         }
 
-        .quran-text {
-            font-family: 'QUL_Tajweed_Font', 'Noto Naskh Arabic', serif;
-            font-variant-ligatures: normal;
+        #hiddenExportEngine {
+            position: absolute;
+            top: 0;
+            left: -99999px; 
+            z-index: -100;
         }
 
-        .word-card {
-            transition: all 0.2s ease;
+        .export-page {
+            position: relative;
+            box-sizing: border-box;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
-        .word-card:hover {
-            background-color: #fcfbf9;
-            border-color: #d4af37;
-        }
+        .format-a4 { padding: 40px; } 
+        .format-tablet { padding: 50px; }
+        .format-mobile { padding: 30px; }
     </style>
 </head>
-<body class="text-gray-800 antialiased">
+<body class="bg-stone-100 p-4 md:p-8 font-sans text-stone-800 transition-all duration-300">
 
-<div class="max-w-5xl mx-auto p-4 sm:p-6">
+    <!-- حاويات الخطوط والاستخراج -->
+    <div id="dynamicFontsContainer"></div>
+    <div id="hiddenExportEngine"></div>
 
-    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 mb-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-                <h1 class="text-2xl font-bold text-amber-800 flex items-center gap-2">
-                    <span>📖</span> محرك ميزان النطق اللغوي (مصادر QUL)
-                </h1>
-                <p class="text-sm text-gray-500 mt-1">يعتمد على التفكيك الصرفي المباشر وقواعد بيانات التجويد الملونة.</p>
-            </div>
+    <!-- القائمة العائمة (Context Menu) -->
+    <div id="wordContextMenu" class="fixed hidden bg-white border border-stone-200 shadow-xl rounded-xl p-1.5 z-50 text-sm w-56 transition-all">
+        <button aria-label="إضافة لكراسة التدريب" onclick="saveWordToFlashcards()" class="w-full text-right px-3 py-2 hover:bg-amber-50 rounded-lg text-amber-800 font-bold flex items-center gap-2 transition-colors border-b border-stone-100">
+            <span class="text-lg">⭐️</span> إضافة لكراسة التدريب
+        </button>
+        <button aria-label="إضافة لكراسة النطق والصوتيات" onclick="saveWordToPhoneticsBook()" class="w-full text-right px-3 py-2 hover:bg-teal-50 rounded-lg text-teal-800 font-bold flex items-center gap-2 transition-colors border-b border-stone-100">
+            <span class="text-lg">🗣️</span> إضافة لكراسة النطق
+        </button>
+        <button aria-label="إضافة كعلامة مرجعية" onclick="quickSaveBookmarkFromMenu()" class="w-full text-right px-3 py-2 hover:bg-indigo-50 rounded-lg text-indigo-800 font-bold flex items-center gap-2 transition-colors mt-1">
+            <span class="text-lg">🔖</span> حفظ كعلامة مرجعية
+        </button>
+    </div>
+
+    <!-- كراسة التدريب -->
+    <div id="flashcardsModal" class="fixed inset-0 bg-stone-900/80 backdrop-blur-sm z-[100] hidden flex items-center justify-center p-4 md:p-10">
+        <div class="bg-stone-50 rounded-2xl shadow-2xl w-full max-w-4xl h-[90vh] flex flex-col overflow-hidden border border-stone-700">
+            <div class="p-4 border-b border-stone-200 flex justify-between items-center bg-white shadow-sm z-10 flex-wrap gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">📚</span>
+                    <div>
+                        <h2 class="font-bold text-xl text-stone-800">كراسة التدريب والمراجعة</h2>
+                        <p class="text-xs text-stone-500 font-medium">مساحتك الشخصية لمراجعة وإتقان الكلمات الصعبة</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button onclick="exportFlashcards()" class="bg-indigo-100 hover:bg-indigo-200 text-indigo-800 text-xs font-bold py-2 px-3 rounded-lg transition-colors flex items-center gap-1">
+                        ⬇️ حفظ لملف
+                    </button>
+                    
+                    <label class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-xs font-bold py-2 px-3 rounded-lg transition-colors flex items-center gap-1 cursor-pointer mb-0">
+                        ⬆️ استعادة من ملف
+                        <input type="file" id="importFlashcardsInput" accept=".json" onchange="importFlashcards(event)" class="hidden">
+                    </label>
             
-            <div class="flex gap-2 w-full md:w-auto">
-                <input id="surahSelect" type="number" min="1" max="114" value="1" 
-                       class="border border-stone-300 p-3 rounded-xl w-24 text-center focus:outline-none focus:border-amber-600" 
-                       placeholder="السورة">
-                <button onclick="processQULData()" class="bg-amber-700 hover:bg-amber-800 text-white px-6 py-3 rounded-xl font-medium transition w-full md:w-auto">
-                    تحليل النص والبيانات
-                </button>
+                    <button aria-label="إغلاق" onclick="closeFlashcardsModal()" class="bg-stone-100 hover:bg-red-100 text-stone-500 hover:text-red-600 w-10 h-10 rounded-full font-bold text-xl transition-colors flex items-center justify-center outline-none mr-4">✕</button>
+                </div>
+            </div>
+            <div id="flashcardsContainer" class="p-6 overflow-y-auto flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 content-start"></div>
+        </div>
+    </div>
+
+    <!-- كراسة النطق والصوتيات الجديدة -->
+    <div id="phoneticsModal" class="fixed inset-0 bg-stone-900/80 backdrop-blur-sm z-[105] hidden flex items-center justify-center p-4 md:p-10">
+        <div class="bg-stone-50 rounded-2xl shadow-2xl w-full max-w-4xl h-[90vh] flex flex-col overflow-hidden border border-teal-700">
+            <div class="p-4 border-b border-stone-200 flex justify-between items-center bg-white shadow-sm z-10 flex-wrap gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🗣️</span>
+                    <div>
+                        <h2 class="font-bold text-xl text-teal-900">كراسة النطق والصوتيات</h2>
+                        <p class="text-xs text-stone-500 font-medium">سجل الكلمات لممارسة وتحسين الصوتيات ومخارج الحروف</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button onclick="exportPhoneticsBook()" class="bg-teal-100 hover:bg-teal-200 text-teal-800 text-xs font-bold py-2 px-3 rounded-lg transition-colors flex items-center gap-1">
+                        ⬇️ حفظ لملف
+                    </button>
+                    
+                    <label class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-xs font-bold py-2 px-3 rounded-lg transition-colors flex items-center gap-1 cursor-pointer mb-0">
+                        ⬆️ استعادة من ملف
+                        <input type="file" accept=".json" onchange="importPhoneticsBook(event)" class="hidden">
+                    </label>
+            
+                    <button aria-label="إغلاق" onclick="closePhoneticsModal()" class="bg-stone-100 hover:bg-red-100 text-stone-500 hover:text-red-600 w-10 h-10 rounded-full font-bold text-xl transition-colors flex items-center justify-center outline-none mr-4">✕</button>
+                </div>
+            </div>
+            <div id="phoneticsContainer" class="p-6 overflow-y-auto flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 content-start"></div>
+        </div>
+    </div>
+
+    <!-- نافذة العلامات المرجعية (Bookmarks) -->
+    <div id="bookmarksModal" class="fixed inset-0 bg-stone-900/80 backdrop-blur-sm z-[110] hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg flex flex-col overflow-hidden border border-stone-700">
+            <div class="p-4 bg-amber-700 text-white flex justify-between items-center flex-wrap gap-2">
+                <h2 class="font-bold text-xl flex items-center gap-2">🔖 العلامات المرجعية</h2>
+                <div class="flex items-center gap-2">
+                    <button onclick="exportBookmarks()" class="bg-amber-800 hover:bg-amber-900 text-white text-xs font-bold py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1">⬇️ حفظ</button>
+                    <label class="bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold py-1.5 px-3 rounded-lg transition-colors flex items-center gap-1 cursor-pointer mb-0">
+                        ⬆️ استعادة
+                        <input type="file" accept=".json" onchange="importBookmarks(event)" class="hidden">
+                    </label>
+                    <button aria-label="إغلاق" onclick="closeBookmarksModal()" class="text-amber-200 hover:text-white font-bold text-xl px-2 outline-none">✕</button>
+                </div>
+            </div>
+            <div class="p-5 flex flex-col gap-4">
+                <div class="bg-stone-50 p-4 rounded-xl border border-stone-200">
+                    <label class="block text-sm font-bold text-stone-700 mb-2">إضافة علامة للتقدم الحالي:</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="bookmarkTitleInput" placeholder="عنوان العلامة (مثال: ورد اليوم)" class="flex-1 border border-stone-300 rounded-lg p-2 text-sm outline-none focus:border-amber-600">
+                        <button onclick="saveBookmark()" class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors">حفظ</button>
+                    </div>
+                </div>
+                <div class="font-bold text-stone-600 text-sm border-b pb-1">العلامات المحفوظة:</div>
+                <div id="bookmarksList" class="flex-1 overflow-y-auto max-h-64 flex flex-col gap-2 no-scrollbar">
+                    <!-- سيتم إضافة العلامات هنا -->
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="quranContainer" class="space-y-6"></div>
-
-</div>
-
-<script>
-/* ==========================================================================
-   محاكاة قاعدة بيانات QUL المدمجة (تحميل محلي من ملفاتك بعد تحميلها من الموقع)
-   ========================================================================== */
-const mockQULDatabase = {
-    "surah_1": [
-        {
-            "ayah_number": 1,
-            "words": [
-                { "word_id": 1, "text_tajweed": "بِسْمِ", "translation": "In the name", "root": "ب س م", "stem": "بِسْمِ", "morphology": "جار ومجرور" },
-                { "word_id": 2, "text_tajweed": "اللَّهِ", "translation": "of Allah", "root": "أ ل ه", "stem": "الله", "morphology": "لفظ الجلالة مضاف إليه" },
-                { "word_id": 3, "text_tajweed": "الرَّحْمَٰنِ", "translation": "the Most Gracious", "root": "ر ح م", "stem": "رحمان", "morphology": "نعت مجرور (إدغام شمسى)" },
-                { "word_id": 4, "text_tajweed": "الرَّحِيمِ", "translation": "the Most Merciful", "root": "ر ح م", "stem": "رحيم", "morphology": "نعت ثان (مد عارض للسكون)" }
-            ]
-        },
-        {
-            "ayah_number": 2,
-            "words": [
-                { "word_id": 5, "text_tajweed": "الْحَمْدُ", "translation": "All praise", "root": "ح م د", "stem": "حمد", "morphology": "مبتدأ مرفوع (إظهار قمري)" },
-                { "word_id": 6, "text_tajweed": "لِلَّهِ", "translation": "be to Allah", "root": "أ l ه", "stem": "لله", "morphology": "جار ومجرور" },
-                { "word_id": 7, "text_tajweed": "رَبِّ", "translation": "Lord", "root": "ر ب ب", "stem": "رب", "morphology": "مضاف إليه (حرف مشدد)" },
-                { "word_id": 8, "text_tajweed": "الْعَالَمِينَ", "translation": "of the universes", "root": "ع ل م", "stem": "عالم", "morphology": "مضاف إليه (مد عارض)" }
-            ]
-        }
-    ]
-};
-
-/* ==========================================================================
-   محرك تفكيك المقاطع الصرفية واللفظية (NLP Pronunciation Engine)
-   ========================================================================== */
-function generateQULPronunciation(word) {
-    // بالاعتماد على مصادر QUL، نستخدم الجذع والتحليل الصرفي لبناء الميزان بدقة
-    let cleanText = word.text_tajweed;
-    
-    // قواعد فصل الحروف لعمل ميزان نطق مرئي (Syllabification)
-    let syllables = [];
-    let current = "";
-    
-    for (let i = 0; i < cleanText.length; i++) {
-        let char = cleanText[i];
-        current += char;
-        
-        // إذا كان الحرف يحتوي على سكون أو حرف مد أو تنوين، ينتهي المقطع الصوتي هنا
-        if (/[َْٰاُِ can]/.test(char) && i < cleanText.length - 1) {
-            // التحقق من الحرف القادم (إذا لم تكن شدة)
-            if (cleanText[i+1] !== "ّ") {
-                syllables.push(current);
-                current = "";
-            }
-        }
-        // معالجة الحرف المشدد (يفك إلى ساكن ومتحرك تلقائياً)
-        else if (char === "ّ") {
-            syllables.push(current);
-            current = "";
-        }
-    }
-    if (current) syllables.push(current);
-    
-    return syllables.filter(s => s.trim() !== "").join(" ⁃ ");
-}
-
-/* ==========================================================================
-   المعالج الرئيسي لبناء واجهة الـ HTML
-   ========================================================================== */
-function processQULData() {
-    const surahNum = document.getElementById("surahSelect").value;
-    const container = document.getElementById("quranContainer");
-    
-    container.innerHTML = `
-        <div class="text-center p-8 text-gray-500">
-            <p>⏳ جاري قراءة قواعد بيانات QUL المحلية وتحليل الهياكل اللغوية...</p>
-        </div>
-    `;
-
-    // استدعاء البيانات من الكائن المحلي (الذي يمثل ملف الـ JSON المحمل)
-    const surahData = mockQULDatabase[`surah_${surahNum}`];
-
-    if (!surahData) {
-        container.innerHTML = `
-            <div class="bg-red-50 p-4 rounded-xl text-red-700 text-center border border-red-200">
-                ⚠️ عذراً، لم يتم العثور على ملفات البيانات لهذه السورة في المجلد المحلي حالياً.
+    <!-- استوديو الاستخراج الاحترافي المطور -->
+    <div id="exportModal" class="fixed inset-0 bg-stone-900/80 z-[120] hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-7xl max-h-[95vh] flex flex-col overflow-hidden">
+            <div class="bg-indigo-800 text-white p-4 flex justify-between items-center shrink-0">
+                <h2 class="text-lg font-bold flex items-center gap-2">📤 محرر الملازم (تحديث مباشر)</h2>
+                <button aria-label="إغلاق" onclick="closeExportModal()" class="text-indigo-200 hover:text-white font-bold text-xl px-2 outline-none">✕</button>
             </div>
-        `;
-        return;
-    }
+            <div class="flex flex-col lg:flex-row flex-1 overflow-hidden">
+                <!-- لوحة تحكم الاستخراج -->
+                <div class="w-full lg:w-[400px] bg-stone-50 p-5 border-l border-stone-200 overflow-y-auto flex flex-col gap-5 shrink-0 shadow-inner">
+                    <!-- 1. نطاق الصفحات والمعلومات -->
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                        <label class="block font-bold text-sm text-indigo-800 mb-3 border-b pb-2">1. الإعدادات الأساسية</label>
+                        
+                        <label class="text-xs font-bold text-stone-600 block mb-1">اسم الطالب / عنوان الكراسة:</label>
+                        <input type="text" id="expTitle" placeholder="مثال: كراسة مراجعة التجويد" oninput="triggerLivePreview()" class="w-full border border-stone-300 rounded-lg p-2 text-sm bg-stone-50 mb-3 outline-none focus:border-indigo-500">
 
-    // بناء واجهة الآيات
-    let htmlOutput = surahData.map(ayah => {
-        
-        // توليد مربعات "كلمة بكلمة" داخل الآية
-        let wordsHTML = ayah.words.map(word => {
-            const pronunciationStyle = generateQULPronunciation(word);
-            
-            return `
-                <div class="word-card flex flex-col items-center bg-stone-50 border border-stone-200 p-3 rounded-xl min-w-[100px] flex-1 sm:flex-initial">
-                    <span class="quran-text text-3xl text-stone-900 mb-1 select-all" title="حكم التجويد: ${word.morphology}">
-                        ${word.text_tajweed}
-                    </span>
-                    
-                    <span class="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100 mb-2 dir-ltr">
-                        ${pronunciationStyle}
-                    </span>
+                        <label class="text-xs font-bold text-stone-600 block mb-1">نطاق الاستخراج:</label>
+                        <select id="expPageMode" onchange="togglePageInputs(); triggerLivePreview();" class="w-full border border-stone-300 rounded-lg p-2 text-sm bg-stone-50 mb-3 font-medium outline-none focus:border-indigo-500">
+                            <option value="single">الصفحة الحالية فقط</option>
+                            <option value="range">نطاق صفحات (من - إلى)</option>
+                            <option value="custom">صفحات متفرقة</option>
+                        </select>
+                        <div id="rangeInputs" class="hidden grid grid-cols-2 gap-2">
+                            <div><label class="text-xs text-stone-500">من صفحة:</label><input type="number" id="expPageStart" min="1" max="604" oninput="triggerLivePreview()" class="w-full border p-1.5 rounded outline-none text-sm"></div>
+                            <div><label class="text-xs text-stone-500">إلى صفحة:</label><input type="number" id="expPageEnd" min="1" max="604" oninput="triggerLivePreview()" class="w-full border p-1.5 rounded outline-none text-sm"></div>
+                        </div>
+                        <div id="customInputs" class="hidden">
+                            <label class="text-xs text-stone-500 mb-1 block">أرقام الصفحات (مفصولة بفاصلة):</label>
+                            <input type="text" id="expPageCustom" placeholder="مثال: 16, 20, 25" oninput="triggerLivePreview()" class="w-full border p-1.5 rounded outline-none text-sm text-left" dir="ltr">
+                        </div>
+                    </div>
 
-                    <span class="text-xs text-gray-500 font-medium text-center border-t border-stone-200 pt-1 w-full" dir="ltr">
-                        ${word.translation}
-                    </span>
+                    <!-- 2. التخطيط والمقاس -->
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                        <label class="block font-bold text-sm text-indigo-800 mb-3 border-b pb-2">2. المقاس والتخطيط</label>
+                        <div class="space-y-3">
+                            <div>
+                                <label class="text-xs font-bold text-stone-600 block mb-1">مقاس الورقة:</label>
+                                <select id="expFormat" onchange="triggerLivePreview()" class="w-full border border-stone-300 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
+                                    <option value="a4">قياسي A4 (للطباعة والملازم)</option>
+                                    <option value="tablet">جهاز لوحي (Tab/iPad)</option>
+                                    <option value="mobile">جوال (للمراجعة السريعة)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-stone-600 block mb-1">تخطيط الأعمدة:</label>
+                                <select id="expColumns" onchange="triggerLivePreview()" class="w-full border border-stone-300 rounded-lg p-2 text-sm outline-none focus:border-indigo-500">
+                                    <option value="auto">حر (تلقائي حسب المساحة)</option>
+                                    <option value="grid-cols-2">عمودين (كلمتين بالسطر)</option>
+                                    <option value="grid-cols-3">3 أعمدة (مرتب كجدول)</option>
+                                    <option value="grid-cols-4">4 أعمدة</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="flex justify-between text-xs font-bold text-stone-600 mb-1">التباعد الأفقي: <span id="expGapVal">10px</span></label>
+                                <input type="range" id="expGap" min="0" max="100" value="10" oninput="document.getElementById('expGapVal').innerText = this.value + 'px'; triggerLivePreview();" class="w-full accent-indigo-600">
+                            </div>
+                            <div>
+                                <label class="flex justify-between text-xs font-bold text-stone-600 mb-1">التباعد العمودي بين الكلمات: <span id="expVGapVal">15px</span></label>
+                                <input type="range" id="expVGap" min="0" max="100" value="15" oninput="document.getElementById('expVGapVal').innerText = this.value + 'px'; triggerLivePreview();" class="w-full accent-indigo-600">
+                            </div>
+                            <div>
+                                <label class="flex justify-between text-xs font-bold text-stone-600 mb-1">التباعد بين أسطر الكلمة: <span id="expLineSpacingVal">6px</span></label>
+                                <input type="range" id="expLineSpacing" min="0" max="100" value="6" oninput="document.getElementById('expLineSpacingVal').innerText = this.value + 'px'; triggerLivePreview();" class="w-full accent-indigo-600">
+                            </div>
+                        </div>
+                    </div>
 
-                    <span class="text-[10px] text-stone-400 mt-1">
-                        جذر: [ ${word.root} ]
-                    </span>
+                    <!-- 3. المحتوى والأحجام والألوان -->
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
+                        <label class="block font-bold text-sm text-indigo-800 mb-3 border-b pb-2">3. المحتوى والأحجام والألوان</label>
+                        <div class="flex flex-col gap-2 mb-4">
+                            <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" id="expShowPhonetic" checked onchange="triggerLivePreview()" class="accent-indigo-600 w-4 h-4"><span>سطر النطق</span></label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" id="expShowRule" onchange="triggerLivePreview()" class="accent-indigo-600 w-4 h-4"><span>سطر الأحكام</span></label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" id="expShowNotes" onchange="triggerLivePreview()" class="accent-indigo-600 w-4 h-4"><span>سطر الملاحظات</span></label>
+                            <label class="flex items-center gap-2 text-sm cursor-pointer"><input type="checkbox" id="expShowAyahMarker" checked onchange="triggerLivePreview()" class="accent-indigo-600 w-4 h-4"><span>إظهار أرقام الآيات</span></label>
+                        </div>
+                        
+                        <!-- ألوان الأسطر المنفصلة -->
+                        <div class="grid grid-cols-2 gap-3 mb-4 p-2 bg-stone-50 rounded-lg border border-stone-200">
+                            <div>
+                                <label class="text-xs font-bold text-stone-600 block mb-1">لون خط النطق:</label>
+                                <input type="color" id="expPhoneticColor" value="#4b5563" onchange="triggerLivePreview()" class="w-full h-8 rounded border border-stone-300 cursor-pointer p-0.5">
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold text-stone-600 block mb-1">لون خط الأحكام:</label>
+                                <input type="color" id="expRuleColor" value="#047857" onchange="triggerLivePreview()" class="w-full h-8 rounded border border-stone-300 cursor-pointer p-0.5">
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div><label class="flex justify-between text-xs text-stone-600">القرآن: <span id="expQSizeVal">27px</span></label><input type="range" id="expQSize" min="0" max="150" value="27" oninput="document.getElementById('expQSizeVal').innerText=this.value+'px'; triggerLivePreview();" class="w-full accent-indigo-600"></div>
+                            <div><label class="flex justify-between text-xs text-stone-600">النطق: <span id="expPSizeVal">14px</span></label><input type="range" id="expPSize" min="0" max="100" value="14" oninput="document.getElementById('expPSizeVal').innerText=this.value+'px'; triggerLivePreview();" class="w-full accent-indigo-600"></div>
+                            <div><label class="flex justify-between text-xs text-stone-600">الأحكام: <span id="expRSizeVal">12px</span></label><input type="range" id="expRSize" min="0" max="100" value="12" oninput="document.getElementById('expRSizeVal').innerText=this.value+'px'; triggerLivePreview();" class="w-full accent-indigo-600"></div>
+                            <div><label class="flex justify-between text-xs text-stone-600">مساحة الملاحظة: <span id="expNSizeVal">20px</span></label><input type="range" id="expNSize" min="0" max="200" value="20" oninput="document.getElementById('expNSizeVal').innerText=this.value+'px'; triggerLivePreview();" class="w-full accent-indigo-600"></div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm hidden">
+                        <input type="hidden" id="expOrientation" value="portrait">
+                        <input type="hidden" id="expTheme" value="light">
+                    </div>
+
+                    <div id="exportLoader" class="hidden text-center text-sm font-bold text-indigo-700 mt-2 p-3 bg-indigo-50 rounded-lg border border-indigo-200">
+                        ⏳ جاري المعالجة...
+                    </div>
+
+                    <div class="mt-auto pt-4 border-t border-stone-200">
+                        <button onclick="generateWorkbookPDF()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md flex justify-center items-center gap-2">📄 استخراج وتحميل PDF</button>
+                        <button onclick="saveDefaultSettings()" class="w-full bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold py-2 mt-2 rounded-xl text-sm transition-all shadow-sm flex justify-center items-center gap-2">💾 حفظ كإعدادات افتراضية</button>
+                    </div>
                 </div>
-            `;
-        }).join("");
-
-        return `
-            <div class="bg-white rounded-2xl shadow-sm border border-stone-200 p-6">
-                <div class="flex flex-wrap gap-3 items-start justify-start mb-4">
-                    ${wordsHTML}
-                    
-                    <div class="self-center flex items-center justify-center bg-amber-100 text-amber-900 font-bold rounded-full w-10 h-10 border border-amber-200 text-sm shadow-sm">
-                        ${ayah.ayah_number}
+                
+                <!-- منطقة المعاينة الجديدة -->
+                <div class="w-full lg:flex-1 bg-stone-200 p-8 flex flex-col items-center justify-start relative checker-bg overflow-y-auto no-scrollbar">
+                    <div id="previewContainer" class="w-full flex justify-center items-start origin-top transition-transform duration-300 transform scale-75 sm:scale-90 md:scale-100">
                     </div>
                 </div>
             </div>
-        `;
-    }).join("");
+        </div>
+    </div>
 
-    container.innerHTML = htmlOutput;
-}
+    <!-- واجهة المستخدم الأساسية -->
+    <div class="max-w-6xl mx-auto flex flex-col gap-4 relative">
+        <div class="flex flex-wrap gap-4 items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-stone-200">
+            <div class="flex flex-wrap gap-4 items-center w-full sm:w-auto">
+                <label for="pageInput" class="font-bold text-stone-700">الصفحة:</label>
+                <input type="number" id="pageInput" value="1" min="1" max="604" class="border-2 border-stone-300 rounded-lg p-2 w-20 text-center focus:border-amber-600 outline-none font-bold">
+                <button onclick="handlePageChange()" class="bg-amber-700 hover:bg-amber-800 text-white font-bold py-2 px-4 rounded-lg transition-colors shadow-sm">عرض</button>
+                
+                <div class="flex items-center gap-2 sm:mr-2 sm:border-r border-stone-300 sm:pr-4">
+                    <label for="ayahSelect" class="text-sm font-bold text-stone-600">تصفية:</label>
+                    <select id="ayahSelect" onchange="filterAndRenderWords()" class="border border-stone-300 rounded-lg p-1.5 text-sm bg-white focus:border-amber-600 outline-none font-medium min-w-[120px]">
+                        <option value="all">الكل</option>
+                    </select>
+                </div>
+                
+                <!-- Hifz Controls -->
+                <div class="flex items-center gap-2 border-r border-stone-300 pr-3 mr-2">
+                    <label class="text-xs font-bold text-stone-600">تكرار الآية:</label>
+                    <select id="hifzRepeatCount" class="border border-stone-300 rounded p-1 text-xs bg-white">
+                        <option value="1">1x (مرة واحدة)</option>
+                        <option value="3" selected>3x (3 مرات)</option>
+                        <option value="5">5x (5 مرات)</option>
+                    </select>
 
-// تشغيل تلقائي عند الفتح
-window.onload = processQULData;
-</script>
+                    <label class="text-xs font-bold text-stone-600 mr-2">زمن التوقف:</label>
+                    <select id="hifzDelayMs" class="border border-stone-300 rounded p-1 text-xs bg-white">
+                        <option value="0">بدون (0 ثانية)</option>
+                        <option value="1500" selected>قصيرة (1.5 ثانية)</option>
+                        <option value="3000">طويلة (3 ثوانٍ)</option>
+                    </select>
+                </div>
+            </div>
 
+            <div class="flex flex-wrap gap-2 w-full sm:w-auto justify-end">
+                <button onclick="openBookmarksModal()" class="bg-amber-100 hover:bg-amber-200 text-amber-800 font-bold py-2 px-4 rounded-lg transition-colors shadow-sm flex items-center gap-1.5">
+                    🔖 <span class="hidden sm:inline">علامات</span>
+                </button>
+                <button onclick="openExportModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-colors shadow-sm flex items-center gap-1.5 flex-1 sm:flex-none justify-center">
+                    📤 <span class="inline">استخراج ملازم</span>
+                </button>
+                <button onclick="openFlashcardsModal()" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 px-4 rounded-lg transition-colors shadow-sm flex items-center gap-1.5">
+                    📚 <span class="hidden sm:inline">الكراسة</span>
+                </button>
+                <button onclick="openPhoneticsModal()" class="bg-teal-700 hover:bg-teal-800 text-white font-bold py-2 px-4 rounded-lg transition-colors shadow-sm flex items-center gap-1.5">
+                    🗣️ <span class="hidden sm:inline">كراسة النطق</span>
+                </button>
+                <button aria-label="الإعدادات" onclick="toggleSidebar(true)" class="bg-stone-800 hover:bg-stone-700 text-white font-bold py-2 px-4 rounded-lg transition-colors shadow-sm flex items-center gap-1.5">
+                    ⚙️
+                </button>
+            </div>
+        </div>
+
+        <!-- الصندوق الأسود لتفاصيل الكلمة -->
+        <div id="interactiveOutputPanel" class="bg-stone-900 text-white p-5 rounded-2xl shadow-lg border border-stone-800 transition-all duration-300 min-h-[90px] flex flex-col justify-center relative overflow-hidden">
+            <div id="panelDefaultText" class="text-center text-stone-400 font-medium text-sm sm:text-base z-10">
+                💡 انقر على الكلمة للاستماع.. (انقر بزر الفأرة الأيمن أو اضغط مطولاً لإضافتها للكراسة ⭐️)
+            </div>
+        </div>
+
+        <!-- شريط الصوت القارئ والتشغيل الجديد -->
+        <div id="topAudioBar" class="bg-stone-800 text-white p-3 rounded-2xl shadow-md border border-stone-700 flex flex-wrap items-center justify-between gap-3">
+            <!-- اختيار القارئ (Default Husary) -->
+            <div class="flex flex-wrap items-center gap-3">
+                <div class="flex items-center gap-2">
+                    <label for="reciterSelect" class="text-xs font-bold text-amber-400">🎙️ القارئ:</label>
+                    <select id="reciterSelect" onchange="setReciter(this.value)" class="bg-stone-900 text-amber-200 text-xs border border-stone-600 rounded-lg py-2 px-3 font-bold outline-none focus:border-amber-500 cursor-pointer">
+                        <option value="6" selected>محمود خليل الحصري 🕌</option>
+                        <option value="7">مشاري العفاسي 🕌</option>
+                        <option value="5">محمد صديق المنشاوي 🕌</option>
+                        <option value="1">عبد الباسط عبد الصمد 🕌</option>
+                    </select>
+                </div>
+
+                <div class="flex items-center gap-2 border-r border-stone-700 pr-3">
+                    <label for="speedSelect" class="text-xs font-bold text-amber-400">⚡ السرعة:</label>
+                    <select id="speedSelect" onchange="changePlaybackSpeed(this.value)" class="bg-stone-900 text-amber-200 text-xs border border-stone-600 rounded-lg py-2 px-2 font-bold outline-none cursor-pointer">
+                        <option value="0.5">0.5x</option>
+                        <option value="0.75">0.75x</option>
+                        <option value="1" selected>1.0x</option>
+                        <option value="1.25">1.25x</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- أزرار التحكم بالصوت -->
+            <div class="flex items-center gap-2">
+                <button onclick="playCurrentActiveAyah()" title="تشغيل الآية المحددة" class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center gap-1 shadow-sm">
+                    ▶️ تشغيل الآية
+                </button>
+                <button onclick="pauseAudio()" title="إيقاف مؤقت" class="bg-stone-700 hover:bg-stone-600 text-stone-200 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center gap-1 shadow-sm">
+                    ⏸️ مؤقت
+                </button>
+                <button onclick="stopAllAudio()" title="إيقاف شامل" class="bg-red-900/80 hover:bg-red-800 text-red-200 border border-red-700 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors flex items-center gap-1 shadow-sm">
+                    ⏹️ إيقاف
+                </button>
+            </div>
+        </div>
+
+        <!-- شبكة عرض آيات القرآن -->
+        <div id="wordsGridContainer" class="bg-white rounded-2xl shadow-md border border-stone-200 py-10 px-4 md:px-8 flex flex-wrap justify-center gap-y-10 gap-x-0 content-start min-h-[500px]"></div>
+    </div>
+
+    <!-- لوحة إعدادات العرض الرئيسية (الجانب الأيسر) -->
+    <div id="controlSidebar" class="fixed top-0 left-0 h-full w-full sm:w-[380px] bg-white shadow-2xl z-50 border-r border-stone-200 flex flex-col select-none transform -translate-x-full transition-transform duration-300">
+        <div class="p-4 bg-stone-900 text-white flex justify-between items-center shadow-md">
+            <h3 class="font-bold text-lg flex items-center gap-2">⚙️ إعدادات العرض</h3>
+            <button aria-label="إغلاق الإعدادات" onclick="toggleSidebar(false)" class="text-stone-400 hover:text-white font-bold text-xl px-2 outline-none">✕</button>
+        </div>
+        <div class="p-5 flex-1 overflow-y-auto space-y-5 no-scrollbar flex flex-col">
+            <div class="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-3 shadow-sm">
+                <h4 class="font-bold text-stone-800 text-sm border-b border-stone-200 pb-2">👀 التحكم بإظهار الأسطر:</h4>
+                <div class="flex flex-col gap-2">
+                    <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-stone-700">
+                        <input type="checkbox" id="mainShowPhonetic" checked onchange="filterAndRenderWords()" class="accent-amber-600 w-4 h-4"> السطر 2: نطق الكلمات
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-stone-700">
+                        <input type="checkbox" id="mainShowRule" checked onchange="filterAndRenderWords()" class="accent-amber-600 w-4 h-4"> السطر 3: أحكام التجويد
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer text-sm font-medium text-stone-700">
+                        <input type="checkbox" id="mainShowNotes" checked onchange="filterAndRenderWords()" class="accent-amber-600 w-4 h-4"> السطر 4: مساحة الملاحظات
+                    </label>
+                </div>
+            </div>
+
+            <div class="bg-stone-50 p-3 rounded-xl border border-stone-200">
+                <label class="block text-xs font-bold text-stone-700 mb-1">حجم الكلمات القرآنية:</label>
+                <div class="flex items-center gap-2">
+                    <input type="range" id="quranSizeRange" min="10" max="150" value="48" oninput="applyGlobalStyles()" class="w-full accent-amber-700">
+                    <span id="quranSizeVal" class="text-xs font-bold text-stone-700 w-12 text-center">48px</span>
+                </div>
+            </div>
+
+            <div class="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-3">
+                <h4 class="font-bold text-amber-800 text-xs border-b border-stone-200 pb-1">🗣️ خط النطق ولونه:</h4>
+                <select id="phoneticFontSelect" onchange="applyGlobalStyles()" class="w-full border border-stone-300 rounded-lg p-1.5 text-xs bg-white outline-none">
+                    <option value="'Amiri', serif" selected>خط أميري المصحفي (Amiri)</option>
+                    <option value="'Cairo', sans-serif">كايرو (Cairo)</option>
+                </select>
+                <div class="flex items-center justify-between">
+                    <label class="text-xs font-bold text-stone-700">لون الخط:</label>
+                    <input type="color" id="phoneticColorInput" value="#4b5563" onchange="applyGlobalStyles()" class="w-8 h-8 rounded border border-stone-300 cursor-pointer p-0.5">
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="range" id="phoneticSizeRange" min="0" max="60" value="28" oninput="applyGlobalStyles()" class="w-full accent-amber-800">
+                    <span id="phoneticSizeVal" class="text-xs font-bold text-stone-700 w-12 text-center">28px</span>
+                </div>
+            </div>
+
+            <div class="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-3">
+                <h4 class="font-bold text-emerald-800 text-xs border-b border-stone-200 pb-1">⏱️ خط الحكم ولونه:</h4>
+                <select id="ruleFontSelect" onchange="applyGlobalStyles()" class="w-full border border-stone-300 rounded-lg p-1.5 text-xs bg-white outline-none">
+                    <option value="'Scheherazade New', serif" selected>خط شهرزاد الجديد</option>
+                    <option value="'Tajawal', sans-serif">تاجهول (Tajawal)</option>
+                </select>
+                <div class="flex items-center justify-between">
+                    <label class="text-xs font-bold text-stone-700">لون الخط:</label>
+                    <input type="color" id="ruleColorInput" value="#047857" onchange="applyGlobalStyles()" class="w-8 h-8 rounded border border-stone-300 cursor-pointer p-0.5">
+                </div>
+                <div class="flex items-center gap-2">
+                    <input type="range" id="ruleSizeRange" min="0" max="60" value="16" oninput="applyGlobalStyles()" class="w-full accent-emerald-700">
+                    <span id="ruleSizeVal" class="text-xs font-bold text-stone-700 w-12 text-center">16px</span>
+                </div>
+            </div>
+            <button onclick="saveDefaultSettings()" class="w-full bg-stone-200 hover:bg-stone-300 text-stone-800 font-bold py-3 mt-4 rounded-xl text-sm transition-all shadow-sm flex justify-center items-center gap-2">💾 حفظ كإعدادات افتراضية</button>
+        </div>
+    </div>
+
+    <script>
+        let localQuranJsonData = null; 
+        let phoneticsData = null; 
+        const loadedFontFamilies = new Set(); 
+        let currentPageAllWords = [];        
+        let activeWordElements = [];         
+        
+        // ==========================================
+        // WAHY AUDIO ENGINE STATE MANAGEMENT
+        // ==========================================
+        let currentReciter = 6; // Default: Mahmoud Khalil Al-Husary
+        let wahyAudioPlayer = new Audio();
+        let activeVerseSegments = [];       
+        let activeVerseKey = null;          
+        let currentPlaybackSpeed = 1.0;     
+        let hifzTimeoutId = null;           
+        let singleWordListenerTracker = null; 
+
+        let hifzState = { currentRepeatCount: 0 };
+        let contextMenuTargetWord = null;
+        let previewTimeout = null; 
+        
+        const quranPagesIndex = { 
+            1: { startSurah: 1, startAyah: 1, endSurah: 1, endAyah: 7 }, 
+            2: { startSurah: 2, startAyah: 1, endSurah: 2, endAyah: 5 } 
+        };
+        const surahNames = ["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم", "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر", "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج", "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس", "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص", "الفلق", "الناس"];
+
+        function toggleSidebar(isOpen) { 
+            const sidebar = document.getElementById('controlSidebar'); 
+            if (isOpen) sidebar.classList.remove('-translate-x-full'); 
+            else sidebar.classList.add('-translate-x-full'); 
+        }
+        
+        function showContextMenu(x, y, word, wordIndex) { 
+            const phInfo = phoneticsData ? phoneticsData[word.location] : {}; 
+            contextMenuTargetWord = {
+                ...word,
+                position: wordIndex || word.position || word.word_position,
+                phoneticText: phInfo?.phonetic || word.phonetic || "-",
+                ruleText: phInfo?.tajweed_rule || word.tajweed_rule || "-"
+            }; 
+            
+            const menu = document.getElementById('wordContextMenu'); 
+            menu.classList.remove('hidden'); 
+            menu.style.left = `${Math.min(x, window.innerWidth - 250)}px`; 
+            menu.style.top = `${Math.min(y, window.innerHeight - 100)}px`; 
+        }
+
+        document.addEventListener('click', (e) => { 
+            if(!e.target.closest('#wordContextMenu')) {
+                document.getElementById('wordContextMenu').classList.add('hidden'); 
+            }
+        });
+
+        // ==========================================
+        // PHONETICS BOOKMARKS FEATURE (NEW)
+        // ==========================================
+        function saveWordToPhoneticsBook() {
+            if (!contextMenuTargetWord) return;
+            let saved = JSON.parse(localStorage.getItem('quranPhoneticsBook')) || [];
+            if (!saved.some(w => w.location === contextMenuTargetWord.location)) {
+                const targetPage = parseInt(document.getElementById("pageInput").value) || 1;
+                saved.push({ ...contextMenuTargetWord, pageNumber: targetPage });
+                localStorage.setItem('quranPhoneticsBook', JSON.stringify(saved));
+                alert('تمت الإضافة لكراسة النطق والصوتيات 🗣️');
+            } else {
+                alert('الكلمة موجودة مسبقاً في كراسة النطق.');
+            }
+            document.getElementById('wordContextMenu').classList.add('hidden');
+        }
+
+        function openPhoneticsModal() {
+            renderPhoneticsBook();
+            document.getElementById('phoneticsModal').classList.remove('hidden');
+        }
+
+        function closePhoneticsModal() {
+            stopAllAudio();
+            document.getElementById('phoneticsModal').classList.add('hidden');
+        }
+
+        function renderPhoneticsBook() {
+            const container = document.getElementById('phoneticsContainer');
+            const saved = JSON.parse(localStorage.getItem('quranPhoneticsBook')) || [];
+            
+            if (saved.length === 0) {
+                container.innerHTML = '<div class="col-span-full text-center py-10 text-teal-800 font-bold">كراسة النطق فارغة. انقر بزر الفأرة الأيمن على أي كلمة واختر "إضافة لكراسة النطق" للتحفيظ.</div>';
+                return;
+            }
+
+            container.innerHTML = saved.map((word, index) => {
+                const locParts = word.location ? word.location.split(':') : [];
+                const fallbackPos = locParts.length === 3 ? parseInt(locParts[2]) : 1;
+                const finalWordPos = word.position || word.word_position || fallbackPos;
+
+                return `
+                <div class="bg-white p-4 rounded-xl border border-teal-200 shadow-sm flex flex-col gap-3 relative group">
+                    <button onclick="removePhoneticItem(${index})" class="absolute top-2 left-2 text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity font-bold" title="حذف">✕</button>
+                    <div class="text-center pb-2 border-b border-stone-100">
+                        <span class="text-4xl text-stone-900 leading-normal" style="font-family: 'p${word.pageNumber}-v4-tajweed', Arial;">${word.text}</span>
+                    </div>
+                    <div class="flex flex-col gap-1 text-sm mt-1">
+                        <div class="flex justify-between items-center bg-amber-50 p-2 rounded-lg border border-amber-200">
+                            <span class="text-amber-900 font-bold">طريقة النطق:</span> 
+                            <span class="font-bold text-stone-900 text-lg" style="font-family: 'Amiri';">${word.phoneticText || word.phonetic || '-'}</span>
+                        </div>
+                        <div class="flex justify-between mt-1"><span class="text-stone-500 font-bold">الحكم التجويدي:</span> <span class="font-bold text-emerald-700" style="font-family: 'Scheherazade New'; text-align: left;">${word.ruleText || word.tajweed_rule || '-'}</span></div>
+                        <div class="flex justify-between mt-2 pt-2 border-t border-stone-100 items-center">
+                            <span class="text-xs text-stone-500 font-bold">سورة ${word.surah} - آية ${word.ayah}</span> 
+                            <span class="text-xs font-bold text-teal-700 bg-teal-50 px-2 py-1 rounded-md">صفحة ${word.pageNumber}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between gap-2 mt-2 bg-stone-50 p-2 rounded-lg border border-stone-100">
+                        <span class="text-xs text-teal-800 font-bold">الاستماع للفظ:</span>
+                        <div class="flex gap-1">
+                            <button onclick="playWahyAyah('${word.surah}:${word.ayah}', ${finalWordPos}, true)" class="bg-teal-700 hover:bg-teal-800 text-white px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors">
+                                ▶️ استماع
+                            </button>
+                            <button onclick="stopAllAudio()" class="bg-red-100 hover:bg-red-200 text-red-700 border border-red-200 px-2 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors">
+                                ⏹️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function removePhoneticItem(index) {
+            let saved = JSON.parse(localStorage.getItem('quranPhoneticsBook')) || [];
+            saved.splice(index, 1);
+            localStorage.setItem('quranPhoneticsBook', JSON.stringify(saved));
+            renderPhoneticsBook();
+        }
+
+        function exportPhoneticsBook() {
+            const saved = localStorage.getItem('quranPhoneticsBook');
+            if (!saved || saved === "[]") return alert("الكراسة فارغة، لا يوجد شيء لتصديره.");
+            const blob = new Blob([saved], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "quran_phonetics_notebook.json";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function importPhoneticsBook(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    if (!Array.isArray(importedData)) throw new Error("صيغة الملف غير صحيحة");
+
+                    let existingData = JSON.parse(localStorage.getItem('quranPhoneticsBook')) || [];
+                    let addedCount = 0;
+                    
+                    importedData.forEach(importedWord => {
+                        if (!existingData.some(w => w.location === importedWord.location)) {
+                            existingData.push(importedWord);
+                            addedCount++;
+                        }
+                    });
+
+                    localStorage.setItem('quranPhoneticsBook', JSON.stringify(existingData));
+                    alert(`تم الاستيراد بنجاح! تمت إضافة ${addedCount} كلمة جديدة.`);
+                    renderPhoneticsBook();
+                } catch (error) {
+                    alert("حدث خطأ أثناء قراءة الملف.");
+                }
+                event.target.value = '';
+            };
+            reader.readAsText(file);
+        }
+
+        // ==========================================
+        // BOOKMARKS FEATURE
+        // ==========================================
+        function openBookmarksModal() {
+            renderBookmarksList();
+            document.getElementById('bookmarksModal').classList.remove('hidden');
+        }
+        function closeBookmarksModal() { document.getElementById('bookmarksModal').classList.add('hidden'); }
+
+        function saveBookmark() {
+            const title = document.getElementById('bookmarkTitleInput').value.trim() || 'علامة مرجعية';
+            const page = document.getElementById('pageInput').value;
+            const ayah = document.getElementById('ayahSelect').value; 
+            
+            let targetAyah = ayah;
+            if (targetAyah === 'all' && currentPageAllWords.length > 0) {
+                targetAyah = `${currentPageAllWords[0].surah}:${currentPageAllWords[0].ayah}`;
+            }
+            
+            const bookmarks = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
+            bookmarks.push({ id: Date.now(), title, page, verseKey: targetAyah, date: new Date().toLocaleDateString('ar-EG') });
+            localStorage.setItem('quranBookmarks', JSON.stringify(bookmarks));
+            
+            document.getElementById('bookmarkTitleInput').value = '';
+            renderBookmarksList();
+            alert('تم الحفظ بنجاح! 🔖');
+        }
+
+        function quickSaveBookmarkFromMenu() {
+            if(!contextMenuTargetWord) return;
+            const title = `سورة ${contextMenuTargetWord.surah} - آية ${contextMenuTargetWord.ayah}`;
+            const page = document.getElementById('pageInput').value;
+            const verseKey = `${contextMenuTargetWord.surah}:${contextMenuTargetWord.ayah}`;
+            
+            const bookmarks = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
+            bookmarks.push({ id: Date.now(), title, page, verseKey, date: new Date().toLocaleDateString('ar-EG') });
+            localStorage.setItem('quranBookmarks', JSON.stringify(bookmarks));
+            
+            document.getElementById('wordContextMenu').classList.add('hidden');
+            alert('تمت الإضافة كعلامة مرجعية 🔖');
+        }
+
+        function renderBookmarksList() {
+            const container = document.getElementById('bookmarksList');
+            let bookmarks = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
+            if (bookmarks.length === 0) {
+                container.innerHTML = '<div class="text-center py-6 text-stone-500 font-medium text-sm">لا توجد علامات مرجعية محفوظة.</div>';
+                return;
+            }
+            
+            bookmarks.sort((a, b) => b.id - a.id);
+
+            container.innerHTML = bookmarks.map(b => `
+                <div class="flex justify-between items-center bg-white border border-stone-200 p-3 rounded-lg hover:shadow-md transition-shadow">
+                    <div class="flex-1 cursor-pointer" onclick="goToBookmark('${b.page}', '${b.verseKey}')">
+                        <div class="font-bold text-indigo-800 text-sm">${b.title}</div>
+                        <div class="text-xs text-stone-500 mt-1">صفحة: ${b.page} | سورة-آية: ${b.verseKey} <span class="text-[10px] bg-stone-100 px-1 rounded mx-1">${b.date}</span></div>
+                    </div>
+                    <button onclick="removeBookmark(${b.id})" class="text-red-400 hover:text-red-600 px-2 font-bold transition-colors">✕</button>
+                </div>
+            `).join('');
+        }
+
+        function removeBookmark(id) {
+            let bookmarks = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
+            bookmarks = bookmarks.filter(b => b.id !== id);
+            localStorage.setItem('quranBookmarks', JSON.stringify(bookmarks));
+            renderBookmarksList();
+        }
+
+        async function goToBookmark(page, verseKey) {
+            closeBookmarksModal();
+            document.getElementById('pageInput').value = page;
+            await handlePageChange(); 
+            
+            const ayahSelect = document.getElementById('ayahSelect');
+            let optionExists = Array.from(ayahSelect.options).some(opt => opt.value === verseKey);
+            if(optionExists) ayahSelect.value = verseKey;
+            
+            filterAndRenderWords();
+        }
+
+        function exportBookmarks() {
+            const saved = localStorage.getItem('quranBookmarks');
+            if (!saved || saved === "[]") return alert("لا توجد علامات لتصديرها.");
+            const blob = new Blob([saved], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "quran_bookmarks.json";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function importBookmarks(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    if (!Array.isArray(importedData)) throw new Error("صيغة الملف غير صحيحة");
+                    
+                    let existingData = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
+                    const combined = [...existingData, ...importedData];
+                    const unique = Array.from(new Map(combined.map(item => [item.id, item])).values());
+                    
+                    localStorage.setItem('quranBookmarks', JSON.stringify(unique));
+                    alert("تم استيراد العلامات المرجعية بنجاح!");
+                    renderBookmarksList();
+                } catch (error) {
+                    alert("حدث خطأ أثناء قراءة الملف.");
+                }
+                event.target.value = '';
+            };
+            reader.readAsText(file);
+        }
+
+        // ==========================================
+        // FLASHCARDS FEATURE
+        // ==========================================
+        function saveWordToFlashcards() { 
+            if(!contextMenuTargetWord) return; 
+            let saved = JSON.parse(localStorage.getItem('quranFlashcards')) || []; 
+            if (!saved.some(w => w.location === contextMenuTargetWord.location)) { 
+                const targetPage = parseInt(document.getElementById("pageInput").value) || 1; 
+                saved.push({ ...contextMenuTargetWord, pageNumber: targetPage }); 
+                localStorage.setItem('quranFlashcards', JSON.stringify(saved)); 
+                alert('تمت الإضافة للكراسة ⭐️'); 
+            } else {
+                alert('الكلمة موجودة مسبقاً.'); 
+            }
+            document.getElementById('wordContextMenu').classList.add('hidden'); 
+        }
+
+        function exportFlashcards() {
+            const saved = localStorage.getItem('quranFlashcards');
+            if (!saved || saved === "[]") {
+                alert("الكراسة فارغة، لا يوجد شيء لتصديره.");
+                return;
+            }
+            const blob = new Blob([saved], { type: "application/json" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = "quran_flashcards.json";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function importFlashcards(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importedData = JSON.parse(e.target.result);
+                    if (!Array.isArray(importedData)) throw new Error("صيغة الملف غير صحيحة");
+
+                    let existingData = JSON.parse(localStorage.getItem('quranFlashcards')) || [];
+                    let addedCount = 0;
+                    
+                    importedData.forEach(importedWord => {
+                        if (!existingData.some(w => w.location === importedWord.location)) {
+                            existingData.push(importedWord);
+                            addedCount++;
+                        }
+                    });
+
+                    localStorage.setItem('quranFlashcards', JSON.stringify(existingData));
+                    alert(`تم استيراد الملف بنجاح! تمت إضافة ${addedCount} كلمة جديدة.`);
+                    renderFlashcards();
+                    
+                } catch (error) {
+                    alert("حدث خطأ أثناء قراءة الملف. تأكد أنه ملف الكراسة الصحيح.");
+                }
+                event.target.value = ''; 
+            };
+            reader.readAsText(file);
+        }
+
+        function renderFlashcards() {
+            const container = document.getElementById('flashcardsContainer');
+            const saved = JSON.parse(localStorage.getItem('quranFlashcards')) || [];
+            
+            if (saved.length === 0) {
+                container.innerHTML = '<div class="col-span-full text-center py-10 text-stone-500 font-bold">الكراسة فارغة. انقر بزر الفأرة الأيمن على أي كلمة لإضافتها هنا.</div>';
+                return;
+            }
+
+            container.innerHTML = saved.map((word, index) => {
+                const locParts = word.location ? word.location.split(':') : [];
+                const fallbackPos = locParts.length === 3 ? parseInt(locParts[2]) : 1;
+                const finalWordPos = word.position || word.word_position || fallbackPos;
+
+                return `
+                <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm flex flex-col gap-3 relative group">
+                    <button onclick="removeFlashcard(${index})" class="absolute top-2 left-2 text-red-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity font-bold" title="حذف">✕</button>
+                    <div class="text-center pb-2 border-b border-stone-100">
+                        <span class="text-4xl text-stone-900 leading-normal" style="font-family: 'p${word.pageNumber}-v4-tajweed', Arial;">${word.text}</span>
+                    </div>
+                    <div class="flex flex-col gap-1 text-sm mt-1">
+                        <div class="flex justify-between"><span class="text-stone-500 font-bold">النطق:</span> <span class="font-bold text-stone-800" style="font-family: 'Amiri';">${word.phoneticText || word.phonetic || '-'}</span></div>
+                        <div class="flex justify-between"><span class="text-stone-500 font-bold">الحكم:</span> <span class="font-bold text-emerald-700" style="font-family: 'Scheherazade New'; text-align: left;">${word.ruleText || word.tajweed_rule || '-'}</span></div>
+                        <div class="flex justify-between mt-2 pt-2 border-t border-stone-100 items-center">
+                            <span class="text-xs text-stone-500 font-bold">سورة ${word.surah} - آية ${word.ayah}</span> 
+                            <span class="text-xs font-bold text-indigo-700 bg-indigo-50 px-2 py-1 rounded-md">صفحة ${word.pageNumber}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap items-center gap-2 mt-2 justify-center bg-stone-50 p-2 rounded-lg border border-stone-100">
+                        <label class="text-[10px] text-stone-500 font-bold">تكرار:</label>
+                        <select id="flashcard_repeat_${index}" class="border border-stone-300 rounded p-1 text-xs outline-none">
+                            <option value="1">1x</option>
+                            <option value="3">3x</option>
+                            <option value="5">5x</option>
+                            <option value="10">10x</option>
+                        </select>
+                        <div class="flex gap-1">
+                            <button onclick="playFlashcardWord('${word.surah}:${word.ayah}', ${finalWordPos}, 'flashcard_repeat_${index}')" class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors">
+                                ▶️ استماع
+                            </button>
+                            <button onclick="stopAllAudio()" class="bg-red-100 hover:bg-red-200 text-red-700 border border-red-200 px-2 py-1.5 rounded-lg text-xs font-bold flex items-center gap-1 transition-colors" title="إيقاف الصوت">
+                                ⏹️
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function playFlashcardWord(verseKey, wordIndex, repeatSelectId) {
+            stopAllAudio(); 
+            const repeatCount = parseInt(document.getElementById(repeatSelectId).value) || 1;
+            let currentCount = 0;
+            
+            function playStep() {
+                if (currentCount < repeatCount) {
+                    currentCount++;
+                    playWahyAyah(verseKey, wordIndex, true, () => {
+                        if (currentCount < repeatCount) {
+                            hifzTimeoutId = setTimeout(playStep, 800); 
+                        }
+                    });
+                }
+            }
+            playStep();
+        }
+
+        function removeFlashcard(index) {
+            let saved = JSON.parse(localStorage.getItem('quranFlashcards')) || [];
+            saved.splice(index, 1);
+            localStorage.setItem('quranFlashcards', JSON.stringify(saved));
+            renderFlashcards();
+        }
+
+        function openFlashcardsModal() { 
+            renderFlashcards();
+            document.getElementById('flashcardsModal').classList.remove('hidden'); 
+        }
+        function closeFlashcardsModal() { 
+            stopAllAudio();
+            document.getElementById('flashcardsModal').classList.add('hidden'); 
+        }
+
+        function ensureFontLoaded(pageNumber) { 
+            const fontName = `p${pageNumber}-v4-tajweed`; 
+            if (!loadedFontFamilies.has(fontName)) {
+                const styleEl = document.createElement('style'); 
+                styleEl.innerHTML = `@font-face { font-family: '${fontName}'; src: url('woff2/p${pageNumber}.woff2') format('woff2'); font-weight: normal; font-style: normal; font-display: block; }`; 
+                document.getElementById('dynamicFontsContainer').appendChild(styleEl); 
+                loadedFontFamilies.add(fontName); 
+            }
+            return fontName; 
+        }
+
+        function isWordInPage(surah, ayah, pageNumber) { 
+            const range = quranPagesIndex[pageNumber]; 
+            if (!range) return false; 
+            const s = parseInt(surah), a = parseInt(ayah); 
+            if (range.startSurah === range.endSurah) return s === range.startSurah && a >= range.startAyah && a <= range.endAyah; 
+            if (s > range.startSurah && s < range.endSurah) return true; 
+            if (s === range.startSurah && a >= range.startAyah) return true; 
+            if (s === range.endSurah && a <= range.endAyah) return true; 
+            return false; 
+        }
+
+        function parseSegment(segment) {
+            if (!segment) return null;
+            if (segment.length === 4) {
+                return { position: segment[1], start: segment[2], end: segment[3] };
+            } else if (segment.length === 3) {
+                return { position: segment[0], start: segment[1], end: segment[2] };
+            }
+            return null;
+        }
+
+        async function fetchWahyAudioData(reciterId, verseKey) {
+            try {
+                const response = await fetch(`https://api.quran.com/api/v4/recitations/${reciterId}/by_ayah/${verseKey}?fields=segments`);
+                if (!response.ok) throw new Error("فشل في جلب بيانات الصوت من الخادم");
+                
+                const data = await response.json();
+                if (!data.audio_files || data.audio_files.length === 0) throw new Error("الصوت غير متاح لهذه الآية");
+
+                const fileData = data.audio_files[0];
+                let audioUrl = fileData.url;
+
+                if (audioUrl.startsWith("//")) audioUrl = "https:" + audioUrl;
+                else if (!audioUrl.startsWith("http")) audioUrl = "https://audio.qurancdn.com/" + audioUrl;
+
+                return { audioUrl: audioUrl, segments: fileData.segments || [] };
+            } catch (error) {
+                console.error("Wahy Audio Engine Error:", error);
+                return null;
+            }
+        }
+
+        function attachSingleWordListener(endTimeMs, onCompleteCallback = null) {
+            if (singleWordListenerTracker) wahyAudioPlayer.removeEventListener('timeupdate', singleWordListenerTracker);
+            
+            singleWordListenerTracker = () => {
+                if (wahyAudioPlayer.currentTime * 1000 >= endTimeMs) {
+                    wahyAudioPlayer.pause();
+                    wahyAudioPlayer.removeEventListener('timeupdate', singleWordListenerTracker);
+                    singleWordListenerTracker = null;
+                    highlightActiveWahyWord(activeVerseKey, -1);
+                    if(onCompleteCallback) onCompleteCallback();
+                }
+            };
+            wahyAudioPlayer.addEventListener('timeupdate', singleWordListenerTracker);
+        }
+
+        async function playWahyAyah(verseKey, targetWordIndex = null, singleWordMode = true, onCompleteCallback = null) {
+            const adjustTargetIndex = (segments, targetIdx) => {
+                if (!targetIdx) return targetIdx;
+                let minPos = Infinity;
+                segments.forEach(seg => {
+                    const parsed = parseSegment(seg);
+                    if (parsed && parsed.position < minPos) minPos = parsed.position;
+                });
+                if (minPos === 0 && targetIdx >= 1) return targetIdx - 1;
+                return targetIdx;
+            };
+
+            const playTargetWord = (segments, targetIdx) => {
+                const adjustedIdx = adjustTargetIndex(segments, targetIdx);
+                const segment = segments.find(seg => {
+                    const parsed = parseSegment(seg);
+                    return parsed && parsed.position === adjustedIdx;
+                });
+                
+                if (segment) {
+                    const parsed = parseSegment(segment);
+                    wahyAudioPlayer.currentTime = parsed.start / 1000;
+                    if (singleWordMode) attachSingleWordListener(parsed.end, onCompleteCallback);
+                    if (wahyAudioPlayer.paused) wahyAudioPlayer.play().catch(e => console.warn(e));
+                } else if(onCompleteCallback) {
+                    onCompleteCallback(); 
+                }
+            };
+
+            if (activeVerseKey === verseKey && activeVerseSegments.length > 0 && wahyAudioPlayer.src) {
+                if (targetWordIndex) {
+                    playTargetWord(activeVerseSegments, targetWordIndex);
+                } else {
+                    wahyAudioPlayer.currentTime = 0;
+                    if (singleWordListenerTracker) {
+                        wahyAudioPlayer.removeEventListener('timeupdate', singleWordListenerTracker);
+                        singleWordListenerTracker = null;
+                    }
+                    if (wahyAudioPlayer.paused) wahyAudioPlayer.play().catch(e => console.warn(e));
+                }
+                return;
+            }
+
+            stopAllAudio();
+            activeVerseKey = verseKey;
+            wahyAudioPlayer.playbackRate = currentPlaybackSpeed;
+
+            const audioData = await fetchWahyAudioData(currentReciter, verseKey);
+            if (!audioData) { alert("تعذر تحميل صوت الآية " + verseKey); return; }
+
+            if (activeVerseKey !== verseKey) return; 
+
+            activeVerseSegments = audioData.segments;
+            wahyAudioPlayer.src = audioData.audioUrl;
+
+            const readyHandler = () => {
+                wahyAudioPlayer.removeEventListener('loadeddata', readyHandler);
+                if (targetWordIndex) {
+                    playTargetWord(activeVerseSegments, targetWordIndex);
+                } else {
+                    wahyAudioPlayer.currentTime = 0;
+                    wahyAudioPlayer.play().catch(e => console.warn("تعذر التشغيل التلقائي:", e));
+                }
+            };
+
+            wahyAudioPlayer.addEventListener('loadeddata', readyHandler);
+            if (wahyAudioPlayer.readyState >= 2) { 
+                wahyAudioPlayer.removeEventListener('loadeddata', readyHandler);
+                readyHandler();
+            }
+
+            wahyAudioPlayer.ontimeupdate = () => {
+                if (activeVerseSegments.length === 0) return;
+                const currentTimeMs = wahyAudioPlayer.currentTime * 1000;
+                
+                const activeSegmentRaw = activeVerseSegments.find(seg => {
+                    const parsed = parseSegment(seg);
+                    return parsed && currentTimeMs >= parsed.start && currentTimeMs < parsed.end;
+                });
+                
+                if (activeSegmentRaw) {
+                    const parsed = parseSegment(activeSegmentRaw);
+                    
+                    let minPos = Infinity;
+                    activeVerseSegments.forEach(seg => {
+                        const p = parseSegment(seg);
+                        if (p && p.position < minPos) minPos = p.position;
+                    });
+                    
+                    let uiIndex = parsed.position;
+                    if (minPos === 0) uiIndex = parsed.position + 1;
+                    
+                    highlightActiveWahyWord(verseKey, uiIndex);
+                } else {
+                    highlightActiveWahyWord(verseKey, -1);
+                }
+            };
+
+            wahyAudioPlayer.onended = () => { handleWahyPlaybackEnded(); };
+            wahyAudioPlayer.load(); 
+        }
+
+        function highlightActiveWahyWord(verseKey, activeWordIndex) {
+            const wordBoxes = document.querySelectorAll(`[data-verse-key="${verseKey}"]`);
+            wordBoxes.forEach(box => {
+                const boxWordIdx = parseInt(box.getAttribute('data-word-index'), 10);
+                if (boxWordIdx === activeWordIndex) {
+                    if (!box.classList.contains("active-play")) {
+                        box.classList.add("active-play");
+                        box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                } else {
+                    box.classList.remove("active-play");
+                }
+            });
+        }
+
+        function handleWahyPlaybackEnded() {
+            const repeatTarget = parseInt(document.getElementById('hifzRepeatCount')?.value || 1, 10);
+            const delayMs = parseInt(document.getElementById('hifzDelayMs')?.value || 0, 10);
+
+            hifzState.currentRepeatCount++;
+
+            if (hifzState.currentRepeatCount < repeatTarget) {
+                highlightActiveWahyWord(activeVerseKey, -1); 
+                hifzTimeoutId = setTimeout(() => {
+                    if (wahyAudioPlayer) {
+                        wahyAudioPlayer.currentTime = 0;
+                        wahyAudioPlayer.play();
+                    }
+                }, delayMs);
+            } else {
+                hifzState.currentRepeatCount = 0;
+                stopAllAudio();
+            }
+        }
+
+        function stopAllAudio() {
+            if (hifzTimeoutId) { clearTimeout(hifzTimeoutId); hifzTimeoutId = null; }
+            if (wahyAudioPlayer) {
+                wahyAudioPlayer.pause();
+                wahyAudioPlayer.ontimeupdate = null;
+                wahyAudioPlayer.onended = null;
+                if (singleWordListenerTracker) {
+                    wahyAudioPlayer.removeEventListener('timeupdate', singleWordListenerTracker);
+                    singleWordListenerTracker = null;
+                }
+            }
+            document.querySelectorAll('.word-box.active-play').forEach(el => el.classList.remove('active-play'));
+        }
+
+        // ==========================================
+        // DIRECT RECITER & PLAYBACK CONTROLS
+        // ==========================================
+        function playCurrentActiveAyah() {
+            const selectedAyah = document.getElementById("ayahSelect").value;
+            if (selectedAyah && selectedAyah !== "all") {
+                playWahyAyah(selectedAyah, null, false);
+            } else if (currentPageAllWords.length > 0) {
+                const firstVerseKey = `${currentPageAllWords[0].surah}:${currentPageAllWords[0].ayah}`;
+                playWahyAyah(firstVerseKey, null, false);
+            } else {
+                alert("يرجى اختيار آية أولاً.");
+            }
+        }
+
+        function pauseAudio() {
+            if (wahyAudioPlayer && !wahyAudioPlayer.paused) {
+                wahyAudioPlayer.pause();
+            }
+        }
+
+        function setReciter(reciterId) {
+            currentReciter = parseInt(reciterId, 10);
+            const selectEl = document.getElementById('reciterSelect');
+            if (selectEl && selectEl.value !== reciterId.toString()) {
+                selectEl.value = reciterId.toString();
+            }
+
+            // Direct instant switch without page reload:
+            // Clear current audio segment timing cache for old reciter
+            activeVerseSegments = [];
+            const activeKey = activeVerseKey;
+            const wasPlaying = wahyAudioPlayer && !wahyAudioPlayer.paused;
+
+            stopAllAudio();
+
+            // Resume directly if audio was active
+            if (wasPlaying && activeKey) {
+                playWahyAyah(activeKey, null, false);
+            }
+        }
+
+        function changePlaybackSpeed(speed) {
+            currentPlaybackSpeed = parseFloat(speed);
+            if (wahyAudioPlayer) wahyAudioPlayer.playbackRate = currentPlaybackSpeed;
+        }
+
+        async function handlePageChange() { 
+            stopAllAudio(); 
+            const wordsContainer = document.getElementById("wordsGridContainer"); 
+            const targetPage = parseInt(document.getElementById("pageInput").value) || 1; 
+            wordsContainer.innerHTML = `<div class="text-center w-full py-20 text-stone-400 font-bold">⏳ جاري تحميل الكلمات...</div>`; 
+            try { 
+                if (!localQuranJsonData) { 
+                    const res = await fetch('Aya_Jason/v4_word_by_word.json'); 
+                    if(!res.ok) throw new Error("تعذر تحميل ملف v4_word_by_word.json من مجلد Aya_Jason");
+                    localQuranJsonData = await res.json(); 
+                } 
+                try { 
+                    const phRes = await fetch(`Aya_Jason/page_${targetPage}_phonetics.json`); 
+                    if (phRes.ok) phoneticsData = await phRes.json(); 
+                    else phoneticsData = {}; 
+                } catch(e) { phoneticsData = {}; }
+                
+                currentPageAllWords = []; 
+                Object.values(localQuranJsonData).forEach(word => { 
+                    if (word && phoneticsData[word.location]) currentPageAllWords.push(word); 
+                    else if (word.page_number == targetPage || isWordInPage(word.surah, word.ayah, targetPage)) currentPageAllWords.push(word); 
+                }); 
+
+                if (currentPageAllWords.length === 0) {
+                    return wordsContainer.innerHTML = `<div class="p-6 text-amber-800 bg-amber-50 rounded-xl text-center font-bold">⚠️ لم يتم العثور على كلمات لهذه الصفحة.</div>`;
+                }
+                
+                const ayahSelect = document.getElementById("ayahSelect"); 
+                ayahSelect.innerHTML = '<option value="all">الكل</option>'; 
+                new Set(currentPageAllWords.map(w => `${w.surah}:${w.ayah}`)).forEach(sa => { 
+                    const [s, a] = sa.split(':'); 
+                    const opt = document.createElement('option'); 
+                    opt.value = sa; 
+                    opt.textContent = `سورة ${s} - آية ${a}`; 
+                    ayahSelect.appendChild(opt); 
+                }); 
+                
+                filterAndRenderWords();
+            } catch (e) { 
+                wordsContainer.innerHTML = `<div class="bg-red-50 p-5 rounded-xl text-red-800 font-bold text-center w-full border-r-4 border-red-500">⚠️ خطأ: ${e.message} <br> تأكد من وضع الملفات في مجلد Aya_Jason وتشغيل الموقع عبر خادم محلي.</div>`; 
+            } 
+        } 
+
+        function filterAndRenderWords() {
+            stopAllAudio(); 
+            const selectedAyah = document.getElementById("ayahSelect").value; 
+            const targetPage = parseInt(document.getElementById("pageInput").value) || 1; 
+            const wordsContainer = document.getElementById("wordsGridContainer"); 
+            
+            const showPhonetic = document.getElementById("mainShowPhonetic").checked;
+            const showRule = document.getElementById("mainShowRule").checked;
+            const showNotes = document.getElementById("mainShowNotes").checked;
+
+            if (selectedAyah === "all") {
+                activeWordElements = [...currentPageAllWords]; 
+            } else { 
+                const [s, a] = selectedAyah.split(':'); 
+                activeWordElements = currentPageAllWords.filter(w => w.surah == s && w.ayah == a); 
+            }
+            
+            wordsContainer.innerHTML = ""; 
+            const fontClass = ensureFontLoaded(targetPage); 
+            
+            let currentAyahTracker = null;
+            let dynamicWordPosition = 1;
+
+            activeWordElements.forEach((word, index) => { 
+                const wordText = word.text || ''; 
+                if (!wordText.trim()) return; 
+                
+                if (word.ayah !== currentAyahTracker) {
+                    currentAyahTracker = word.ayah;
+                    dynamicWordPosition = 1;
+                } else {
+                    dynamicWordPosition++;
+                }
+
+                const phInfo = phoneticsData[word.location] || {}; 
+                const phoneticText = phInfo.phonetic || word.phonetic || "-"; 
+                const tajRule = phInfo.tajweed_rule || word.tajweed_rule || "-";
+                const isLast = (index === activeWordElements.length - 1) || (activeWordElements[index + 1].ayah !== word.ayah);
+
+                const verseKey = `${word.surah}:${word.ayah}`;
+                const wordIndexInVerse = word.position || word.word_position || dynamicWordPosition; 
+
+                const box = document.createElement("div"); 
+                box.className = "word-box flex flex-col items-stretch text-center cursor-pointer hover:bg-stone-50/80 transition-all relative px-2 py-1 min-w-[65px] group"; 
+
+                box.setAttribute('data-verse-key', verseKey);
+                box.setAttribute('data-word-index', wordIndexInVerse);
+                
+                let boxHTML = `<div class="pb-3 mb-2 flex items-center justify-center grow min-h-[60px]"><span class="quran-text-span text-stone-900 leading-none" style="font-family: '${fontClass}', Arial !important; font-size: 48px;">${wordText}</span></div>`;
+                if (showPhonetic) boxHTML += `<div class="pb-2 mb-2 flex items-center justify-center min-h-[30px]"><span class="phonetic-text-span block text-center font-bold">${phoneticText}</span></div>`;
+                if (showRule) boxHTML += `<div class="pb-2 mb-2 flex items-center justify-center min-h-[25px]"><span class="rule-text-span block text-center font-medium">${tajRule}</span></div>`;
+                if (showNotes) boxHTML += `<div class="min-h-[50px] w-full mt-1 border-b border-transparent group-hover:border-stone-200 transition-colors"></div>`;
+                
+                boxHTML += `<span class="text-[9px] font-mono text-stone-400 absolute top-0 left-1 opacity-0 group-hover:opacity-100 transition-opacity select-none" dir="ltr">${word.location}</span>`;
+                box.innerHTML = boxHTML;
+
+                box.addEventListener("mouseenter", () => { updateInteractivePanel(word); }); 
+                box.addEventListener("click", () => playWahyAyah(verseKey, wordIndexInVerse, true));
+                
+                box.addEventListener("contextmenu", (e) => { 
+                    e.preventDefault(); 
+                    showContextMenu(e.pageX, e.pageY, word, wordIndexInVerse); 
+                });
+                
+                wordsContainer.appendChild(box); 
+
+                if (isLast) {
+                    const marker = document.createElement("div");
+                    marker.className = "flex flex-col items-stretch text-center px-1 py-1 min-w-[50px] justify-start select-none cursor-pointer";
+                    marker.innerHTML = `<div class="pb-3 mb-2 flex items-center justify-center grow min-h-[60px]"><span class="text-amber-700 font-bold text-3xl font-sans" dir="rtl">﴿${word.ayah}﴾</span></div>`;
+                    marker.addEventListener("click", () => playWahyAyah(verseKey, null, false));
+                    wordsContainer.appendChild(marker);
+                }
+            }); 
+            applyGlobalStyles();
+        }
+
+        function applyGlobalStyles() { 
+            const qSize = document.getElementById("quranSizeRange").value;
+            const pFont = document.getElementById("phoneticFontSelect").value;
+            const pSize = document.getElementById("phoneticSizeRange").value;
+            const pColor = document.getElementById("phoneticColorInput")?.value || '#4b5563';
+            
+            const rFont = document.getElementById("ruleFontSelect").value;
+            const rSize = document.getElementById("ruleSizeRange").value; 
+            const rColor = document.getElementById("ruleColorInput")?.value || '#047857';
+            
+            document.getElementById("quranSizeVal").innerText = `${qSize}px`; 
+            document.getElementById("phoneticSizeVal").innerText = `${pSize}px`; 
+            document.getElementById("ruleSizeVal").innerText = `${rSize}px`; 
+            
+            document.querySelectorAll('.quran-text-span').forEach(el => el.style.setProperty('font-size', `${qSize}px`, 'important')); 
+            
+            document.querySelectorAll('.phonetic-text-span').forEach(el => { 
+                el.style.setProperty('font-family', pFont, 'important'); 
+                el.style.setProperty('font-size', `${pSize}px`, 'important'); 
+                el.style.setProperty('color', pColor, 'important');
+            }); 
+            
+            document.querySelectorAll('.rule-text-span').forEach(el => { 
+                el.style.setProperty('font-family', rFont, 'important'); 
+                el.style.setProperty('font-size', `${rSize}px`, 'important'); 
+                el.style.setProperty('color', rColor, 'important');
+            }); 
+        }
+
+        function updateInteractivePanel(word) { 
+            document.getElementById("interactiveOutputPanel").innerHTML = `
+                <div class="flex flex-wrap gap-4 justify-center items-center text-sm font-sans">
+                    <span class="bg-amber-600 text-white px-3 py-1 rounded-full font-bold">الموقع: ${word.location}</span>
+                    <span class="text-stone-200">سورة: <strong class="text-white">${word.surah}</strong> | آية: <strong class="text-white">${word.ayah}</strong></span>
+                </div>`; 
+        }
+
+        function openExportModal() {
+            document.getElementById('exportModal').classList.remove('hidden');
+            const cp = document.getElementById("pageInput").value || 1;
+            document.getElementById('expPageStart').value = cp;
+            document.getElementById('expPageEnd').value = parseInt(cp) + 1;
+            togglePageInputs();
+            triggerLivePreview(); 
+        }
+        function closeExportModal() { document.getElementById('exportModal').classList.add('hidden'); }
+        
+        function togglePageInputs() {
+            const mode = document.getElementById('expPageMode').value;
+            document.getElementById('rangeInputs').classList.toggle('hidden', mode !== 'range');
+            document.getElementById('customInputs').classList.toggle('hidden', mode !== 'custom');
+        }
+
+        function triggerLivePreview() {
+            clearTimeout(previewTimeout);
+            previewTimeout = setTimeout(() => { previewWorkbook(); }, 250); 
+        }
+
+        async function previewWorkbook() {
+            const loader = document.getElementById('exportLoader');
+            const previewContainer = document.getElementById('previewContainer');
+            loader.classList.remove('hidden');
+
+            try {
+                const mode = document.getElementById('expPageMode').value;
+                const currentPage = parseInt(document.getElementById("pageInput").value) || 1;
+                let targetPage = currentPage;
+
+                if (mode === 'range') targetPage = parseInt(document.getElementById('expPageStart').value) || 1;
+                else if (mode === 'custom') {
+                    const customInput = document.getElementById('expPageCustom').value;
+                    const customPages = customInput.split(',').map(p => parseInt(p.trim())).filter(p => !isNaN(p));
+                    if(customPages.length > 0) targetPage = customPages[0];
+                }
+
+                if (!localQuranJsonData) {
+                    const res = await fetch('Aya_Jason/v4_word_by_word.json');
+                    if (!res.ok) throw new Error("تعذر تحميل البيانات");
+                    localQuranJsonData = await res.json();
+                }
+
+                ensureFontLoaded(targetPage);
+                let phData = {};
+                try { 
+                    const phRes = await fetch(`Aya_Jason/page_${targetPage}_phonetics.json`); 
+                    if(phRes.ok) phData = await phRes.json(); 
+                } catch(e){}
+                
+                let previewWords = [];
+                Object.values(localQuranJsonData).forEach(w => {
+                    const belongsToPage = (w.page_number == targetPage) || (phData && phData[w.location]) || isWordInPage(w.surah, w.ayah, targetPage);
+                    if (belongsToPage) {
+                        previewWords.push({
+                            ...w,
+                            fontClass: `p${targetPage}-v4-tajweed`,
+                            phoneticText: phData[w.location]?.phonetic || w.phonetic || "-",
+                            ruleText: phData[w.location]?.tajweed_rule || w.tajweed_rule || "-"
+                        });
+                    }
+                });
+
+                if (previewWords.length === 0) throw new Error("لا توجد كلمات لهذه الصفحة لعرضها في المعاينة.");
+
+                const format = document.getElementById('expFormat').value;
+                const orientation = document.getElementById('expOrientation').value; 
+                const columns = document.getElementById('expColumns').value;
+                
+                const gap = document.getElementById('expGap').value + 'px';
+                const vGap = document.getElementById('expVGap').value + 'px';
+                const lineSpacing = (document.getElementById('expLineSpacing')?.value || 6) + 'px';
+                
+                const showPh = document.getElementById('expShowPhonetic').checked;
+                const showRu = document.getElementById('expShowRule').checked;
+                const showNo = document.getElementById('expShowNotes').checked;
+                const showAyahMarker = document.getElementById('expShowAyahMarker').checked;
+                const expTitle = document.getElementById('expTitle').value || '';
+                const theme = document.getElementById('expTheme').value;
+                
+                const expPColor = document.getElementById('expPhoneticColor').value || '#4b5563';
+                const expRColor = document.getElementById('expRuleColor').value || '#047857';
+
+                const qSize = document.getElementById('expQSize').value + 'px';
+                const pSize = document.getElementById('expPSize').value + 'px';
+                const rSize = document.getElementById('expRSize').value + 'px';
+                const nSize = document.getElementById('expNSize').value + 'px';
+
+                let bgColor = theme === 'sepia' ? '#fbf0d9' : '#ffffff';
+
+                previewContainer.innerHTML = '';
+                
+                let previewDOMPage = createNewDOMPage(format, orientation, bgColor, previewWords[0].page_number, previewWords[0].surah, expTitle);
+                
+                previewDOMPage.style.boxShadow = "0 25px 50px -12px rgba(0, 0, 0, 0.25)";
+                previewDOMPage.style.borderRadius = "8px";
+                previewDOMPage.style.transform = "scale(0.85)"; 
+                previewDOMPage.style.transformOrigin = "top center";
+
+                let contentContainer = previewDOMPage.querySelector('.page-content');
+                
+                if (columns !== 'auto') {
+                    contentContainer.className = `page-content grid ${columns} w-full content-start`;
+                    contentContainer.style.gap = `${vGap} ${gap}`;
+                } else {
+                    contentContainer.className = `page-content flex flex-wrap justify-center content-start w-full`;
+                    contentContainer.style.gap = `${vGap} ${gap}`;
+                }
+
+                previewContainer.appendChild(previewDOMPage);
+
+                for (let i = 0; i < previewWords.length; i++) {
+                    const word = previewWords[i];
+                    const isLastOfAyah = (i === previewWords.length - 1) || (previewWords[i+1].ayah !== word.ayah);
+                    const isNewSurah = i > 0 && word.surah !== previewWords[i-1].surah;
+
+                    if (i > 0 && (word.page_number !== previewWords[i-1].page_number || isNewSurah)) {
+                        updateHeader(previewDOMPage, word.page_number, word.surah, expTitle);
+                    }
+
+                    let wordHTML = `
+                    <div class="flex flex-col items-stretch text-center px-1 ${columns === 'auto' ? 'min-w-[50px]' : 'w-full'}">
+                        <div class="flex items-center justify-center" style="margin-bottom: ${lineSpacing};">
+                            <span class="text-stone-900 leading-none" style="font-family: '${word.fontClass}', Arial; font-size: ${qSize};">${word.text}</span>
+                        </div>
+                        ${showPh ? `<div class="flex items-center justify-center" style="margin-bottom: ${lineSpacing};"><span class="font-bold" style="font-family: 'Amiri'; font-size: ${pSize}; color: ${expPColor};">${word.phoneticText}</span></div>` : ''}
+                        ${showRu ? `<div class="flex items-center justify-center" style="margin-bottom: ${lineSpacing};"><span class="font-medium" style="font-family: 'Scheherazade New'; font-size: ${rSize}; color: ${expRColor};">${word.ruleText}</span></div>` : ''}
+                        ${showNo ? `<div style="min-height: ${nSize}; width: 100%;"></div>` : ''}
+                    </div>`;
+
+                    if (isLastOfAyah && columns === 'auto' && showAyahMarker) {
+                        wordHTML += `
+                        <div class="flex flex-col items-center justify-start px-1 min-w-[30px]">
+                            <div class="flex items-center justify-center h-full" style="margin-bottom: ${lineSpacing};">
+                                <span class="text-amber-600 font-bold" style="font-size: calc(${qSize} * 0.6);">﴿${word.ayah}﴾</span>
+                            </div>
+                        </div>`;
+                    }
+
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = wordHTML;
+                    const elementsToAdd = Array.from(tempDiv.children);
+
+                    for(let el of elementsToAdd) {
+                        contentContainer.appendChild(el);
+                        
+                        const pageMaxHeight = previewDOMPage.clientHeight - (parseInt(window.getComputedStyle(previewDOMPage).paddingTop) * 2) - 120;
+                        if (contentContainer.scrollHeight > pageMaxHeight) {
+                            contentContainer.removeChild(el);
+                            updateFooter(previewDOMPage, 1);
+                            break; 
+                        }
+                    }
+                    if(contentContainer.scrollHeight > previewDOMPage.clientHeight - (parseInt(window.getComputedStyle(previewDOMPage).paddingTop) * 2) - 120) break;
+                }
+                
+                updateFooter(previewDOMPage, 1);
+
+            } catch (err) { 
+                previewContainer.innerHTML = `<div class="p-4 bg-red-100 text-red-700 rounded-lg font-bold">⚠️ ${err.message}</div>`;
+            } finally { 
+                loader.classList.add('hidden'); 
+            }
+        }
+
+        async function generateWorkbookPDF() {
+            const loader = document.getElementById('exportLoader');
+            loader.classList.remove('hidden');
+            loader.innerText = "⏳ جاري استخراج وتحضير الكراسة للتحميل...";
+
+            try {
+                const mode = document.getElementById('expPageMode').value;
+                let targetPages = [];
+                let fileName = "Quran_Workbook";
+                const currentPage = parseInt(document.getElementById("pageInput").value) || 1;
+
+                if (mode === 'single') { 
+                    targetPages = [currentPage]; 
+                    fileName = `Quran_Page_${currentPage}`; 
+                } 
+                else if (mode === 'range') {
+                    const start = parseInt(document.getElementById('expPageStart').value) || 1;
+                    const end = parseInt(document.getElementById('expPageEnd').value) || 2;
+                    for (let i = start; i <= end; i++) targetPages.push(i);
+                    fileName = `Quran_Pages_${start}-${end}`;
+                } 
+                else if (mode === 'custom') {
+                    const customInput = document.getElementById('expPageCustom').value;
+                    targetPages = customInput.split(',').map(p => parseInt(p.trim())).filter(p => !isNaN(p));
+                    if(targetPages.length === 0) targetPages = [currentPage];
+                    fileName = `Quran_Pages_${targetPages.join('+')}`;
+                }
+
+                if (!localQuranJsonData) {
+                    const res = await fetch('Aya_Jason/v4_word_by_word.json');
+                    if (!res.ok) throw new Error("تعذر تحميل الملف");
+                    localQuranJsonData = await res.json();
+                }
+
+                let allWordsToExport = [];
+                for (const pageNum of targetPages) {
+                    ensureFontLoaded(pageNum);
+                    let phData = {};
+                    try { 
+                        const phRes = await fetch(`Aya_Jason/page_${pageNum}_phonetics.json`); 
+                        if(phRes.ok) phData = await phRes.json(); 
+                    } catch(e){}
+                    
+                    Object.values(localQuranJsonData).forEach(w => {
+                        const belongsToPage = (w.page_number == pageNum) || (phData && phData[w.location]) || isWordInPage(w.surah, w.ayah, pageNum);
+                        if (belongsToPage) {
+                            allWordsToExport.push({
+                                ...w,
+                                fontClass: `p${pageNum}-v4-tajweed`,
+                                phoneticText: phData[w.location]?.phonetic || w.phonetic || "-",
+                                ruleText: phData[w.location]?.tajweed_rule || w.tajweed_rule || "-"
+                            });
+                        }
+                    });
+                }
+
+                if (allWordsToExport.length === 0) throw new Error("لم يتم العثور على بيانات.");
+
+                const format = document.getElementById('expFormat').value;
+                const orientation = document.getElementById('expOrientation').value; 
+                const columns = document.getElementById('expColumns').value;
+                
+                const gap = document.getElementById('expGap').value + 'px';
+                const vGap = document.getElementById('expVGap').value + 'px';
+                const lineSpacing = (document.getElementById('expLineSpacing')?.value || 6) + 'px';
+                
+                const showPh = document.getElementById('expShowPhonetic').checked;
+                const showRu = document.getElementById('expShowRule').checked;
+                const showNo = document.getElementById('expShowNotes').checked;
+                const showAyahMarker = document.getElementById('expShowAyahMarker').checked;
+                const expTitle = document.getElementById('expTitle').value || '';
+                const theme = document.getElementById('expTheme').value;
+                
+                const expPColor = document.getElementById('expPhoneticColor').value || '#4b5563';
+                const expRColor = document.getElementById('expRuleColor').value || '#047857';
+
+                const qSize = document.getElementById('expQSize').value + 'px';
+                const pSize = document.getElementById('expPSize').value + 'px';
+                const rSize = document.getElementById('expRSize').value + 'px';
+                const nSize = document.getElementById('expNSize').value + 'px';
+
+                let bgColor = theme === 'sepia' ? '#fbf0d9' : '#ffffff';
+
+                const engine = document.getElementById('hiddenExportEngine');
+                engine.innerHTML = ''; 
+
+                let domPages = [];
+                let currentDOMPage = createNewDOMPage(format, orientation, bgColor, targetPages[0], allWordsToExport[0]?.surah, expTitle);
+                engine.appendChild(currentDOMPage);
+                domPages.push(currentDOMPage);
+
+                let contentContainer = currentDOMPage.querySelector('.page-content');
+                
+                if (columns !== 'auto') {
+                    contentContainer.className = `page-content grid ${columns} w-full content-start`;
+                    contentContainer.style.gap = `${vGap} ${gap}`;
+                } else {
+                    contentContainer.className = `page-content flex flex-wrap justify-center content-start w-full`;
+                    contentContainer.style.gap = `${vGap} ${gap}`;
+                }
+
+                for (let i = 0; i < allWordsToExport.length; i++) {
+                    const word = allWordsToExport[i];
+                    const isLastOfAyah = (i === allWordsToExport.length - 1) || (allWordsToExport[i+1].ayah !== word.ayah);
+                    const isNewSurah = i > 0 && word.surah !== allWordsToExport[i-1].surah;
+
+                    if (i > 0 && (word.page_number !== allWordsToExport[i-1].page_number || isNewSurah)) {
+                         updateHeader(currentDOMPage, word.page_number, word.surah, expTitle);
+                    }
+
+                    let wordHTML = `
+                    <div class="flex flex-col items-stretch text-center px-1 ${columns === 'auto' ? 'min-w-[50px]' : 'w-full'}">
+                        <div class="flex items-center justify-center" style="margin-bottom: ${lineSpacing};">
+                            <span class="text-stone-900 leading-none" style="font-family: '${word.fontClass}', Arial; font-size: ${qSize};">${word.text}</span>
+                        </div>
+                        ${showPh ? `<div class="flex items-center justify-center" style="margin-bottom: ${lineSpacing};"><span class="font-bold" style="font-family: 'Amiri'; font-size: ${pSize}; color: ${expPColor};">${word.phoneticText}</span></div>` : ''}
+                        ${showRu ? `<div class="flex items-center justify-center" style="margin-bottom: ${lineSpacing};"><span class="font-medium" style="font-family: 'Scheherazade New'; font-size: ${rSize}; color: ${expRColor};">${word.ruleText}</span></div>` : ''}
+                        ${showNo ? `<div style="min-height: ${nSize}; width: 100%;"></div>` : ''}
+                    </div>`;
+
+                    if (isLastOfAyah && columns === 'auto' && showAyahMarker) {
+                        wordHTML += `
+                        <div class="flex flex-col items-center justify-start px-1 min-w-[30px]">
+                            <div class="flex items-center justify-center h-full" style="margin-bottom: ${lineSpacing};">
+                                <span class="text-amber-600 font-bold" style="font-size: calc(${qSize} * 0.6);">﴿${word.ayah}﴾</span>
+                            </div>
+                        </div>`;
+                    }
+
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = wordHTML;
+                    const elementsToAdd = Array.from(tempDiv.children);
+
+                    for(let el of elementsToAdd) {
+                        contentContainer.appendChild(el);
+                        
+                        const pageMaxHeight = currentDOMPage.clientHeight - (parseInt(window.getComputedStyle(currentDOMPage).paddingTop) * 2) - 120;
+                        
+                        if (contentContainer.scrollHeight > pageMaxHeight) {
+                            contentContainer.removeChild(el);
+                            updateFooter(currentDOMPage, domPages.length);
+
+                            currentDOMPage = createNewDOMPage(format, orientation, bgColor, word.page_number, word.surah, expTitle);
+                            engine.appendChild(currentDOMPage);
+                            domPages.push(currentDOMPage);
+                            
+                            contentContainer = currentDOMPage.querySelector('.page-content');
+                            if (columns !== 'auto') { 
+                                contentContainer.className = `page-content grid ${columns} w-full content-start`; 
+                                contentContainer.style.gap = `${vGap} ${gap}`; 
+                            } else { 
+                                contentContainer.className = `page-content flex flex-wrap justify-center content-start w-full`; 
+                                contentContainer.style.gap = `${vGap} ${gap}`; 
+                            }
+                            
+                            contentContainer.appendChild(el);
+                        }
+                    }
+                }
+                
+                updateFooter(currentDOMPage, domPages.length);
+
+                await document.fonts.ready;
+                await new Promise(r => setTimeout(r, 1000)); 
+
+                const { jsPDF } = window.jspdf;
+                let pdf = null;
+
+                for (let i = 0; i < domPages.length; i++) {
+                    const canvas = await html2canvas(domPages[i], { scale: 2, useCORS: true, backgroundColor: bgColor });
+                    const imgData = canvas.toDataURL('image/png'); 
+                    
+                    if (i === 0) {
+                        const pdfOrientation = canvas.width > canvas.height ? 'landscape' : 'portrait';
+                        pdf = new jsPDF({ orientation: pdfOrientation, unit: 'px', format: [canvas.width, canvas.height] });
+                    } else {
+                        pdf.addPage([canvas.width, canvas.height], canvas.width > canvas.height ? 'landscape' : 'portrait');
+                    }
+                    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height); 
+                }
+                pdf.save(fileName + '.pdf');
+
+            } catch (err) { 
+                alert("حدث خطأ: " + err.message); 
+            } finally { 
+                document.getElementById('hiddenExportEngine').innerHTML = ''; 
+                loader.classList.add('hidden'); 
+                closeExportModal(); 
+            }
+        }
+
+        function createNewDOMPage(formatStr, orientationStr, bgColor, quranPageNum, surahNum, titleStr = "") {
+            const page = document.createElement('div');
+            page.className = `export-page format-${formatStr}`;
+            page.style.backgroundColor = bgColor;
+            
+            let width, height;
+            if (formatStr === 'a4') { width = 794; height = 1123; }
+            else if (formatStr === 'tablet') { width = 1024; height = 1366; }
+            else if (formatStr === 'mobile') { width = 600; height = 1000; }
+            
+            if (orientationStr === 'landscape') {
+                page.style.width = `${height}px`;
+                page.style.height = `${width}px`;
+            } else {
+                page.style.width = `${width}px`;
+                page.style.height = `${height}px`;
+            }
+
+            const surahName = surahNames[surahNum - 1] || "غير معروف";
+            const dateStr = new Date().toLocaleDateString('ar-EG');
+            
+            let titleHtml = titleStr ? `<div class="w-full text-center text-lg font-bold text-stone-700 mb-2">${titleStr}</div>` : '';
+
+            page.innerHTML = `
+                ${titleHtml}
+                <div class="header w-full border-b-2 border-indigo-200 pb-4 mb-6 flex justify-between items-end shrink-0">
+                    <div class="font-bold text-xl text-indigo-900 font-sans">سورة ${surahName}</div>
+                    <div class="text-sm font-bold bg-indigo-100 text-indigo-800 px-4 py-1 rounded-full">القرآن: صفحة ${quranPageNum}</div>
+                </div>
+                <div class="page-content flex-1 w-full relative" dir="rtl"></div>
+                <div class="footer w-full border-t border-stone-300 pt-4 mt-auto flex justify-between items-center text-stone-500 text-sm font-sans shrink-0">
+                    <div>تاريخ الاستخراج: ${dateStr}</div>
+                    <div class="page-num-indicator font-bold"></div>
+                </div>
+            `;
+            return page;
+        }
+
+        function updateHeader(pageEl, quranPageNum, surahNum, titleStr = "") {
+            const surahName = surahNames[surahNum - 1] || "";
+            let headerDiv = pageEl.querySelector('.header');
+            if(headerDiv) {
+                headerDiv.innerHTML = `
+                    <div class="font-bold text-xl text-indigo-900 font-sans">سورة ${surahName}</div>
+                    <div class="text-sm font-bold bg-indigo-100 text-indigo-800 px-4 py-1 rounded-full">القرآن: صفحة ${quranPageNum}</div>
+                `;
+            }
+        }
+
+        function updateFooter(pageEl, pageNum) { 
+            const footerEl = pageEl.querySelector('.page-num-indicator');
+            if (footerEl) footerEl.innerText = `صفحة ${pageNum}`; 
+        }
+
+        function saveDefaultSettings() {
+            const settings = {
+                expFormat: document.getElementById('expFormat').value,
+                expColumns: document.getElementById('expColumns').value,
+                expGap: document.getElementById('expGap').value,
+                expVGap: document.getElementById('expVGap').value,
+                expLineSpacing: document.getElementById('expLineSpacing').value,
+                expShowPhonetic: document.getElementById('expShowPhonetic').checked,
+                expShowRule: document.getElementById('expShowRule').checked,
+                expShowNotes: document.getElementById('expShowNotes').checked,
+                expShowAyahMarker: document.getElementById('expShowAyahMarker').checked,
+                expPhoneticColor: document.getElementById('expPhoneticColor').value,
+                expRuleColor: document.getElementById('expRuleColor').value,
+                expQSize: document.getElementById('expQSize').value,
+                expPSize: document.getElementById('expPSize').value,
+                expRSize: document.getElementById('expRSize').value,
+                expNSize: document.getElementById('expNSize').value,
+                
+                mainShowPhonetic: document.getElementById('mainShowPhonetic').checked,
+                mainShowRule: document.getElementById('mainShowRule').checked,
+                mainShowNotes: document.getElementById('mainShowNotes').checked,
+                quranSizeRange: document.getElementById('quranSizeRange').value,
+                phoneticFontSelect: document.getElementById('phoneticFontSelect').value,
+                phoneticColorInput: document.getElementById('phoneticColorInput').value,
+                phoneticSizeRange: document.getElementById('phoneticSizeRange').value,
+                ruleFontSelect: document.getElementById('ruleFontSelect').value,
+                ruleColorInput: document.getElementById('ruleColorInput').value,
+                ruleSizeRange: document.getElementById('ruleSizeRange').value
+            };
+            
+            localStorage.setItem('quranDefaultSettings', JSON.stringify(settings));
+            alert('تم حفظ الإعدادات الافتراضية بنجاح 💾');
+        }
+
+        function loadDefaultSettings() {
+            const savedData = localStorage.getItem('quranDefaultSettings');
+            if (savedData) {
+                const settings = JSON.parse(savedData);
+                
+                if(document.getElementById('expFormat')) document.getElementById('expFormat').value = settings.expFormat;
+                if(document.getElementById('expColumns')) document.getElementById('expColumns').value = settings.expColumns;
+                if(document.getElementById('expGap')) { document.getElementById('expGap').value = settings.expGap; document.getElementById('expGapVal').innerText = settings.expGap + 'px'; }
+                if(document.getElementById('expVGap')) { document.getElementById('expVGap').value = settings.expVGap; document.getElementById('expVGapVal').innerText = settings.expVGap + 'px'; }
+                if(document.getElementById('expLineSpacing')) { document.getElementById('expLineSpacing').value = settings.expLineSpacing; document.getElementById('expLineSpacingVal').innerText = settings.expLineSpacing + 'px'; }
+                if(document.getElementById('expShowPhonetic')) document.getElementById('expShowPhonetic').checked = settings.expShowPhonetic;
+                if(document.getElementById('expShowRule')) document.getElementById('expShowRule').checked = settings.expShowRule;
+                if(document.getElementById('expShowNotes')) document.getElementById('expShowNotes').checked = settings.expShowNotes;
+                if(document.getElementById('expShowAyahMarker')) document.getElementById('expShowAyahMarker').checked = settings.expShowAyahMarker;
+                if(document.getElementById('expPhoneticColor')) document.getElementById('expPhoneticColor').value = settings.expPhoneticColor;
+                if(document.getElementById('expRuleColor')) document.getElementById('expRuleColor').value = settings.expRuleColor;
+                if(document.getElementById('expQSize')) { document.getElementById('expQSize').value = settings.expQSize; document.getElementById('expQSizeVal').innerText = settings.expQSize + 'px'; }
+                if(document.getElementById('expPSize')) { document.getElementById('expPSize').value = settings.expPSize; document.getElementById('expPSizeVal').innerText = settings.expPSize + 'px'; }
+                if(document.getElementById('expRSize')) { document.getElementById('expRSize').value = settings.expRSize; document.getElementById('expRSizeVal').innerText = settings.expRSize + 'px'; }
+                if(document.getElementById('expNSize')) { document.getElementById('expNSize').value = settings.expNSize; document.getElementById('expNSizeVal').innerText = settings.expNSize + 'px'; }
+
+                if(document.getElementById('mainShowPhonetic')) document.getElementById('mainShowPhonetic').checked = settings.mainShowPhonetic;
+                if(document.getElementById('mainShowRule')) document.getElementById('mainShowRule').checked = settings.mainShowRule;
+                if(document.getElementById('mainShowNotes')) document.getElementById('mainShowNotes').checked = settings.mainShowNotes;
+                if(document.getElementById('quranSizeRange')) { document.getElementById('quranSizeRange').value = settings.quranSizeRange; document.getElementById('quranSizeVal').innerText = settings.quranSizeRange + 'px'; }
+                if(document.getElementById('phoneticFontSelect')) document.getElementById('phoneticFontSelect').value = settings.phoneticFontSelect;
+                if(document.getElementById('phoneticColorInput')) document.getElementById('phoneticColorInput').value = settings.phoneticColorInput;
+                if(document.getElementById('phoneticSizeRange')) { document.getElementById('phoneticSizeRange').value = settings.phoneticSizeRange; document.getElementById('phoneticSizeVal').innerText = settings.phoneticSizeRange + 'px'; }
+                if(document.getElementById('ruleFontSelect')) document.getElementById('ruleFontSelect').value = settings.ruleFontSelect;
+                if(document.getElementById('ruleColorInput')) document.getElementById('ruleColorInput').value = settings.ruleColorInput;
+                if(document.getElementById('ruleSizeRange')) { document.getElementById('ruleSizeRange').value = settings.ruleSizeRange; document.getElementById('ruleSizeVal').innerText = settings.ruleSizeRange + 'px'; }
+                
+                applyGlobalStyles();
+            }
+        }
+
+        window.onload = () => {
+            loadDefaultSettings();
+            
+            const bookmarks = JSON.parse(localStorage.getItem('quranBookmarks')) || [];
+            if (bookmarks.length > 0) {
+                bookmarks.sort((a, b) => b.id - a.id);
+                document.getElementById('pageInput').value = bookmarks[0].page;
+            }
+            
+            handlePageChange();
+        };
+    </script>
 </body>
 </html>
