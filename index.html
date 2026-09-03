@@ -76,20 +76,29 @@
     <div id="dynamicFontsContainer"></div>
     <div id="hiddenExportEngine"></div>
 
-    <!-- القائمة العائمة (Context Menu) -->
-    <div id="wordContextMenu" class="fixed hidden bg-white border border-stone-200 shadow-xl rounded-xl p-1.5 z-50 text-sm w-56 transition-all">
-        <button aria-label="إضافة لكراسة التدريب" onclick="saveWordToFlashcards()" class="w-full text-right px-3 py-2 hover:bg-amber-50 rounded-lg text-amber-800 font-bold flex items-center gap-2 transition-colors border-b border-stone-100">
-            <span class="text-lg">⭐️</span> إضافة لكراسة التدريب
-        </button>
-        <button aria-label="إضافة لكراسة النطق والصوتيات" onclick="saveWordToPhoneticsBook()" class="w-full text-right px-3 py-2 hover:bg-teal-50 rounded-lg text-teal-800 font-bold flex items-center gap-2 transition-colors border-b border-stone-100">
-            <span class="text-lg">🗣️</span> إضافة لكراسة النطق
-        </button>
-        
-        <div class="mt-1 pt-1">
-            <div class="text-xs text-stone-500 font-bold px-3 py-1 mb-1">🔖 حفظ كعلامة مرجعية:</div>
-            <button onclick="quickSaveBookmarkFromMenu('listening')" class="w-full text-right px-3 py-1.5 hover:bg-indigo-50 rounded text-indigo-700 text-xs font-bold transition-colors">استماع (Listening)</button>
-            <button onclick="quickSaveBookmarkFromMenu('sheikh')" class="w-full text-right px-3 py-1.5 hover:bg-indigo-50 rounded text-indigo-700 text-xs font-bold transition-colors">ممارسة مع الشيخ (Practice)</button>
-            <button onclick="quickSaveBookmarkFromMenu('self')" class="w-full text-right px-3 py-1.5 hover:bg-indigo-50 rounded text-indigo-700 text-xs font-bold transition-colors">ممارسة ذاتية (Self)</button>
+    <!-- القائمة العائمة (Context Menu) المركزية والطبقة الشفافة -->
+    <div id="wordContextMenuOverlay" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-[9998] hidden transition-opacity"></div>
+    <div id="wordContextMenu" class="fixed hidden bg-white border border-stone-200 shadow-2xl rounded-2xl p-2 z-[9999] text-sm transition-all" style="top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 600px;">
+        <div class="flex justify-between items-center mb-1 pb-2 pt-1 px-2 border-b border-stone-100">
+            <h3 class="font-bold text-stone-800 text-base">خيارات الكلمة</h3>
+            <button onclick="closeContextMenu()" class="text-stone-400 hover:text-red-500 font-bold text-xl px-2 outline-none">✕</button>
+        </div>
+        <div class="p-1">
+            <button aria-label="إضافة لكراسة التدريب" onclick="saveWordToFlashcards()" class="w-full text-right px-3 py-3 hover:bg-amber-50 rounded-xl text-amber-800 font-bold flex items-center gap-2 transition-colors border-b border-stone-50">
+                <span class="text-xl">⭐️</span> إضافة لكراسة التدريب
+            </button>
+            <button aria-label="إضافة لكراسة النطق والصوتيات" onclick="saveWordToPhoneticsBook()" class="w-full text-right px-3 py-3 hover:bg-teal-50 rounded-xl text-teal-800 font-bold flex items-center gap-2 transition-colors border-b border-stone-50">
+                <span class="text-xl">🗣️</span> إضافة لكراسة النطق
+            </button>
+            
+            <div class="mt-2 pt-2 border-t border-stone-100">
+                <div class="text-xs text-stone-500 font-bold px-3 py-1 mb-2">🔖 حفظ كعلامة مرجعية:</div>
+                <div class="flex flex-col gap-1">
+                    <button onclick="quickSaveBookmarkFromMenu('listening')" class="w-full text-right px-4 py-2 hover:bg-indigo-50 rounded-lg text-indigo-700 text-sm font-bold transition-colors bg-stone-50">استماع (Listening)</button>
+                    <button onclick="quickSaveBookmarkFromMenu('sheikh')" class="w-full text-right px-4 py-2 hover:bg-indigo-50 rounded-lg text-indigo-700 text-sm font-bold transition-colors bg-stone-50">ممارسة مع الشيخ (Practice)</button>
+                    <button onclick="quickSaveBookmarkFromMenu('self')" class="w-full text-right px-4 py-2 hover:bg-indigo-50 rounded-lg text-indigo-700 text-sm font-bold transition-colors bg-stone-50">ممارسة ذاتية (Self)</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -194,7 +203,6 @@
                 <h2 class="text-lg font-bold flex items-center gap-2">📤 محرر الملازم (تحديث مباشر)</h2>
                 <button aria-label="إغلاق" onclick="closeExportModal()" class="text-indigo-200 hover:text-white font-bold text-xl px-2 outline-none">✕</button>
             </div>
-            <!-- (محتوى المودال كما هو - تم اختصاره في العرض هنا للحفاظ على الطول ولكن لم يتم مسح شيء) -->
             <div class="flex flex-col lg:flex-row flex-1 overflow-hidden">
                 <div class="w-full lg:w-[400px] bg-stone-50 p-5 border-l border-stone-200 overflow-y-auto flex flex-col gap-5 shrink-0 shadow-inner">
                     <div class="bg-white p-4 rounded-xl border border-stone-200 shadow-sm">
@@ -320,7 +328,7 @@
                 </div>
             </div>
 
-            <div class="flex flex-wrap gap-2 w-full sm:w-auto justify-end pr-14 lg:pr-0"> <!-- padding for the floating sidebar overlap -->
+            <div class="flex flex-wrap gap-2 w-full sm:w-auto justify-end pr-14 lg:pr-0">
                 <button onclick="openExportModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition-colors shadow-sm flex items-center gap-1.5 flex-1 sm:flex-none justify-center">
                     📤 <span class="inline">استخراج ملازم</span>
                 </button>
@@ -520,6 +528,13 @@
             else sidebar.classList.add('-translate-x-full'); 
         }
         
+        // NEW Helper Function to cleanly close the menu
+        function closeContextMenu() {
+            document.getElementById('wordContextMenu').classList.add('hidden');
+            const overlay = document.getElementById('wordContextMenuOverlay');
+            if(overlay) overlay.classList.add('hidden');
+        }
+        
         function showContextMenu(e, word, wordIndex, targetElement) { 
             const phInfo = phoneticsData ? phoneticsData[word.location] : {}; 
             contextMenuTargetWord = {
@@ -529,29 +544,18 @@
                 ruleText: phInfo?.tajweed_rule || word.tajweed_rule || "-"
             }; 
             
+            // Show the modal and the backdrop
             const menu = document.getElementById('wordContextMenu'); 
+            const overlay = document.getElementById('wordContextMenuOverlay');
             menu.classList.remove('hidden'); 
+            if(overlay) overlay.classList.remove('hidden');
             
-            const rect = targetElement.getBoundingClientRect();
-            const menuHeight = menu.offsetHeight || 220; 
-            const menuWidth = menu.offsetWidth || 224;
-
-            let topPosition = rect.top + window.scrollY - menuHeight - 10;
-            if (topPosition < window.scrollY) {
-                topPosition = rect.bottom + window.scrollY + 10;
-            }
-
-            let leftPosition = rect.left + window.scrollX + (rect.width / 2) - (menuWidth / 2);
-            if (leftPosition < 10) leftPosition = 10;
-            if (leftPosition + menuWidth > window.innerWidth) leftPosition = window.innerWidth - menuWidth - 10;
-
-            menu.style.left = `${leftPosition}px`; 
-            menu.style.top = `${topPosition}px`; 
+            // JS Coordinate calculations have been entirely removed, CSS handles the centering.
         }
 
         document.addEventListener('click', (e) => { 
             if(!e.target.closest('#wordContextMenu')) {
-                document.getElementById('wordContextMenu').classList.add('hidden'); 
+                closeContextMenu();
             }
         });
 
@@ -678,7 +682,7 @@
                 localStorage.setItem('quranPhoneticsBook', JSON.stringify(saved));
                 alert('تمت الإضافة لكراسة النطق والصوتيات 🗣️');
             } else { alert('الكلمة موجودة مسبقاً في كراسة النطق.'); }
-            document.getElementById('wordContextMenu').classList.add('hidden');
+            closeContextMenu();
         }
         function openPhoneticsModal() { renderPhoneticsBook(); document.getElementById('phoneticsModal').classList.remove('hidden'); }
         function closePhoneticsModal() { stopAllAudio(); document.getElementById('phoneticsModal').classList.add('hidden'); }
@@ -777,7 +781,7 @@
             bookmarks.push({ id: Date.now(), title, page, verseKey, date: new Date().toLocaleDateString('ar-EG'), category: category });
             localStorage.setItem('quranBookmarks', JSON.stringify(bookmarks));
             
-            document.getElementById('wordContextMenu').classList.add('hidden');
+            closeContextMenu();
             alert('تمت الإضافة كعلامة مرجعية 🔖');
         }
 
@@ -844,7 +848,7 @@
                 localStorage.setItem('quranFlashcards', JSON.stringify(saved)); 
                 alert('تمت الإضافة للكراسة ⭐️'); 
             } else { alert('الكلمة موجودة مسبقاً.'); }
-            document.getElementById('wordContextMenu').classList.add('hidden'); 
+            closeContextMenu();
         }
 
         function renderFlashcards() {
