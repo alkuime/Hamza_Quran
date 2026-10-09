@@ -1,0 +1,1217 @@
+{
+  "3:1:1": {
+    "surah": 3,
+    "ayah": 1,
+    "word": 1,
+    "text": "الم",
+    "location": "3:1:1",
+    "phonetic": "أَ - لِفْ - لَاااااامْ - مِييييييْمْ",
+    "tajweed_rule": "مد لازم حرفي، وقف"
+  },
+  "3:2:1": {
+    "surah": 3,
+    "ayah": 2,
+    "word": 1,
+    "text": "اللَّهُ",
+    "location": "3:2:1",
+    "phonetic": "ألْ - لَاا - هُ",
+    "tajweed_rule": "تفخيم لفظ الجلالة"
+  },
+  "3:2:2": {
+    "surah": 3,
+    "ayah": 2,
+    "word": 2,
+    "text": "لَا",
+    "location": "3:2:2",
+    "phonetic": "لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:2:3": {
+    "surah": 3,
+    "ayah": 2,
+    "word": 3,
+    "text": "إِلَٰهَ",
+    "location": "3:2:3",
+    "phonetic": "إِ - لَاا - هَ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:2:4": {
+    "surah": 3,
+    "ayah": 2,
+    "word": 4,
+    "text": "إِلَّا",
+    "location": "3:2:4",
+    "phonetic": "إِلْ - لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:2:5": {
+    "surah": 3,
+    "ayah": 2,
+    "word": 5,
+    "text": "هُوَ",
+    "location": "3:2:5",
+    "phonetic": "هُ - وَلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:2:6": {
+    "surah": 3,
+    "ayah": 2,
+    "word": 6,
+    "text": "الْحَيُّ",
+    "location": "3:2:6",
+    "phonetic": "حَيْ - يُلْ",
+    "tajweed_rule": "حرف مشدد، همزة وصل"
+  },
+  "3:2:7": {
+    "surah": 3,
+    "ayah": 2,
+    "word": 7,
+    "text": "الْقَيُّومُ",
+    "location": "3:2:7",
+    "phonetic": "قَيّ - يُوووومْ",
+    "tajweed_rule": "مد عارض للسكون، وقف"
+  },
+  "3:3:1": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 1,
+    "text": "نَزَّلَ",
+    "location": "3:3:1",
+    "phonetic": "نَزْ - زَ - لَ",
+    "tajweed_rule": "حرف مشدد"
+  },
+  "3:3:2": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 2,
+    "text": "عَلَيْكَ",
+    "location": "3:3:2",
+    "phonetic": "عَ - لَيْ - كَلْ",
+    "tajweed_rule": "مقطع ساكن، همزة وصل"
+  },
+  "3:3:3": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 3,
+    "text": "الْكِتَابَ",
+    "location": "3:3:3",
+    "phonetic": "كِ - تَاا - بَ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:3:4": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 4,
+    "text": "بِالْحَقِّ",
+    "location": "3:3:4",
+    "phonetic": "بِلْ - حَقْ - قِ",
+    "tajweed_rule": "إظهار قمري، حرف مشدد"
+  },
+  "3:3:5": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 5,
+    "text": "مُصَدِّقًا",
+    "location": "3:3:5",
+    "phonetic": "مُ - صَدْ - دِ - قَلْ",
+    "tajweed_rule": "إدغام بغير غنة"
+  },
+  "3:3:6": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 6,
+    "text": "لِّمَا",
+    "location": "3:3:6",
+    "phonetic": "لِ - مَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:3:7": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 7,
+    "text": "بَيْنَ",
+    "location": "3:3:7",
+    "phonetic": "بَيْ - نَ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:3:8": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 8,
+    "text": "يَدَيْهِ",
+    "location": "3:3:8",
+    "phonetic": "يَ - دَيْ - هِ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:3:9": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 9,
+    "text": "وَأَنزَلَ",
+    "location": "3:3:9",
+    "phonetic": "وَ - أَنْ - زَ - لَتْ",
+    "tajweed_rule": "إخفاء حقيقي، همزة وصل"
+  },
+  "3:3:10": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 10,
+    "text": "التَّوْرَاةَ",
+    "location": "3:3:10",
+    "phonetic": "تَوْ - رَاا - تَ",
+    "tajweed_rule": "إدغام شمسي، مد طبيعي"
+  },
+  "3:3:11": {
+    "surah": 3,
+    "ayah": 3,
+    "word": 11,
+    "text": "وَالْإِنجِيلَ",
+    "location": "3:3:11",
+    "phonetic": "وَلْ - إِنْ - جِييييْلْ",
+    "tajweed_rule": "إخفاء حقيقي، مد عارض للسكون، وقف"
+  },
+  "3:4:1": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 1,
+    "text": "مِن",
+    "location": "3:4:1",
+    "phonetic": "مِنْ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:4:2": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 2,
+    "text": "قَبْلُ",
+    "location": "3:4:2",
+    "phonetic": "قَبْ - لُ",
+    "tajweed_rule": "قلقلة صغرى"
+  },
+  "3:4:3": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 3,
+    "text": "هُدًى",
+    "location": "3:4:3",
+    "phonetic": "هُ - دَلْ",
+    "tajweed_rule": "إدغام بغير غنة"
+  },
+  "3:4:4": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 4,
+    "text": "لِّلنَّاسِ",
+    "location": "3:4:4",
+    "phonetic": "لِنْ - نَاا - سِ",
+    "tajweed_rule": "إدغام متماثلين، غنة مشددة"
+  },
+  "3:4:5": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 5,
+    "text": "وَأَنزَلَ",
+    "location": "3:4:5",
+    "phonetic": "وَ - أَنْ - زَ - لَلْ",
+    "tajweed_rule": "إخفاء حقيقي، همزة وصل"
+  },
+  "3:4:6": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 6,
+    "text": "الْفُرْقَانَ",
+    "location": "3:4:6",
+    "phonetic": "فُرْ - قَاا - نَ",
+    "tajweed_rule": "إظهار قمري، تفخيم"
+  },
+  "3:4:7": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 7,
+    "text": "إِنَّ",
+    "location": "3:4:7",
+    "phonetic": "إِنْ - نَلْ",
+    "tajweed_rule": "غنة مشددة، همزة وصل"
+  },
+  "3:4:8": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 8,
+    "text": "الَّذِينَ",
+    "location": "3:4:8",
+    "phonetic": "لَ - ذِي - نَ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:4:9": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 9,
+    "text": "كَفَرُوا",
+    "location": "3:4:9",
+    "phonetic": "كَ - فَ - رُوو",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:4:10": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 10,
+    "text": "بِآيَاتِ",
+    "location": "3:4:10",
+    "phonetic": "بِ - آا - يَاا - تِ",
+    "tajweed_rule": "مد بدل، مد طبيعي"
+  },
+  "3:4:11": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 11,
+    "text": "اللَّهِ",
+    "location": "3:4:11",
+    "phonetic": "للَّا - هِ",
+    "tajweed_rule": "ترقيق لفظ الجلالة"
+  },
+  "3:4:12": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 12,
+    "text": "لَهُمْ",
+    "location": "3:4:12",
+    "phonetic": "لَ - هُمْ",
+    "tajweed_rule": "إظهار شفوي"
+  },
+  "3:4:13": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 13,
+    "text": "عَذَابٌ",
+    "location": "3:4:13",
+    "phonetic": "عَ - ذَاا - بٌ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:4:14": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 14,
+    "text": "شَدِيدٌ",
+    "location": "3:4:14",
+    "phonetic": "شَ - دِي - دُوَ",
+    "tajweed_rule": "إدغام بغنة"
+  },
+  "3:4:15": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 15,
+    "text": "وَاللَّهُ",
+    "location": "3:4:15",
+    "phonetic": "وَلْ - لَاا - هُ",
+    "tajweed_rule": "تفخيم لفظ الجلالة"
+  },
+  "3:4:16": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 16,
+    "text": "عَزِيزٌ",
+    "location": "3:4:16",
+    "phonetic": "عَ - زِي - زُنْ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:4:17": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 17,
+    "text": "ذُو",
+    "location": "3:4:17",
+    "phonetic": "ذُو",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:4:18": {
+    "surah": 3,
+    "ayah": 4,
+    "word": 18,
+    "text": "انتِقَامٍ",
+    "location": "3:4:18",
+    "phonetic": "إِنْ - تِ - قَاااامْ",
+    "tajweed_rule": "إخفاء حقيقي، مد عارض للسكون، وقف"
+  },
+  "3:5:1": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 1,
+    "text": "إِنَّ",
+    "location": "3:5:1",
+    "phonetic": "إِنْ - نَلْ",
+    "tajweed_rule": "غنة مشددة، همزة وصل"
+  },
+  "3:5:2": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 2,
+    "text": "اللَّهَ",
+    "location": "3:5:2",
+    "phonetic": "لَاا - هَ",
+    "tajweed_rule": "تفخيم لفظ الجلالة"
+  },
+  "3:5:3": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 3,
+    "text": "لَا",
+    "location": "3:5:3",
+    "phonetic": "لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:5:4": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 4,
+    "text": "يَخْفَىٰ",
+    "location": "3:5:4",
+    "phonetic": "يَخْ - فَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:5:5": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 5,
+    "text": "عَلَيْهِ",
+    "location": "3:5:5",
+    "phonetic": "عَ - لَيْ - هِ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:5:6": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 6,
+    "text": "شَيْءٌ",
+    "location": "3:5:6",
+    "phonetic": "شَيْ - أُنْ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:5:7": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 7,
+    "text": "فِي",
+    "location": "3:5:7",
+    "phonetic": "فِلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:5:8": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 8,
+    "text": "الْأَرْضِ",
+    "location": "3:5:8",
+    "phonetic": "أَرْ - ضِ",
+    "tajweed_rule": "إظهار قمري، تفخيم"
+  },
+  "3:5:9": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 9,
+    "text": "وَلَا",
+    "location": "3:5:9",
+    "phonetic": "وَ - لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:5:10": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 10,
+    "text": "فِي",
+    "location": "3:5:10",
+    "phonetic": "فِسْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:5:11": {
+    "surah": 3,
+    "ayah": 5,
+    "word": 11,
+    "text": "السَّمَاءِ",
+    "location": "3:5:11",
+    "phonetic": "سَ - مَاااااءْ",
+    "tajweed_rule": "إدغام شمسي، مد متصل، وقف"
+  },
+  "3:6:1": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 1,
+    "text": "هُوَ",
+    "location": "3:6:1",
+    "phonetic": "هُ - وَلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:6:2": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 2,
+    "text": "الَّذِي",
+    "location": "3:6:2",
+    "phonetic": "لَ - ذِي",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:6:3": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 3,
+    "text": "يُصَوِّرُكُمْ",
+    "location": "3:6:3",
+    "phonetic": "يُ - صَۆْ - وِ - رُ - كُمْ",
+    "tajweed_rule": "حرف مشدد، إظهار شفوي"
+  },
+  "3:6:4": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 4,
+    "text": "فِي",
+    "location": "3:6:4",
+    "phonetic": "فِلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:6:5": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 5,
+    "text": "الْأَرْحَامِ",
+    "location": "3:6:5",
+    "phonetic": "أَرْ - حَاا - مِ",
+    "tajweed_rule": "إظهار قمري، مد طبيعي"
+  },
+  "3:6:6": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 6,
+    "text": "كَيْفَ",
+    "location": "3:6:6",
+    "phonetic": "كَيْ - فَ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:6:7": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 7,
+    "text": "يَشَاءُ",
+    "location": "3:6:7",
+    "phonetic": "يَ - شَااااءُ",
+    "tajweed_rule": "مد متصل"
+  },
+  "3:6:8": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 8,
+    "text": "لَا",
+    "location": "3:6:8",
+    "phonetic": "لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:6:9": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 9,
+    "text": "إِلَٰهَ",
+    "location": "3:6:9",
+    "phonetic": "إِ - لَاا - هَ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:6:10": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 10,
+    "text": "إِلَّا",
+    "location": "3:6:10",
+    "phonetic": "إِلْ - لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:6:11": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 11,
+    "text": "هُوَ",
+    "location": "3:6:11",
+    "phonetic": "هُ - وَلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:6:12": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 12,
+    "text": "الْعَزِيزُ",
+    "location": "3:6:12",
+    "phonetic": "عَ - زِي - زُلْ",
+    "tajweed_rule": "إظهار قمري، همزة وصل"
+  },
+  "3:6:13": {
+    "surah": 3,
+    "ayah": 6,
+    "word": 13,
+    "text": "الْحَكِيمُ",
+    "location": "3:6:13",
+    "phonetic": "حَ - كِييييمْ",
+    "tajweed_rule": "مد عارض للسكون، وقف"
+  },
+  "3:7:1": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 1,
+    "text": "هُوَ",
+    "location": "3:7:1",
+    "phonetic": "هُ - وَلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:7:2": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 2,
+    "text": "الَّذِي",
+    "location": "3:7:2",
+    "phonetic": "لَ - ذِيييي",
+    "tajweed_rule": "مد منفصل"
+  },
+  "3:7:3": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 3,
+    "text": "أَنزَلَ",
+    "location": "3:7:3",
+    "phonetic": "أَنْ - زَ - لَ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:7:4": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 4,
+    "text": "عَلَيْكَ",
+    "location": "3:7:4",
+    "phonetic": "عَ - لَيْ - كَلْ",
+    "tajweed_rule": "مقطع ساكن، همزة وصل"
+  },
+  "3:7:5": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 5,
+    "text": "الْكِتَابَ",
+    "location": "3:7:5",
+    "phonetic": "كِ - تَاا - بَ",
+    "tajweed_rule": "إظهار قمري، مد طبيعي"
+  },
+  "3:7:6": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 6,
+    "text": "مِنْهُ",
+    "location": "3:7:6",
+    "phonetic": "مِنْ - هُ",
+    "tajweed_rule": "إظهار حلقي"
+  },
+  "3:7:7": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 7,
+    "text": "آيَاتٌ",
+    "location": "3:7:7",
+    "phonetic": "آا - يَاا - تُنْ",
+    "tajweed_rule": "مد بدل، إدغام بغنة"
+  },
+  "3:7:8": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 8,
+    "text": "مُّحْكَمَاتٌ",
+    "location": "3:7:8",
+    "phonetic": "مُحْ - كَ - مَاا - تُنْ",
+    "tajweed_rule": "إظهار حلقي"
+  },
+  "3:7:9": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 9,
+    "text": "هُنَّ",
+    "location": "3:7:9",
+    "phonetic": "هُنْ - نَ",
+    "tajweed_rule": "غنة مشددة"
+  },
+  "3:7:10": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 10,
+    "text": "أُمُّ",
+    "location": "3:7:10",
+    "phonetic": "أُمْ - مُلْ",
+    "tajweed_rule": "حرف مشدد، همزة وصل"
+  },
+  "3:7:11": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 11,
+    "text": "الْكِتَابِ",
+    "location": "3:7:11",
+    "phonetic": "كِ - تَاا - بِ",
+    "tajweed_rule": "إظهار قمري، مد طبيعي"
+  },
+  "3:7:12": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 12,
+    "text": "وَأُخَرُ",
+    "location": "3:7:12",
+    "phonetic": "وَ - أُ - خَ - رُ",
+    "tajweed_rule": "ترقيق وتفخيم"
+  },
+  "3:7:13": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 13,
+    "text": "مُتَشَابِهَاتٌ",
+    "location": "3:7:13",
+    "phonetic": "مُ - تَ - شَاا - بِ - هَاا - تُنْ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:7:14": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 14,
+    "text": "فَأَمَّا",
+    "location": "3:7:14",
+    "phonetic": "فَ - أَمْ - مَاالْ",
+    "tajweed_rule": "غنة مشددة، همزة وصل"
+  },
+  "3:7:15": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 15,
+    "text": "الَّذِينَ",
+    "location": "3:7:15",
+    "phonetic": "لَ - ذِي - نَ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:7:16": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 16,
+    "text": "فِي",
+    "location": "3:7:16",
+    "phonetic": "فِي",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:7:17": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 17,
+    "text": "قُلُوبِهِمْ",
+    "location": "3:7:17",
+    "phonetic": "قُ - لُوو - بِ - هِمْ",
+    "tajweed_rule": "إظهار شفوي"
+  },
+  "3:7:18": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 18,
+    "text": "زَيْغٌ",
+    "location": "3:7:18",
+    "phonetic": "زَيْ - غُنْ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:7:19": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 19,
+    "text": "فَيَتَّبِعُونَ",
+    "location": "3:7:19",
+    "phonetic": "فَ - يَتْ - تَ - بِ - عُوو - نَ",
+    "tajweed_rule": "حرف مشدد، مد طبيعي"
+  },
+  "3:7:20": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 20,
+    "text": "مَا",
+    "location": "3:7:20",
+    "phonetic": "مَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:7:21": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 21,
+    "text": "تَشَابَهَ",
+    "location": "3:7:21",
+    "phonetic": "تَ - شَاا - بَ - هَ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:7:22": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 22,
+    "text": "مِنْهُ",
+    "location": "3:7:22",
+    "phonetic": "مِنْ - هُ",
+    "tajweed_rule": "إظهار حلقي"
+  },
+  "3:7:23": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 23,
+    "text": "ابْتِغَاءَ",
+    "location": "3:7:23",
+    "phonetic": "بْتِ - غَااااءَ",
+    "tajweed_rule": "قلقلة صغرى، مد متصل"
+  },
+  "3:7:24": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 24,
+    "text": "الْفِتْنَةِ",
+    "location": "3:7:24",
+    "phonetic": "فِتْ - نَ - تِ",
+    "tajweed_rule": "إظهار قمري"
+  },
+  "3:7:25": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 25,
+    "text": "وَابْتِغَاءَ",
+    "location": "3:7:25",
+    "phonetic": "وَبْ - تِ - غَااااءَ",
+    "tajweed_rule": "قلقلة صغرى، مد متصل"
+  },
+  "3:7:26": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 26,
+    "text": "تَأْوِيلِهِ",
+    "location": "3:7:26",
+    "phonetic": "تَأْ - وِي - لِ - هِي",
+    "tajweed_rule": "مد صلة صغرى"
+  },
+  "3:7:27": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 27,
+    "text": "وَمَا",
+    "location": "3:7:27",
+    "phonetic": "وَ - مَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:7:28": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 28,
+    "text": "يَعْلَمُ",
+    "location": "3:7:28",
+    "phonetic": "يَعْ - لَ - مُ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:7:29": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 29,
+    "text": "تَأْوِيلَهُ",
+    "location": "3:7:29",
+    "phonetic": "تَأْ - وِي - لَ - هُوووو",
+    "tajweed_rule": "مد صلة كبرى"
+  },
+  "3:7:30": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 30,
+    "text": "إِلَّا",
+    "location": "3:7:30",
+    "phonetic": "إِلْ - لَاا",
+    "tajweed_rule": "تفخيم لفظ الجلالة"
+  },
+  "3:7:31": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 31,
+    "text": "اللَّهُ",
+    "location": "3:7:31",
+    "phonetic": "للَّا - هُ",
+    "tajweed_rule": "تفخيم لفظ الجلالة"
+  },
+  "3:7:32": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 32,
+    "text": "وَالرَّاسِخُونَ",
+    "location": "3:7:32",
+    "phonetic": "وَرْ - رَاا - سِ - خُوو - نَ",
+    "tajweed_rule": "إدغام شمسي، تفخيم"
+  },
+  "3:7:33": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 33,
+    "text": "فِي",
+    "location": "3:7:33",
+    "phonetic": "فِلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:7:34": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 34,
+    "text": "الْعِلْمِ",
+    "location": "3:7:34",
+    "phonetic": "عِلْ - مِ",
+    "tajweed_rule": "إظهار قمري"
+  },
+  "3:7:35": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 35,
+    "text": "يَقُولُونَ",
+    "location": "3:7:35",
+    "phonetic": "يَ - قُوو - لُوو - نَ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:7:36": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 36,
+    "text": "آمَنَّا",
+    "location": "3:7:36",
+    "phonetic": "آا - مَن_ - نَاا",
+    "tajweed_rule": "مد بدل، غنة مشددة"
+  },
+  "3:7:37": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 37,
+    "text": "بِهِ",
+    "location": "3:7:37",
+    "phonetic": "بِ - هِي",
+    "tajweed_rule": "مد صلة صغرى"
+  },
+  "3:7:38": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 38,
+    "text": "كُلٌّ",
+    "location": "3:7:38",
+    "phonetic": "كُلْ - لٌ",
+    "tajweed_rule": "إدغام بغير غنة"
+  },
+  "3:7:39": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 39,
+    "text": "مِّنْ",
+    "location": "3:7:39",
+    "phonetic": "مِنْ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:7:40": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 40,
+    "text": "عِندِ",
+    "location": "3:7:40",
+    "phonetic": "عِنْ - دِ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:7:41": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 41,
+    "text": "رَبِّنَا",
+    "location": "3:7:41",
+    "phonetic": "رَبْ - بِ - نَاا",
+    "tajweed_rule": "حرف مشدد، مد طبيعي"
+  },
+  "3:7:42": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 42,
+    "text": "وَمَا",
+    "location": "3:7:42",
+    "phonetic": "وَ - مَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:7:43": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 43,
+    "text": "يَذَّكَّرُ",
+    "location": "3:7:43",
+    "phonetic": "يَذْ - ذَكْ - كَ - رُ",
+    "tajweed_rule": "حرف مشدد"
+  },
+  "3:7:44": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 44,
+    "text": "إِلَّا",
+    "location": "3:7:44",
+    "phonetic": "إِلْ - لَااااا",
+    "tajweed_rule": "مد منفصل"
+  },
+  "3:7:45": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 45,
+    "text": "أُولُو",
+    "location": "3:7:45",
+    "phonetic": "أُ - لُلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:7:46": {
+    "surah": 3,
+    "ayah": 7,
+    "word": 46,
+    "text": "الْأَلْبَابِ",
+    "location": "3:7:46",
+    "phonetic": "أَلْ - بَاااابْ",
+    "tajweed_rule": "إظهار قمري، مد عارض للسكون، وقف"
+  },
+  "3:8:1": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 1,
+    "text": "رَبَّنَا",
+    "location": "3:8:1",
+    "phonetic": "رَبْ - بِ - نَاا",
+    "tajweed_rule": "حرف مشدد، مد طبيعي"
+  },
+  "3:8:2": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 2,
+    "text": "لَا",
+    "location": "3:8:2",
+    "phonetic": "لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:8:3": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 3,
+    "text": "تُزِغْ",
+    "location": "3:8:3",
+    "phonetic": "تُ - زِغْ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:8:4": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 4,
+    "text": "قُلُوبَنَا",
+    "location": "3:8:4",
+    "phonetic": "قُ - لُوو - بَ - نَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:8:5": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 5,
+    "text": "بَعْدَ",
+    "location": "3:8:5",
+    "phonetic": "بَعْ - دَ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:8:6": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 6,
+    "text": "إِذْ",
+    "location": "3:8:6",
+    "phonetic": "إِذْ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:8:7": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 7,
+    "text": "هَدَيْتَنَا",
+    "location": "3:8:7",
+    "phonetic": "هَ - دَيْ - تَ - نَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:8:8": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 8,
+    "text": "وَهَبْ",
+    "location": "3:8:8",
+    "phonetic": "وَ - هَبْ",
+    "tajweed_rule": "قلقلة صغرى"
+  },
+  "3:8:9": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 9,
+    "text": "لَنَا",
+    "location": "3:8:9",
+    "phonetic": "لَ - نَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:8:10": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 10,
+    "text": "مِن",
+    "location": "3:8:10",
+    "phonetic": "مِلْ",
+    "tajweed_rule": "إدغام بغير غنة"
+  },
+  "3:8:11": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 11,
+    "text": "لَّدُنكَ",
+    "location": "3:8:11",
+    "phonetic": "لَ - دُنْ - كَ",
+    "tajweed_rule": "إخفاء حقيقي"
+  },
+  "3:8:12": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 12,
+    "text": "رَحْمَةً",
+    "location": "3:8:12",
+    "phonetic": "رَحْ - مَ - تَنْ",
+    "tajweed_rule": "إظهار حلقي"
+  },
+  "3:8:13": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 13,
+    "text": "إِنَّكَ",
+    "location": "3:8:13",
+    "phonetic": "إِنْ - نَ - كَ",
+    "tajweed_rule": "غنة مشددة"
+  },
+  "3:8:14": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 14,
+    "text": "أَنتَ",
+    "location": "3:8:14",
+    "phonetic": "أَنْ - تَلْ",
+    "tajweed_rule": "إخفاء حقيقي، همزة وصل"
+  },
+  "3:8:15": {
+    "surah": 3,
+    "ayah": 8,
+    "word": 15,
+    "text": "الْوَهَّابُ",
+    "location": "3:8:15",
+    "phonetic": "وَهْ - هَاااابْ",
+    "tajweed_rule": "إظهار قمري، مد عارض للسكون، وقف"
+  },
+  "3:9:1": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 1,
+    "text": "رَبَّنَا",
+    "location": "3:9:1",
+    "phonetic": "رَبْ - بَ - نَاااا",
+    "tajweed_rule": "حرف مشدد، مد منفصل"
+  },
+  "3:9:2": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 2,
+    "text": "إِنَّكَ",
+    "location": "3:9:2",
+    "phonetic": "إِنْ - نَ - كَ",
+    "tajweed_rule": "غنة مشددة"
+  },
+  "3:9:3": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 3,
+    "text": "جَامِعُ",
+    "location": "3:9:3",
+    "phonetic": "جَاا - مِ - عُنْ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:9:4": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 4,
+    "text": "النَّاسِ",
+    "location": "3:9:4",
+    "phonetic": "نَ - نَاا - سِ",
+    "tajweed_rule": "إدغام شمسي، غنة مشددة"
+  },
+  "3:9:5": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 5,
+    "text": "لِيَوْمٍ",
+    "location": "3:9:5",
+    "phonetic": "لِ - يَوْ - مِلْ",
+    "tajweed_rule": "إدغام بغير غنة"
+  },
+  "3:9:6": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 6,
+    "text": "لَّا",
+    "location": "3:9:6",
+    "phonetic": "لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:9:7": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 7,
+    "text": "رَيْبَ",
+    "location": "3:9:7",
+    "phonetic": "رَيْ - بَ",
+    "tajweed_rule": "مقطع ساكن"
+  },
+  "3:9:8": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 8,
+    "text": "فِيهِ",
+    "location": "3:9:8",
+    "phonetic": "فِي - هِ",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:9:9": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 9,
+    "text": "إِنَّ",
+    "location": "3:9:9",
+    "phonetic": "إِنْ - نَلْ",
+    "tajweed_rule": "غنة مشددة، همزة وصل"
+  },
+  "3:9:10": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 10,
+    "text": "اللَّهَ",
+    "location": "3:9:10",
+    "phonetic": "لَاا - هَ",
+    "tajweed_rule": "تفخيم لفظ الجلالة"
+  },
+  "3:9:11": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 11,
+    "text": "لَا",
+    "location": "3:9:11",
+    "phonetic": "لَاا",
+    "tajweed_rule": "مد طبيعي"
+  },
+  "3:9:12": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 12,
+    "text": "يُخْلِفُ",
+    "location": "3:9:12",
+    "phonetic": "يُخْ - لِ - فُلْ",
+    "tajweed_rule": "همزة وصل"
+  },
+  "3:9:13": {
+    "surah": 3,
+    "ayah": 9,
+    "word": 13,
+    "text": "الْمِيعَادَ",
+    "location": "3:9:13",
+    "phonetic": "مِي - عَاااادْ",
+    "tajweed_rule": "إظهار قمري، مد عارض للسكون، وقف"
+  }
+}
