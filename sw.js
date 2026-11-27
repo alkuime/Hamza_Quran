@@ -1,5 +1,5 @@
 // عامل الخدمة لمصحف التجويد التفاعلي — العمل دون إنترنت (v79)
-const SHELL = 'quran-shell-v108', DATA = 'quran-data-v1', AUDIO = 'quran-audio-v1', CDN = 'quran-cdn-v1', API = 'quran-api-v1';
+const SHELL = 'quran-shell-v109', DATA = 'quran-data-v1', AUDIO = 'quran-audio-v1', CDN = 'quran-cdn-v1', API = 'quran-api-v1';
 const SHELL_FILES = ['./', 'index.html', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png'];
 const CDN_HOSTS = ['cdn.tailwindcss.com', 'fonts.googleapis.com', 'fonts.gstatic.com', 'cdnjs.cloudflare.com', 'cdn.jsdelivr.net'];
 const AUDIO_HOSTS = ['audio.qurancdn.com', 'verses.quran.com', 'download.quranicaudio.com', 'everyayah.com', 'mirrors.quranicaudio.com'];
