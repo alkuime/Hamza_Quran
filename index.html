@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصحف التجويد التفاعلي v101</title>
+    <title>مصحف التجويد التفاعلي v102</title>
     <script>try{var t=localStorage.getItem('quranSuTheme');if(t&&t!=='green')document.documentElement.setAttribute('data-su-theme',t)}catch(e){}</script>
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#064e3b">
@@ -441,6 +441,14 @@
         .su-swatches button { display:flex; flex-direction:column; align-items:center; gap:6px; padding:10px 4px; border-radius:18px; background:var(--su-card); border:2px solid var(--su-line); color:var(--su-text); font-weight:700; font-size:13px; min-width:0; }
         .su-swatches button.on { border-color:var(--su-text); }
         .su-swatches .dot { width:40px; height:40px; border-radius:99px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:18px; box-shadow:inset 0 0 0 3px rgba(255,255,255,.35); }
+        /* v102: علاماتي والمشاركة */
+        .su-bm { display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:16px; background:var(--su-card); border:1px solid var(--su-line); margin-bottom:8px; }
+        .su-bm .t { flex:1; min-width:0; text-align:right; display:flex; flex-direction:column; gap:2px; }
+        .su-bm .t b { color:var(--su-text); font-size:16px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .su-bm .t span { color:var(--su-muted); font-size:12px; font-weight:700; }
+        .su-bm .x { flex:0 0 40px; width:40px; height:40px; border-radius:99px; background:var(--su-card2); color:var(--su-muted); font-size:14px; }
+        .su-bm .cat { font-size:11px; padding:2px 8px; border-radius:99px; background:var(--su-pri-soft); color:var(--su-pri); }
+        .su-link { direction:ltr; text-align:center; font-weight:700; font-size:14px; padding:12px; border-radius:14px; background:var(--su-card); border:1px dashed var(--su-line); color:var(--su-pri); word-break:break-all; user-select:all; }
         /* v89: الوضع الداكن */
         .mk-path button { color:#1F2937 !important; }
         html.dark body.simple-ui #wordsGridContainer { background:var(--su-card); }
@@ -1170,7 +1178,7 @@
             schema: 'quranSchemaVersion',
             mastery: 'quranMastery'
         };
-        const APP_VERSION = 101;
+        const APP_VERSION = 102;
 
         const DEFAULT_SETTINGS = {
             reciter: '6', speed: 1, multiDefault: false, multiReciters: ['6', '7'],
@@ -4576,6 +4584,7 @@
         function openPolicy() { openInfoModal('📜 السياسة العامة للواجهات', POLICY_HTML); }
 
         const CHANGELOG = [
+            ['v102', '2026-11-27', ['«علاماتي» بشاشة بسيطة: زر كبير لإضافة علامة على الآية الحالية، وقائمة واحدة مرتبة بالأحدث، وضغطة للانتقال وزر ✕ للحذف.', '«شارك التطبيق»: رابط التطبيق على الإنترنت مع زرّي النسخ والمشاركة، وروابط المشروع في «عن التطبيق».']],
             ['v101', '2026-11-27', ['اختيار لون الواجهة: ستة ألوان (الأخضر، البرغندي، السماوي، الأزرق، البني، البنفسجي) من ☰ ← الألوان، أو من الإعدادات. ويعمل اللون في الوضعين الفاتح والداكن ومع التباين العالي.']],
             ['v100', '2026-11-27', ['تبسيط شامل للواجهة المبسّطة: قائمة ☰ صارت مربعات كبيرة في ثلاث مجموعات (اقرأ واستمع، أدواتي، التطبيق) بدل قائمة طويلة.', 'بطاقة الآية: زرّا «تشغيل» و«تكرار» ثم شبكة أيقونات واضحة (التفسير، متواصل، علامة، متشابهات، نسخ، مشاركة، صورة).', 'الإعدادات في مجموعات: القراءة، العرض، الصوت، البيانات. ومفاتيح العرض الأربعة في مربعات، وحُذف شريط حجم الخط المكرر.', 'تعليمات استخدام في أول كل تبويب: بطاقة «كيف أستخدم هذا القسم؟» بثلاث خطوات قصيرة، تُطوى بزر «فهمت» وتُفتح متى شئت من «ⓘ طريقة الاستخدام». وحلّت محل سطر التلميح القديم.']],
             ['v99', '2026-11-27', ['مشاركة الآية كصورة: من بطاقة الآية اختر «صورة للمشاركة» لتحصل على صورة مربعة أنيقة بخط المصحف واسم السورة ورقم الآية، تشاركها مباشرة أو تحفظها.']],
@@ -5400,6 +5409,7 @@
                 ${suRow('💾', 'حفظ نسخة احتياطية', 'exportAllData()')}
                 <label class="su-row cursor-pointer"><span class="i">📥</span>استعادة نسخة احتياطية<input type="file" accept=".json" class="hidden" onchange="suCloseSheet(); importAllData(event)"></label>
                 ${suRow('🛠️', 'إعدادات متقدمة', 'toggleSidebar(true)')}
+                ${suRow('🔗', 'شارك التطبيق', 'suShareApp()')}
                 ${suRow('ℹ️', 'عن التطبيق', 'openChangelog()', 'سجل التغييرات')}
                 <div class="su-ver">الإصدار ${APP_VERSION} · رواية حفص عن عاصم</div>`);
             const rs = $('suSheetPanel').querySelectorAll('select');
@@ -6097,9 +6107,9 @@
         suOpenMore = function () {
             const g = (t, tiles) => `<div class="su-lbl">${t}</div><div class="su-tiles">${tiles.join('')}</div>`;
             suOpenSheet('<h2>المزيد</h2>' + `<div class="flex gap-2 mb-1"><input id="suGoto" inputmode="numeric" dir="ltr" placeholder="صفحة أو 2:255" class="flex-1 min-h-[52px] rounded-2xl px-4 text-center font-bold" style="background:var(--su-card);border:1px solid var(--su-line);color:var(--su-text)" onkeydown="if(event.key==='Enter')suGotoGo()"><button class="su-btn pri" style="width:auto" onclick="suGotoGo()">اذهب</button></div>`
-                + g('اقرأ واستمع', [suTile('📑', 'الفهرس', 'suOpenIndex()'), suTile('🎧', 'استماع متواصل', 'suListenSheet()'), suTile('🔖', 'العلامات', 'openBookmarksModal()'), suTile('📅', 'الورد والختمة', 'openKhatma()'), suTile('🎯', 'وضع التركيز', 'toggleFocus(true)'), suTile('🏠', 'يومي', 'suOpenToday()')])
+                + g('اقرأ واستمع', [suTile('📑', 'الفهرس', 'suOpenIndex()'), suTile('🎧', 'استماع متواصل', 'suListenSheet()'), suTile('🔖', 'علاماتي', 'suBookmarks()'), suTile('📅', 'الورد والختمة', 'openKhatma()'), suTile('🎯', 'وضع التركيز', 'toggleFocus(true)'), suTile('🏠', 'يومي', 'suOpenToday()')])
                 + g('أدواتي', [suTile('📚', 'كراساتي', 'openBooksModal()'), suTile('📤', 'ملازم PDF', 'openExportModal()'), suTile('❓', 'من أين أبدأ؟', 'openStartGuide()')])
-                + g('التطبيق', [suTile('⚙️', 'الإعدادات', 'suOpenSettings()'), suTile('🧭', 'تغيير الواجهة', "$('suStart').classList.add('on')"), suTile('🎨', 'الألوان', 'suThemeSheet()'), suTile('📲', 'دون إنترنت', 'openAppPanel()'), suTile('👋', 'الجولة التعريفية', 'suStartTour()'), suTile('🧰', 'الواجهة الكاملة', 'setSimpleUI(false)')]));
+                + g('التطبيق', [suTile('⚙️', 'الإعدادات', 'suOpenSettings()'), suTile('🧭', 'تغيير الواجهة', "$('suStart').classList.add('on')"), suTile('🎨', 'الألوان', 'suThemeSheet()'), suTile('📲', 'دون إنترنت', 'openAppPanel()'), suTile('🔗', 'شارك التطبيق', 'suShareApp()'), suTile('👋', 'الجولة التعريفية', 'suStartTour()'), suTile('🧰', 'الواجهة الكاملة', 'setSimpleUI(false)')]));
         };
         suAyahSheet = async function (key) {
             setCurrentAyah(key);
@@ -6169,6 +6179,35 @@
         }
         function suThemeSheet() { suOpenSheet(`<h2>🎨 لون الواجهة</h2><div style="color:var(--su-muted);font-weight:700;font-size:14px;margin-bottom:10px">اختر اللون الذي يريحك. يُحفظ على جهازك.</div><div class="su-swatches">${suSwatches()}</div><button class="su-btn pri" style="margin-top:14px" onclick="suCloseSheet()">تم</button>`); }
         suApplyTheme();
+
+        // v102: علاماتي، وشارك التطبيق
+        const SU_APP_URL = 'https://alkuime.github.io/Hamza_Quran/';
+        const SU_REPO_URL = 'https://github.com/alkuime/Hamza_Quran';
+        const SU_BM_CAT = { listening: 'استماع', sheikh: 'مع الشيخ', self: 'ذاتية' };
+        function suBookmarks() {
+            const key = currentAyahKey || (currentPageAyahKeys || [])[0] || '';
+            const list = getBookmarks().slice().sort((a, b) => b.id - a.id);
+            const item = b => { const vk = String(b.verseKey || '').replace(/[^0-9:]/g, ''); const pg = parseInt(b.page, 10) || 1; const cat = SU_BM_CAT[b.category] || '';
+                return `<div class="su-bm"><button class="t" onclick="suCloseSheet(); goToBookmark(${pg}, '${vk}')"><b>${escapeHtml(b.title || verseLabel(vk) || 'علامة')}</b><span>${vk ? escapeHtml(verseLabel(vk)) + ' · ' : ''}صفحة ${pg}${b.date ? ' · ' + escapeHtml(b.date) : ''} ${cat && b.category !== 'listening' ? `<span class="cat">${cat}</span>` : ''}</span></button><button class="x" onclick="suBmDel(${Number(b.id) || 0})" aria-label="حذف">✕</button></div>`; };
+            suOpenSheet(`<h2>🔖 علاماتي</h2>
+                ${key ? `<button class="su-btn pri" style="margin-bottom:12px" onclick="suBmAdd('${key}')">＋ علامة على ${escapeHtml(verseLabel(key))}</button>` : ''}
+                ${list.length ? list.map(item).join('') : '<div class="su-empty">لا توجد علامات بعد. اضغط الزر أعلاه، أو رقم أي آية ثم 🔖.</div>'}
+                ${suRow('🧰', 'خيارات متقدمة', 'openBookmarksModal()', 'القوائم والحفظ')}`);
+        }
+        function suBmAdd(key) { pushBookmark(verseLabel(key), key, 'listening'); showToast('تم الحفظ 🔖', 'success'); suBookmarks(); }
+        function suBmDel(id) { writeStore(STORAGE.bookmarks, getBookmarks().filter(b => b.id !== id)); suBookmarks(); }
+        function suAppUrl() { try { if (/^https?:$/.test(location.protocol) && !/^(localhost|127\.)/.test(location.hostname)) return location.origin + location.pathname.replace(/index\.html$/, ''); } catch (e) {} return SU_APP_URL; }
+        function suShareApp() {
+            const url = suAppUrl();
+            suOpenSheet(`<h2>🔗 شارك التطبيق</h2>
+                <div style="color:var(--su-muted);font-weight:700;font-size:14px;margin-bottom:10px">أرسل هذا الرابط لمن تحب. يفتح في المتصفح، ويمكن تثبيته على الشاشة الرئيسية.</div>
+                <div class="su-link" id="suAppLink">${escapeHtml(url)}</div>
+                <div class="su-grid2" style="margin:12px 0"><button class="su-btn pri" onclick="suShareLink()">📤 مشاركة</button><button class="su-btn out" onclick="suCopyLink()">📋 نسخ الرابط</button></div>
+                <a class="su-row" href="${SU_REPO_URL}" target="_blank" rel="noopener"><span class="i">💻</span>المشروع على GitHub<span class="end">↗</span></a>
+                ${suRow('📲', 'تثبيت التطبيق على الجهاز', 'openAppPanel()')}`);
+        }
+        async function suCopyLink() { try { await navigator.clipboard.writeText(suAppUrl()); showToast('نُسخ الرابط 📋', 'success'); } catch (e) { showToast('تعذّر النسخ', 'error'); } }
+        async function suShareLink() { const url = suAppUrl(); if (navigator.share) { try { await navigator.share({ title: 'مصحف التجويد التفاعلي', text: 'مصحف التجويد التفاعلي: تعلّم التجويد والحفظ', url }); } catch (e) {} } else suCopyLink(); }
         window.addEventListener('beforeunload', () => {
             localStorage.setItem('quranLastPage', String(currentPageNumber));
             collectExportSettings(); saveSettingsNow();
