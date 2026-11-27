@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رتّلها · مصحف التجويد التفاعلي v106</title>
+    <title>رتّلها · مصحف التجويد التفاعلي v107</title>
     <script>try{var t=localStorage.getItem('quranSuTheme');if(t&&t!=='green')document.documentElement.setAttribute('data-su-theme',t)}catch(e){}</script>
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#064e3b">
@@ -522,6 +522,32 @@
             body.simple-ui.su-word-open #wordsGridContainer { margin-left:calc(min(46vw, 380px) + 14px); }
         }
         @media (orientation: landscape) and (max-height: 540px) { body.simple-ui #suGuide, body.simple-ui #trainIntro { margin-left:66px; } }
+        /* v107: الدليل التفاعلي والشعار */
+        .su-slogan { text-align:center; align-self:center; font-family:'Cairo',sans-serif; font-weight:700; font-size:15px; color:var(--su-muted); margin-top:-6px; letter-spacing:.2px; }
+        @media (orientation: landscape) and (max-height: 540px) { #suStart .su-slogan { grid-column:1 / -1; margin:0; } }
+        #suCoach { display:none; }
+        #suCoach.on { display:block; position:fixed; inset:0; z-index:13200; pointer-events:none; }
+        #suCoach .hole { position:fixed; border-radius:18px; box-shadow:0 0 0 9999px rgba(0,0,0,.58); transition:all .28s ease; border:3px solid #E9C46A; }
+        #suCoach.done .hole { box-shadow:none; border-color:transparent; animation:none; }
+        #suCoach.center .hole { left:50% !important; top:50% !important; width:0 !important; height:0 !important; border:0; }
+        #suCoach .hole.try { animation:suPulse 1.4s ease-in-out infinite; }
+        @keyframes suPulse { 0%,100% { outline:0 solid rgba(233,196,106,.6); } 50% { outline:8px solid rgba(233,196,106,0); } }
+        #suCoach .bub { position:fixed; pointer-events:auto; background:var(--su-bg); color:var(--su-text); border-radius:22px; padding:16px 16px 12px; width:min(340px, calc(100vw - 24px)); box-shadow:0 12px 34px rgba(0,0,0,.3); display:flex; flex-direction:column; gap:8px; transition:top .28s ease, left .28s ease, bottom .28s ease; }
+        #suCoach .bub .ic { font-size:34px; line-height:1.1; text-align:center; }
+        #suCoach .bub h3 { font-size:18px; font-weight:800; text-align:center; color:var(--su-text); }
+        #suCoach .bub p { font-size:14.5px; line-height:1.9; color:var(--su-muted); font-weight:700; text-align:center; }
+        #suCoach .bub .ok { text-align:center; color:var(--su-pri); font-weight:800; font-size:15px; }
+        #suCoach .bub .row { display:flex; align-items:center; gap:8px; margin-top:4px; }
+        #suCoach .bub .row .su-btn { flex:1; min-height:46px; font-size:15px; }
+        #suCoach .bub .skip { color:var(--su-muted); font-weight:700; font-size:13px; min-height:40px; padding:0 8px; }
+        #suCoach .bub .prog { height:6px; border-radius:99px; background:var(--su-card2); overflow:hidden; }
+        #suCoach .bub .prog > i { display:block; height:100%; background:var(--su-pri); border-radius:99px; transition:width .3s ease; }
+        #suCoach .bub .hand { text-align:center; font-size:26px; animation:suTap 1s ease-in-out infinite; }
+        @keyframes suTap { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-6px); } }
+        body.su-coaching #suTop, body.su-coaching #suNav, body.su-coaching #suPager { transform:none !important; opacity:1 !important; pointer-events:auto !important; }
+        body.su-rm #suCoach * { animation:none !important; transition:none !important; }
+        @media (max-height: 540px) { #suCoach .bub { width:min(300px, calc(100vw - 24px)); padding:12px 14px 8px; gap:6px; } #suCoach .bub .ic, #suCoach .bub .hand { display:none; } #suCoach .bub h3 { font-size:16px; } #suCoach .bub p { font-size:13px; line-height:1.7; } #suCoach .bub .row .su-btn { min-height:40px; font-size:14px; } }
+        @media (max-width: 480px) { body.simple-ui #wordsGridContainer { padding-left:14px !important; padding-right:14px !important; } }
         /* v89: الوضع الداكن */
         .mk-path button { color:#1F2937 !important; }
         html.dark body.simple-ui #wordsGridContainer { background:var(--su-card); }
@@ -534,7 +560,7 @@
     <div id="suSplash" aria-hidden="true">
         <div class="logo"><svg viewBox="0 0 220 220" width="100%" height="100%"><path d="M62 74 Q110 50 158 74" fill="none" stroke="#E9C46A" stroke-width="6" stroke-linecap="round"/><circle cx="110" cy="166" r="4.5" fill="#E9C46A" opacity=".9"/></svg><span>رتّلها</span></div>
         <div class="ayah">﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾</div>
-        <div class="tag">مصحف التجويد التفاعلي</div>
+        <div class="tag">اقرأ، واسمع، وأتقن</div>
     </div>
     <script>try{if(sessionStorage.getItem('suSplash')||localStorage.getItem('quranSimpleUI')==='0')document.getElementById('suSplash').remove();else sessionStorage.setItem('suSplash','1')}catch(e){}</script>
 
@@ -565,6 +591,7 @@
         <div class="wrap">
             <div class="logo" style="background:none;padding:0"><img src="icons/icon-192.png" alt="" width="76" height="76" style="border-radius:22px;box-shadow:0 6px 18px rgba(0,0,0,.15)"></div>
             <h1 class="su-brand">رتّلها</h1>
+            <div class="su-slogan">اقرأ، واسمع، وأتقن</div>
             <div class="lead">اختر ما تريد أن تبدأ به</div>
             <button id="suResume" class="su-btn big out" style="border-color:var(--su-pri);color:var(--su-pri)" onclick="suResumeGo()"><span class="i">🔖</span><span id="suResumeTxt">تابع من حيث توقفت</span></button>
             <button class="su-btn big pri" onclick="suStartPick('mushaf')"><span class="i">📖</span>المصحف<span class="desc">قراءة واستماع</span></button>
@@ -589,6 +616,7 @@
     </div>
     <div id="suZoom"></div>
     <div id="suTour" role="dialog" aria-label="جولة تعريفية"><div class="box" id="suTourBox"></div></div>
+    <div id="suCoach" role="dialog" aria-label="الدليل التفاعلي" aria-live="polite"><div class="hole"></div><div class="bub" id="suCoachBub"></div></div>
     <div id="suToday" role="dialog" aria-label="يومي"><div class="wrap" id="suTodayWrap"></div></div>
     <div id="suSheet" onclick="if(event.target===this)suCloseSheet()"><div class="panel" id="suSheetPanel"></div></div>
 
@@ -1260,7 +1288,7 @@
             schema: 'quranSchemaVersion',
             mastery: 'quranMastery'
         };
-        const APP_VERSION = 106;
+        const APP_VERSION = 107;
 
         const DEFAULT_SETTINGS = {
             reciter: '6', speed: 1, multiDefault: false, multiReciters: ['6', '7'],
@@ -2227,6 +2255,7 @@
             for (let i = startIdx; i < playKeys.length; i++) {
                 const ok = await playAyahInSession(s, playKeys[i], repeat, settings.ayahDelay);
                 if (!ok) return;
+                if (s.lastFail) { s.fails = (s.fails || 0) + 1; if (s.fails >= 2) { endSession(s); stopAllAudio(); return showToast('توقف التشغيل: تعذّر تحميل الصوت. تحقق من الاتصال.', 'error'); } } else s.fails = 0;
                 if (i < playKeys.length - 1) await waitInSession(s, settings.ayahDelay);
             }
             endSession(s);
@@ -4671,6 +4700,7 @@
         function openPolicy() { openInfoModal('📜 السياسة العامة للواجهات', POLICY_HTML); }
 
         const CHANGELOG = [
+            ['v107', '2026-11-27', ['دليل تفاعلي لأول مرة: يُبرز الأزرار الحقيقية على الشاشة ويطلب منك تجربتها بنفسك (اضغط كلمة، اضغط رقم آية، انتقل إلى الصفحة التالية). ويعاد من ☰ › الدليل التفاعلي.', 'شعار التطبيق: «اقرأ، واسمع، وأتقن».', 'تشغيل الصفحة كاملة يتوقف عند انقطاع الصوت.', 'البسملة في الصفحة الأولى لم تعد تخرج عن حافة الصفحة على الجوال.']],
             ['v106', '2026-11-27', ['شعار «رتّلها» بالبرغندي والذهبي. وإصلاحات من فحص شامل: الصفحة الجديدة تبدأ من أعلاها، والاستماع المتواصل يتوقف عند انقطاع الصوت، ولا تختفي الأزرار عند الانتقال الآلي، واسم السورة الصحيح في الأعلى، وبطاقة الكلمة لا تظهر بمجرد مرور الفأرة، وألوان أوضح في الوضع الداكن، ورسالة النجاح في اختبار الدرس.', 'اسم التطبيق الجديد «رتّلها» مع شعار وشاشة ترحيب قصيرة عند الفتح، وأيقونات جديدة للتثبيت على الجهاز.', 'إصلاحات بعد اختبار شامل بأربعة مختبِرين: إخفاء الكلمات يعمل الآن في «المصحف» داخل الحفظ مع زر 🙈 للتبديل ويُحفظ، ومشغّل التكرار واختبار الآية التالية لا يخرجان عن الشاشة مع الآيات الطويلة، ونصوص لوحة الحفظ واضحة في الوضع الداكن، واختبار «الآية التالية» لا يعبر حدود السورة، والختمة لا تظهر متأخرة في يومها الأول، وزر «✨ الواجهة المبسّطة» في الواجهة الكاملة للعودة، وكلمة بطاقة الكلمة واضحة في الوضع الداكن، والقارئ والسرعة يُحفظان، والنسخة الاحتياطية تشمل سجل القراءة والألوان والتفضيلات وتدمج العلامات ولا تقبل ملفاً غريباً، والهدف اليومي لا يحسب الصفحة إلا بعد قراءتها 15 ثانية، ولا تتكرر العلامة على الآية نفسها، وزر الرجوع وEsc يغلقان النوافذ، وبطاقة الكلمة لا تظهر قبل لمس كلمة.']],
             ['v105', '2026-11-27', ['لون ورق المصحف (فكرة من تطبيق آية): أبيض، أو كريمي، أو عاجي دافئ، أو أخضر هادئ، من الإعدادات ← القراءة.', 'تكبير خط المصحف وتصغيره بإصبعين على الصفحة، كما في تطبيقات المصاحف المشهورة.', 'رقم الجزء أعلى الشاشة بجانب رقم الصفحة، وشريط رفيع يبيّن موضعك من المصحف كله (فكرة من Quran.com).']],
             ['v104', '2026-11-27', ['القراءة الهادئة (بفكرة من تطبيق وحي): عند النزول في الصفحة أو لمس فراغ فيها تختفي الأشرطة والقوائم، فلا يبقى إلا المصحف. المس الصفحة أو اسحب للأعلى قليلاً فتعود. ويمكن إيقافها من الإعدادات ← العرض.']],
@@ -5480,7 +5510,7 @@
                 suRow('📤', 'استخراج ملازم PDF', 'openExportModal()'),
                 suRow('📲', 'التطبيق والعمل دون إنترنت', 'openAppPanel()'),
                 suRow('❓', 'من أين أبدأ؟', 'openStartGuide()'),
-                suRow('👋', 'الجولة التعريفية', 'suStartTour()'),
+                suRow('👋', 'الدليل التفاعلي', 'suStartTour()'),
                 suRow('🧰', 'الواجهة الكاملة', 'setSimpleUI(false)', 'كل الأدوات')
             ];
             suOpenSheet('<h2>المزيد</h2>' + `<div class="flex gap-2 mb-3"><input id="suGoto" inputmode="numeric" dir="ltr" placeholder="صفحة أو 2:255" class="flex-1 min-h-[52px] rounded-2xl px-4 text-center font-bold" style="background:var(--su-card);border:1px solid var(--su-line);color:var(--su-text)"><button class="su-btn pri" style="width:auto" onclick="suGotoGo()">اذهب</button></div>` + rows.join(''));
@@ -6508,6 +6538,105 @@
             scrollToAyah = function () { window.suProgAt = Date.now(); return _sta.apply(this, arguments); };
             const _sr = suRefresh;
             suRefresh = function () { const r = _sr.apply(this, arguments); return r; };
+        })();
+
+        // v107: الدليل التفاعلي
+        const SU_COACH = [
+            { ic: '👋', h: 'أهلاً بك في رتّلها', p: 'دليل قصير تجرّب فيه بنفسك أهم ما في التطبيق. يستغرق دقيقة واحدة.', btn: 'لنبدأ' },
+            { t: () => $('suNav'), ic: '🧭', h: 'الأقسام الأربعة', p: 'المصحف للقراءة والاستماع، والنطق لتدريب اللسان، والتجويد لتعلّم الأحكام، والحفظ لخطة يومية ومراجعة.' },
+            { t: () => suCoachVis('#wordsGridContainer .word-box'), modes: ['train', 'tajweed'], ic: '💬', h: 'جرّب: اضغط هذه الكلمة', p: 'تظهر بطاقة فيها الكلمة ونطقها وأحكامها، مع زر للاستماع وآخر للبطء.', wait: () => $('suWordCard').classList.contains('on'), ok: 'أحسنت! هذه بطاقة الكلمة.', after: () => suCloseWord() },
+            { t: () => suCoachVis('#wordsGridContainer .ayah-marker'), ic: '🔢', h: 'جرّب: اضغط رقم الآية', p: 'تفتح قائمة الآية: استماع، وتكرار، وتفسير، وعلامة مرجعية، ومشاركة.', wait: () => $('suSheet').classList.contains('on'), ok: 'ممتاز! هذه قائمة الآية.', after: () => suCloseSheet() },
+            { t: () => $('suPager').classList.contains('on') ? $('suPager').querySelector('.su-round:last-child') : null, ic: '←', h: 'جرّب: الصفحة التالية', p: 'اضغط هذا الزر، أو اسحب الصفحة بإصبعك يميناً ويساراً.', wait: c => currentPageNumber !== c.pg0, init: c => { c.pg0 = currentPageNumber; }, ok: 'رائع! انتقلت إلى الصفحة التالية.' },
+            { t: () => document.querySelector('#suTop .su-tbtn'), ic: '📚', h: 'الفهرس', p: 'اضغط اسم السورة في الأعلى لتنتقل إلى أي سورة أو جزء.' },
+            { t: () => document.querySelector('#suTop .su-icon[onclick="suOpenToday()"]'), ic: '🏠', h: 'يومي', p: 'هدف القراءة، وورد الحفظ، وآية اليوم في شاشة واحدة.' },
+            { t: () => document.querySelector('#suTop .su-icon[onclick="suOpenMore()"]'), ic: '☰', h: 'المزيد', p: 'كل الأدوات: الإعدادات، والألوان، والعلامات، والاستماع المتواصل. ومن هنا تعيد هذا الدليل متى شئت.' },
+            { ic: '✨', h: 'أنت جاهز', p: 'اقرأ، واسمع، وأتقن. بارك الله في تلاوتك.', btn: 'ابدأ ✓' }
+        ];
+        let suCo = null;
+        function suCoachVis(sel) {
+            const els = [...document.querySelectorAll(sel)];
+            const vh = innerHeight;
+            return els.find(e => { const r = e.getBoundingClientRect(); return r.width && r.top > 90 && r.bottom < vh - 160; }) || els.find(e => e.getBoundingClientRect().width) || null;
+        }
+        function suCoachSteps() { return SU_COACH.filter(st => !st.modes || st.modes.includes(appMode)); }
+        function suCoachStart() {
+            try { suCloseWord(); suCloseSheet(); } catch (e) {}
+            $('suTour').classList.remove('on');
+            suCo = { i: 0, steps: suCoachSteps() };
+            document.body.classList.add('su-coaching'); try { suCalm(false); } catch (e) {}
+            $('suCoach').classList.add('on');
+            suCoachShow();
+            clearInterval(suCoachShow.tk); suCoachShow.tk = setInterval(suCoachTick, 160);
+        }
+        function suCoachEnd() {
+            clearInterval(suCoachShow.tk); suCo = null;
+            $('suCoach').classList.remove('on'); document.body.classList.remove('su-coaching');
+            try { localStorage.setItem('quranSuTour', '1'); } catch (e) {}
+        }
+        function suCoachNext() {
+            if (!suCo) return;
+            const st = suCo.steps[suCo.i]; if (st && st.after && suCo.done) { try { st.after(); } catch (e) {} }
+            suCo.i++; suCo.done = false;
+            if (suCo.i >= suCo.steps.length) return suCoachEnd();
+            suCoachShow();
+        }
+        function suCoachShow() {
+            const st = suCo.steps[suCo.i];
+            let el = st.t ? st.t() : null;
+            if (st.t && (!el || !el.getBoundingClientRect().width)) { suCo.i++; if (suCo.i >= suCo.steps.length) return suCoachEnd(); return suCoachShow(); }
+            if (el && st.wait) { const r = el.getBoundingClientRect(); if (r.top < 70 || r.bottom > innerHeight - 150) { window.suProgAt = Date.now(); el.scrollIntoView({ block: 'center' }); } }
+            suCo.el = el; suCo.done = false; $('suCoach').classList.remove('done'); if (st.init) st.init(suCo);
+            const n = suCo.steps.length, last = suCo.i === n - 1;
+            $('suCoach').classList.toggle('center', !el);
+            $('suCoach').querySelector('.hole').classList.toggle('try', !!st.wait);
+            $('suCoachBub').innerHTML = `<div class="prog"><i style="width:${Math.round((suCo.i + 1) * 100 / n)}%"></i></div>
+                <div class="ic">${st.ic}</div><h3>${escapeHtml(st.h)}</h3><p>${escapeHtml(st.p)}</p>
+                ${st.wait ? '<div class="hand" aria-hidden="true">👆</div>' : ''}
+                <div class="row">${st.wait ? `<button class="su-btn out" onclick="suCoachNext()">تخطَّ هذه الخطوة</button>` : `<button class="su-btn pri" onclick="suCoachNext()">${st.btn || (last ? 'ابدأ ✓' : 'التالي')}</button>`}
+                ${last ? '' : `<button class="skip" onclick="suCoachEnd()">إنهاء الدليل</button>`}</div>`;
+            suCoachPlace();
+        }
+        function suCoachPlace() {
+            if (!suCo) return;
+            const hole = $('suCoach').querySelector('.hole'), bub = $('suCoachBub');
+            const vw = innerWidth, vh = innerHeight, bw = bub.offsetWidth, bh = bub.offsetHeight;
+            if (!suCo.el) { bub.style.left = Math.round((vw - bw) / 2) + 'px'; bub.style.top = Math.max(12, Math.round((vh - bh) / 2)) + 'px'; return; }
+            const r = suCo.el.getBoundingClientRect(), pad = 6;
+            Object.assign(hole.style, { left: (r.left - pad) + 'px', top: (r.top - pad) + 'px', width: (r.width + pad * 2) + 'px', height: (r.height + pad * 2) + 'px' });
+            let left, top;
+            if (r.height > vh * 0.6) { // شريط جانبي
+                left = r.left - bw - 16; if (left < 12) left = r.right + 16; top = (vh - bh) / 2;
+            } else {
+                const above = r.top - pad - 14, below = vh - r.bottom - pad - 14;
+                if (Math.max(above, below) < bh + 8) { // لا مكان فوق ولا تحت: ضعها بجانب العنصر
+                    left = (r.left > vw - r.right) ? r.left - pad - 14 - bw : r.right + pad + 14;
+                    top = Math.max(8, Math.min(vh - bh - 8, r.top + r.height / 2 - bh / 2));
+                } else {
+                    left = r.left + r.width / 2 - bw / 2;
+                    top = (r.top + r.height / 2 > vh / 2 && above >= bh + 8) || below < bh + 8 ? above - bh : r.bottom + pad + 14;
+                }
+            }
+            left = Math.max(12, Math.min(vw - bw - 12, left));
+            bub.style.left = Math.round(left) + 'px'; bub.style.top = Math.round(top) + 'px';
+        }
+        function suCoachTick() {
+            if (!suCo) return;
+            const st = suCo.steps[suCo.i];
+            if (st.t && suCo.el && !document.contains(suCo.el) && !suCo.done) { const el = st.t(); if (el) suCo.el = el; }
+            suCoachPlace();
+            if (st.wait && !suCo.done && st.wait(suCo)) {
+                suCo.done = true; $('suCoach').classList.add('done');
+                const p = $('suCoachBub').querySelector('.hand'); if (p) p.outerHTML = `<div class="ok">✓ ${escapeHtml(st.ok || 'أحسنت!')}</div>`;
+                const row = $('suCoachBub').querySelector('.row .su-btn'); if (row) { row.className = 'su-btn pri'; row.textContent = 'التالي'; }
+                const my = suCo.i; setTimeout(() => { if (suCo && suCo.i === my) suCoachNext(); }, 2200);
+            }
+        }
+        (function suInstall107() {
+            suStartTour = suCoachStart;
+            suEndTour = function () { suCoachEnd(); $('suTour').classList.remove('on'); };
+            window.addEventListener('resize', () => suCo && suCoachPlace());
+            document.addEventListener('keydown', e => { if (suCo && e.key === 'Escape') { e.stopPropagation(); suCoachEnd(); } }, true);
+            const _calm = suCalm; suCalm = function (on) { if (on && suCo) return; return _calm.apply(this, arguments); };
         })();
         window.addEventListener('beforeunload', () => {
             localStorage.setItem('quranLastPage', String(currentPageNumber));
