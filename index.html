@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصحف التجويد التفاعلي v104</title>
+    <title>مصحف التجويد التفاعلي v105</title>
     <script>try{var t=localStorage.getItem('quranSuTheme');if(t&&t!=='green')document.documentElement.setAttribute('data-su-theme',t)}catch(e){}</script>
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#064e3b">
@@ -469,6 +469,20 @@
         body.simple-ui.su-calm #suPager, body.simple-ui.su-calm #suTabs, body.simple-ui.su-calm #suGuide { opacity:0; pointer-events:none !important; }
         body.simple-ui.su-calm #suPager button { pointer-events:none !important; }
         @media (orientation: landscape) and (max-height: 540px) { body.simple-ui.su-calm #suNav { transform:translateX(110%); } }
+        /* v105: ورق المصحف والتكبير وشريط الموضع */
+        html:not(.dark) body.simple-ui[data-paper="white"] #wordsGridContainer { background:#FFFFFF !important; }
+        html:not(.dark) body.simple-ui[data-paper="cream"] #wordsGridContainer { background:#FFFBEF !important; }
+        html:not(.dark) body.simple-ui[data-paper="ivory"] #wordsGridContainer { background:#F6ECD6 !important; border-color:#E6D6B0 !important; }
+        html:not(.dark) body.simple-ui[data-paper="mint"] #wordsGridContainer { background:#F1F8F1 !important; border-color:#D6E9D6 !important; }
+        body.simple-ui #wordsGridContainer { touch-action:pan-x pan-y; }
+        #suPos { display:none; }
+        body.simple-ui #suPos { display:block; position:absolute; left:0; right:0; bottom:-1px; height:3px; background:transparent; }
+        body.simple-ui #suPos i { display:block; height:100%; background:var(--su-pri); opacity:.7; border-radius:0 2px 2px 0; transition:width .3s; margin-inline-start:0; }
+        #suZoom { display:none; }
+        body.simple-ui #suZoom.on { display:block; position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); z-index:13200; background:rgba(0,0,0,.72); color:#fff; font-weight:700; font-size:20px; padding:10px 20px; border-radius:16px; pointer-events:none; }
+        .su-papers { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin-bottom:8px; }
+        .su-papers button { min-height:64px; border-radius:16px; border:2px solid var(--su-line); font-weight:700; font-size:13px; color:#1F2937; display:flex; align-items:center; justify-content:center; }
+        .su-papers button.on { border-color:var(--su-pri); box-shadow:0 0 0 2px var(--su-pri-soft); }
         /* v89: الوضع الداكن */
         .mk-path button { color:#1F2937 !important; }
         html.dark body.simple-ui #wordsGridContainer { background:var(--su-card); }
@@ -486,6 +500,7 @@
             <span class="su-sub" id="suSub"></span>
         </div>
         <button class="su-icon" onclick="suOpenToday()" title="يومي" aria-label="يومي">🏠</button>
+        <div id="suPos" aria-hidden="true"><i></i></div>
         <button class="su-icon" onclick="openSearch()" title="بحث" aria-label="بحث">🔍</button>
         <button class="su-icon" onclick="suOpenMore()" title="المزيد" aria-label="المزيد">☰</button>
     </header>
@@ -527,6 +542,7 @@
         </div>
         <div id="suIdxList"></div>
     </div>
+    <div id="suZoom"></div>
     <div id="suTour" role="dialog" aria-label="جولة تعريفية"><div class="box" id="suTourBox"></div></div>
     <div id="suToday" role="dialog" aria-label="يومي"><div class="wrap" id="suTodayWrap"></div></div>
     <div id="suSheet" onclick="if(event.target===this)suCloseSheet()"><div class="panel" id="suSheetPanel"></div></div>
@@ -1198,7 +1214,7 @@
             schema: 'quranSchemaVersion',
             mastery: 'quranMastery'
         };
-        const APP_VERSION = 104;
+        const APP_VERSION = 105;
 
         const DEFAULT_SETTINGS = {
             reciter: '6', speed: 1, multiDefault: false, multiReciters: ['6', '7'],
@@ -4604,6 +4620,7 @@
         function openPolicy() { openInfoModal('📜 السياسة العامة للواجهات', POLICY_HTML); }
 
         const CHANGELOG = [
+            ['v105', '2026-11-27', ['لون ورق المصحف (فكرة من تطبيق آية): أبيض، أو كريمي، أو عاجي دافئ، أو أخضر هادئ، من الإعدادات ← القراءة.', 'تكبير خط المصحف وتصغيره بإصبعين على الصفحة، كما في تطبيقات المصاحف المشهورة.', 'رقم الجزء أعلى الشاشة بجانب رقم الصفحة، وشريط رفيع يبيّن موضعك من المصحف كله (فكرة من Quran.com).']],
             ['v104', '2026-11-27', ['القراءة الهادئة (بفكرة من تطبيق وحي): عند النزول في الصفحة أو لمس فراغ فيها تختفي الأشرطة والقوائم، فلا يبقى إلا المصحف. المس الصفحة أو اسحب للأعلى قليلاً فتعود. ويمكن إيقافها من الإعدادات ← العرض.']],
             ['v103', '2026-11-27', ['النوافذ القديمة (البحث، والختمة، وكراساتي، والعلامات المتقدمة، وسجل التغييرات) صارت بلون الواجهة الذي تختاره، وتعمل في الوضع الداكن بألوان مريحة.']],
             ['v102', '2026-11-27', ['«علاماتي» بشاشة بسيطة: زر كبير لإضافة علامة على الآية الحالية، وقائمة واحدة مرتبة بالأحدث، وضغطة للانتقال وزر ✕ للحذف.', '«شارك التطبيق»: رابط التطبيق على الإنترنت مع زرّي النسخ والمشاركة، وروابط المشروع في «عن التطبيق».']],
@@ -6163,6 +6180,7 @@
                 const slider = find('حجم الخط'); if (slider && slider.querySelector('input[type=range]')) slider.remove();
                 const lbl = (el, t) => { if (el) el.insertAdjacentHTML('beforebegin', `<div class="su-lbl">${t}</div>`); };
                 lbl(find('خط المصحف'), '📖 القراءة');
+                const fr = find('خط المصحف'); if (fr) fr.insertAdjacentHTML('afterend', `<div class="su-papers">${suPapersHtml()}</div>`);
                 const dk = find('الوضع الداكن'); if (dk) { dk.insertAdjacentHTML('afterend', `<button class="su-row" onclick="suToggleCalmPref(this)"><span class="i">🌿</span>القراءة الهادئة<span class="su-switch${suCalmPref() ? ' on' : ''}"></span></button>`); rows.push(dk.nextElementSibling); }
                 const tg = ['الوضع الداكن', 'القراءة الهادئة', 'تباين عالٍ', 'تقليل الحركة', 'إبقاء الشاشة مضاءة'].map(find).filter(Boolean);
                 if (tg.length) { lbl(tg[0], '🎨 العرض'); const g = document.createElement('div'); g.className = 'su-tgrid'; tg[0].before(g); tg.forEach(r => g.appendChild(r)); }
@@ -6271,6 +6289,43 @@
             suShowWord = function () { suCalm(false); return _sw.apply(this, arguments); };
             const _os = suOpenSheet;
             suOpenSheet = function () { suCalm(false); return _os.apply(this, arguments); };
+        })();
+
+        // v105: ورق المصحف، والتكبير بإصبعين، والجزء وشريط الموضع
+        const SU_PAPERS = [['white', 'أبيض', '#FFFFFF'], ['cream', 'كريمي', '#FFFBEF'], ['ivory', 'عاجي', '#F6ECD6'], ['mint', 'أخضر', '#F1F8F1']];
+        function suPaper() { try { return localStorage.getItem('quranSuPaper') || 'white'; } catch (e) { return 'white'; } }
+        function suApplyPaper() { document.body.setAttribute('data-paper', suPaper()); }
+        function suPapersHtml() { const c = suPaper(); return SU_PAPERS.map(([id, n, bg]) => `<button class="${id === c ? 'on' : ''}" style="background:${bg}" onclick="suSetPaper('${id}')">${n}</button>`).join(''); }
+        function suSetPaper(id) { try { localStorage.setItem('quranSuPaper', id); } catch (e) {} suApplyPaper(); document.querySelectorAll('.su-papers').forEach(w => { w.innerHTML = suPapersHtml(); }); }
+        suApplyPaper();
+        (function suPinch() {
+            let d0 = 0, applied = 0, hideT = null;
+            const dist = t => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
+            const badge = () => { const z = $('suZoom'); if (!z) return; z.textContent = `حجم الخط ${($('quranSizeRange') || {}).value || ''}`; z.classList.add('on'); clearTimeout(hideT); hideT = setTimeout(() => z.classList.remove('on'), 700); };
+            document.addEventListener('touchstart', e => {
+                if (!document.body.classList.contains('simple-ui') || e.touches.length !== 2 || !e.target.closest('#wordsGridContainer')) { if (e.touches.length !== 2) d0 = 0; return; }
+                d0 = dist(e.touches); applied = 0;
+            }, { passive: true });
+            document.addEventListener('touchmove', e => {
+                if (!d0 || e.touches.length !== 2) return;
+                const steps = Math.trunc(Math.log(dist(e.touches) / d0) / Math.log(1.15));
+                if (steps !== applied) { suFontStep(4 * (steps - applied)); applied = steps; badge(); }
+            }, { passive: true });
+            document.addEventListener('touchend', e => { if (e.touches.length < 2) d0 = 0; }, { passive: true });
+        })();
+        (function suInstall105() {
+            const _rf = suRefresh;
+            suRefresh = function () {
+                const r = _rf.apply(this, arguments);
+                if (!document.body.classList.contains('simple-ui')) return r;
+                try {
+                    const j = suJuzOfPage(currentPageNumber);
+                    $('suSub').textContent = `صفحة ${currentPageNumber} · الجزء ${j} · ${MODES[appMode].icon} ${MODES[appMode].n}`;
+                    const bar = document.querySelector('#suPos i'); if (bar) bar.style.width = (currentPageNumber * 100 / MAX_PAGE).toFixed(1) + '%';
+                } catch (e) {}
+                return r;
+            };
+            suRefresh();
         })();
         window.addEventListener('beforeunload', () => {
             localStorage.setItem('quranLastPage', String(currentPageNumber));
