@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مصحف التجويد التفاعلي v102</title>
+    <title>مصحف التجويد التفاعلي v104</title>
     <script>try{var t=localStorage.getItem('quranSuTheme');if(t&&t!=='green')document.documentElement.setAttribute('data-su-theme',t)}catch(e){}</script>
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#064e3b">
@@ -449,6 +449,26 @@
         .su-bm .x { flex:0 0 40px; width:40px; height:40px; border-radius:99px; background:var(--su-card2); color:var(--su-muted); font-size:14px; }
         .su-bm .cat { font-size:11px; padding:2px 8px; border-radius:99px; background:var(--su-pri-soft); color:var(--su-pri); }
         .su-link { direction:ltr; text-align:center; font-weight:700; font-size:14px; padding:12px; border-radius:14px; background:var(--su-card); border:1px dashed var(--su-line); color:var(--su-pri); word-break:break-all; user-select:all; }
+        /* v103: توحيد ألوان النوافذ */
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.bg-amber-500,.bg-amber-600,.bg-amber-700,.bg-amber-800,.bg-amber-900,.bg-indigo-500,.bg-indigo-600,.bg-indigo-700,.bg-emerald-500,.bg-emerald-600,.bg-emerald-700,.bg-teal-600,.bg-teal-700) { background:var(--su-pri) !important; color:var(--su-on-pri) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.bg-amber-600,.bg-amber-700,.bg-amber-800,.bg-indigo-600,.bg-indigo-700,.bg-emerald-600,.bg-emerald-700) :is(.text-white,.text-amber-100,.text-amber-200,.text-stone-100,h2,h3) { color:var(--su-on-pri) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.bg-amber-700,.bg-amber-600,.bg-indigo-700,.bg-emerald-700) :is(.bg-amber-500,.bg-amber-600,.bg-amber-800,.bg-amber-900,.bg-indigo-600,.bg-emerald-600) { box-shadow:inset 0 0 0 1px rgba(255,255,255,.45); }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.bg-amber-50,.bg-amber-100,.bg-amber-200,.bg-indigo-50,.bg-indigo-100,.bg-indigo-200,.bg-emerald-50,.bg-emerald-100,.bg-emerald-200,.bg-teal-50,.bg-teal-100) { background:var(--su-pri-soft) !important; color:var(--su-pri) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.text-amber-600,.text-amber-700,.text-amber-800,.text-amber-900,.text-indigo-600,.text-indigo-700,.text-indigo-800,.text-emerald-600,.text-emerald-700,.text-emerald-800,.text-emerald-900,.text-teal-700,.text-teal-800) { color:var(--su-pri) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.border-amber-500,.border-amber-600,.border-indigo-600,.border-emerald-600) { border-color:var(--su-pri) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.bg-white,.bg-stone-50) { background:var(--su-card) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.bg-stone-100,.bg-stone-200) { background:var(--su-card2) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.text-stone-800,.text-stone-700,.text-stone-900) { color:var(--su-text) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.text-stone-500,.text-stone-600,.text-stone-400) { color:var(--su-muted) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(.border-stone-100,.border-stone-200,.border-stone-300) { border-color:var(--su-line) !important; }
+        body.simple-ui :is(#infoModal,#booksModal,#bookmarksModal) :is(input,select,textarea) { background:var(--su-card); color:var(--su-text); border-color:var(--su-line); }
+        /* v104: القراءة الهادئة */
+        body.simple-ui #suTop, body.simple-ui #suNav, body.simple-ui #suPager, body.simple-ui #suTabs, body.simple-ui #suGuide { transition:transform .25s ease, opacity .25s ease; }
+        body.simple-ui.su-calm #suTop { transform:translateY(-110%); }
+        body.simple-ui.su-calm #suNav { transform:translateY(110%); }
+        body.simple-ui.su-calm #suPager, body.simple-ui.su-calm #suTabs, body.simple-ui.su-calm #suGuide { opacity:0; pointer-events:none !important; }
+        body.simple-ui.su-calm #suPager button { pointer-events:none !important; }
+        @media (orientation: landscape) and (max-height: 540px) { body.simple-ui.su-calm #suNav { transform:translateX(110%); } }
         /* v89: الوضع الداكن */
         .mk-path button { color:#1F2937 !important; }
         html.dark body.simple-ui #wordsGridContainer { background:var(--su-card); }
@@ -1178,7 +1198,7 @@
             schema: 'quranSchemaVersion',
             mastery: 'quranMastery'
         };
-        const APP_VERSION = 102;
+        const APP_VERSION = 104;
 
         const DEFAULT_SETTINGS = {
             reciter: '6', speed: 1, multiDefault: false, multiReciters: ['6', '7'],
@@ -4584,6 +4604,8 @@
         function openPolicy() { openInfoModal('📜 السياسة العامة للواجهات', POLICY_HTML); }
 
         const CHANGELOG = [
+            ['v104', '2026-11-27', ['القراءة الهادئة (بفكرة من تطبيق وحي): عند النزول في الصفحة أو لمس فراغ فيها تختفي الأشرطة والقوائم، فلا يبقى إلا المصحف. المس الصفحة أو اسحب للأعلى قليلاً فتعود. ويمكن إيقافها من الإعدادات ← العرض.']],
+            ['v103', '2026-11-27', ['النوافذ القديمة (البحث، والختمة، وكراساتي، والعلامات المتقدمة، وسجل التغييرات) صارت بلون الواجهة الذي تختاره، وتعمل في الوضع الداكن بألوان مريحة.']],
             ['v102', '2026-11-27', ['«علاماتي» بشاشة بسيطة: زر كبير لإضافة علامة على الآية الحالية، وقائمة واحدة مرتبة بالأحدث، وضغطة للانتقال وزر ✕ للحذف.', '«شارك التطبيق»: رابط التطبيق على الإنترنت مع زرّي النسخ والمشاركة، وروابط المشروع في «عن التطبيق».']],
             ['v101', '2026-11-27', ['اختيار لون الواجهة: ستة ألوان (الأخضر، البرغندي، السماوي، الأزرق، البني، البنفسجي) من ☰ ← الألوان، أو من الإعدادات. ويعمل اللون في الوضعين الفاتح والداكن ومع التباين العالي.']],
             ['v100', '2026-11-27', ['تبسيط شامل للواجهة المبسّطة: قائمة ☰ صارت مربعات كبيرة في ثلاث مجموعات (اقرأ واستمع، أدواتي، التطبيق) بدل قائمة طويلة.', 'بطاقة الآية: زرّا «تشغيل» و«تكرار» ثم شبكة أيقونات واضحة (التفسير، متواصل، علامة، متشابهات، نسخ، مشاركة، صورة).', 'الإعدادات في مجموعات: القراءة، العرض، الصوت، البيانات. ومفاتيح العرض الأربعة في مربعات، وحُذف شريط حجم الخط المكرر.', 'تعليمات استخدام في أول كل تبويب: بطاقة «كيف أستخدم هذا القسم؟» بثلاث خطوات قصيرة، تُطوى بزر «فهمت» وتُفتح متى شئت من «ⓘ طريقة الاستخدام». وحلّت محل سطر التلميح القديم.']],
@@ -6141,7 +6163,8 @@
                 const slider = find('حجم الخط'); if (slider && slider.querySelector('input[type=range]')) slider.remove();
                 const lbl = (el, t) => { if (el) el.insertAdjacentHTML('beforebegin', `<div class="su-lbl">${t}</div>`); };
                 lbl(find('خط المصحف'), '📖 القراءة');
-                const tg = ['الوضع الداكن', 'تباين عالٍ', 'تقليل الحركة', 'إبقاء الشاشة مضاءة'].map(find).filter(Boolean);
+                const dk = find('الوضع الداكن'); if (dk) { dk.insertAdjacentHTML('afterend', `<button class="su-row" onclick="suToggleCalmPref(this)"><span class="i">🌿</span>القراءة الهادئة<span class="su-switch${suCalmPref() ? ' on' : ''}"></span></button>`); rows.push(dk.nextElementSibling); }
+                const tg = ['الوضع الداكن', 'القراءة الهادئة', 'تباين عالٍ', 'تقليل الحركة', 'إبقاء الشاشة مضاءة'].map(find).filter(Boolean);
                 if (tg.length) { lbl(tg[0], '🎨 العرض'); const g = document.createElement('div'); g.className = 'su-tgrid'; tg[0].before(g); tg.forEach(r => g.appendChild(r)); }
                 const tgEl = P.querySelector('.su-tgrid');
                 if (tgEl) tgEl.insertAdjacentHTML('afterend', `<div class="su-swatches" style="margin-bottom:8px">${suSwatches()}</div>`);
@@ -6208,6 +6231,47 @@
         }
         async function suCopyLink() { try { await navigator.clipboard.writeText(suAppUrl()); showToast('نُسخ الرابط 📋', 'success'); } catch (e) { showToast('تعذّر النسخ', 'error'); } }
         async function suShareLink() { const url = suAppUrl(); if (navigator.share) { try { await navigator.share({ title: 'مصحف التجويد التفاعلي', text: 'مصحف التجويد التفاعلي: تعلّم التجويد والحفظ', url }); } catch (e) {} } else suCopyLink(); }
+
+        // v104: القراءة الهادئة (تختفي الأشرطة أثناء القراءة وتعود بلمسة)
+        function suCalmPref() { try { return localStorage.getItem('quranSuCalm') !== '0'; } catch (e) { return true; } }
+        function suToggleCalmPref(btn) { const on = !suCalmPref(); try { localStorage.setItem('quranSuCalm', on ? '1' : '0'); } catch (e) {} if (btn) btn.querySelector('.su-switch').classList.toggle('on', on); if (!on) suCalm(false); }
+        function suCalmAllowed() {
+            const b = document.body;
+            if (!b.classList.contains('simple-ui') || !suCalmPref()) return false;
+            if (b.classList.contains('su-word-open')) return false;
+            if (!['mushaf', 'train'].includes(currentSection) && !(appMode === 'hifz' && currentSection === 'mushaf')) return false;
+            if ($('mushafView').classList.contains('hidden')) return false;
+            if (document.querySelector('#suSheet.on, #suIndex.on, #suToday.on, #suRepeat.on, #suNextQ.on, #suTour.on, #suStart.on')) return false;
+            return true;
+        }
+        function suCalm(on) {
+            const b = document.body;
+            if (on && !suCalmAllowed()) on = false;
+            if (on === b.classList.contains('su-calm')) return;
+            b.classList.toggle('su-calm', on);
+            if (on) { try { if (!localStorage.getItem('quranSuCalmHint')) { localStorage.setItem('quranSuCalmHint', '1'); showToast('🌿 المس الصفحة لإظهار الأزرار', 'info'); } } catch (e) {} }
+        }
+        (function suInstall104() {
+            let lastY = window.scrollY, upAcc = 0;
+            window.addEventListener('scroll', () => {
+                const y = window.scrollY, dy = y - lastY; lastY = y;
+                if (y < 40) { upAcc = 0; return suCalm(false); }
+                if (dy > 6) { upAcc = 0; suCalm(true); }
+                else if (dy < 0) { upAcc -= dy; if (upAcc > 60) { upAcc = 0; suCalm(false); } }
+            }, { passive: true });
+            document.addEventListener('click', e => {
+                if (!document.body.classList.contains('simple-ui')) return;
+                const inPage = e.target.closest && e.target.closest('#wordsGridContainer');
+                if (document.body.classList.contains('su-calm')) { if (!e.target.closest('#suNow')) suCalm(false); return; }
+                if (inPage && !e.target.closest('.word-box, .ayah-marker, button, a, input, select, .surah-header')) suCalm(true);
+            }, true);
+            const _rf = suRefresh;
+            suRefresh = function () { const r = _rf.apply(this, arguments); if (!suCalmAllowed()) suCalm(false); return r; };
+            const _sw = suShowWord;
+            suShowWord = function () { suCalm(false); return _sw.apply(this, arguments); };
+            const _os = suOpenSheet;
+            suOpenSheet = function () { suCalm(false); return _os.apply(this, arguments); };
+        })();
         window.addEventListener('beforeunload', () => {
             localStorage.setItem('quranLastPage', String(currentPageNumber));
             collectExportSettings(); saveSettingsNow();
