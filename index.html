@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رتّلها · مصحف التجويد التفاعلي v108</title>
+    <title>رتّلها · مصحف التجويد التفاعلي v109</title>
     <script>try{var t=localStorage.getItem('quranSuTheme');if(t&&t!=='green')document.documentElement.setAttribute('data-su-theme',t)}catch(e){}</script>
     <link rel="manifest" href="manifest.webmanifest">
     <meta name="theme-color" content="#064e3b">
@@ -530,8 +530,8 @@
         #suCoach .hole { position:fixed; border-radius:18px; box-shadow:0 0 0 9999px rgba(0,0,0,.58); transition:all .28s ease; border:3px solid #E9C46A; }
         #suCoach.done .hole { box-shadow:none; border-color:transparent; animation:none; }
         #suCoach.center .hole { left:50% !important; top:50% !important; width:0 !important; height:0 !important; border:0; }
-        #suCoach .hole.try { animation:suPulse 1.4s ease-in-out infinite; }
-        @keyframes suPulse { 0%,100% { outline:0 solid rgba(233,196,106,.6); } 50% { outline:8px solid rgba(233,196,106,0); } }
+        #suCoach .hole.try { animation:suCoachPulse 1.4s ease-in-out infinite; }
+        @keyframes suCoachPulse { 0%,100% { outline:0 solid rgba(233,196,106,.6); } 50% { outline:8px solid rgba(233,196,106,0); } }
         #suCoach .bub { position:fixed; pointer-events:auto; background:var(--su-bg); color:var(--su-text); border-radius:22px; padding:16px 16px 12px; width:min(340px, calc(100vw - 24px)); box-shadow:0 12px 34px rgba(0,0,0,.3); display:flex; flex-direction:column; gap:8px; transition:top .28s ease, left .28s ease, bottom .28s ease; }
         #suCoach .bub .ic { font-size:34px; line-height:1.1; text-align:center; }
         #suCoach .bub h3 { font-size:18px; font-weight:800; text-align:center; color:var(--su-text); }
@@ -563,6 +563,60 @@
         #suCoach .bub .feat span { background:var(--su-card); border:1px solid var(--su-line); border-radius:12px; padding:6px 8px; font-size:13px; font-weight:700; color:var(--su-text); text-align:center; }
         @media (max-height: 540px) { #suCoach .bub .feat { display:none; } }
         .su-chap.done .ck { background:var(--su-pri); color:var(--su-on-pri, #fff); }
+        /* v109: مختبر التلاوة */
+        #suHunt { display:none; }
+        body.simple-ui #suHunt.on { display:flex; position:fixed; left:10px; right:10px; top:calc(66px + env(safe-area-inset-top)); z-index:85; max-width:620px; margin:0 auto; flex-direction:column; gap:6px; background:var(--su-card); border:2px solid var(--su-pri); border-radius:20px; padding:10px 12px; box-shadow:0 8px 24px rgba(0,0,0,.18); }
+        @media (orientation: landscape) and (max-height: 540px) { body.simple-ui #suHunt.on { top:auto; bottom:8px; right:94px; left:66px; padding:5px 10px; gap:2px; } body.su-hunt #wordsGridContainer { padding-top:0; padding-bottom:110px; } #suHunt .q { font-size:13px; } #suHunt .msg:not(.good):not(.bad) { display:none; } #suHunt .bar button { min-height:30px; } }
+        body.su-hunt #wordsGridContainer { padding-top:70px; }
+        #suHunt .msg, #suHunt .q { overflow-wrap:anywhere; }
+        #suHunt .bar { flex-wrap:wrap; }
+        #suHunt .q { font-weight:800; font-size:15px; color:var(--su-text); line-height:1.6; }
+        #suHunt .q b { color:var(--su-pri); }
+        #suHunt .bar { display:flex; align-items:center; gap:8px; font-weight:700; font-size:13px; color:var(--su-muted); }
+        #suHunt .bar .dots { display:flex; gap:4px; flex:1; }
+        #suHunt .bar .dots i { width:14px; height:14px; border-radius:99px; background:var(--su-card2); border:1px solid var(--su-line); }
+        #suHunt .bar .dots i.on { background:var(--su-pri); border-color:var(--su-pri); }
+        #suHunt .bar button { min-height:34px; padding:0 10px; border-radius:12px; background:var(--su-card2); color:var(--su-text); font-weight:700; }
+        #suHunt .msg { font-size:13px; font-weight:700; min-height:0; color:var(--su-muted); }
+        #suHunt .msg.bad { color:#B42318; } #suHunt .msg.good { color:var(--su-pri); }
+        body.su-hunt #wordsGridContainer .rule-text-span { visibility:hidden; }
+        body.su-hunt #wordsGridContainer .word-box.su-h-ok { box-shadow:0 0 0 3px var(--su-pri) inset; border-radius:14px; background:var(--su-pri-soft); }
+        body.su-hunt #wordsGridContainer .word-box.su-h-bad { animation:suShake .4s; box-shadow:0 0 0 3px #E5484D inset; border-radius:14px; }
+        body.su-hunt #wordsGridContainer .word-box.su-h-hint { animation:suHint 1.2s ease-in-out 2; border-radius:14px; }
+        @keyframes suShake { 0%,100% { transform:none; } 25% { transform:translateX(-5px); } 75% { transform:translateX(5px); } }
+        @keyframes suHint { 50% { box-shadow:0 0 0 4px #E9C46A inset; background:rgba(233,196,106,.25); } }
+        body.su-hunt #suWordCard { display:none !important; }
+        .su-beats { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin:8px 0 4px; }
+        .su-beats i { width:38px; height:38px; border-radius:99px; background:var(--su-card2); border:2px solid var(--su-line); transition:transform .12s, background .12s; }
+        .su-beats i.on { background:var(--su-pri); border-color:var(--su-pri); transform:scale(1.15); }
+        .su-beats i.tap { background:#E9C46A; border-color:#C99A2E; }
+        .su-seg { display:flex; gap:6px; flex-wrap:wrap; justify-content:center; }
+        .su-seg button { min-height:40px; padding:0 14px; border-radius:99px; border:1px solid var(--su-line); background:var(--su-card); color:var(--su-text); font-weight:700; font-size:14px; }
+        .su-seg button.on { background:var(--su-pri); color:var(--su-on-pri, #fff); border-color:var(--su-pri); }
+        .su-tapbig { width:100%; min-height:110px; border-radius:26px; background:var(--su-pri-soft); border:2px dashed var(--su-pri); color:var(--su-pri); font-size:22px; font-weight:800; touch-action:manipulation; user-select:none; }
+        .su-tapbig:active { transform:scale(.98); }
+        .su-note { color:var(--su-muted); font-size:13px; font-weight:700; line-height:1.8; text-align:center; }
+        .su-res { text-align:center; font-weight:800; font-size:16px; padding:8px; border-radius:14px; background:var(--su-card); border:1px solid var(--su-line); color:var(--su-text); }
+        .su-rec { width:96px; height:96px; border-radius:99px; background:#D92D20; color:#fff; font-size:34px; display:flex; align-items:center; justify-content:center; margin:6px auto; box-shadow:0 6px 18px rgba(217,45,32,.35); }
+        .su-rec.on { animation:suRecP 1.2s ease-in-out infinite; border-radius:28px; }
+        @keyframes suRecP { 50% { box-shadow:0 0 0 14px rgba(217,45,32,.15); } }
+        .su-level { height:10px; border-radius:99px; background:var(--su-card2); overflow:hidden; } .su-level > i { display:block; height:100%; width:0; background:#D92D20; transition:width .08s; }
+        .su-ayah.su-blur { filter:blur(7px); user-select:none; }
+        /* v109b: حارس المتشابهات ومقياس المد الصوتي */
+        .su-trap { position:absolute; top:-6px; right:-4px; z-index:3; min-width:28px; height:28px; padding:0 6px; border-radius:99px; background:#FFF4E5; border:1.5px solid #F79009; color:#B54708; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,.12); cursor:pointer; }
+        html.dark .su-trap { background:#3b2a12; color:#FDB022; }
+        .su-trap.hit { background:#FEE4E2; border-color:#D92D20; color:#B42318; }
+        .su-cmp { display:grid; grid-template-columns:1fr; gap:8px; }
+        .su-cmp > div { background:var(--su-card); border:1px solid var(--su-line); border-radius:16px; padding:10px 12px; }
+        .su-cmp .ref { font-size:12px; font-weight:800; color:var(--su-muted); }
+        .su-cmp .tx { font-family:'Amiri',serif; font-size:22px; line-height:2; color:var(--su-text); }
+        .su-cmp .tx b { color:#B42318; background:#FEE4E2; border-radius:8px; padding:0 4px; }
+        html.dark .su-cmp .tx b { background:#4a1d1a; color:#FDA29B; }
+        .su-cmp .tx .dim { color:var(--su-muted); }
+        .su-reveal { filter:blur(6px); cursor:pointer; transition:filter .2s; } .su-reveal.on { filter:none; }
+        .su-arc { position:relative; height:16px; border-radius:99px; background:var(--su-card2); overflow:hidden; margin:6px 0; }
+        .su-arc > i { position:absolute; inset:0 auto 0 0; width:0; background:var(--su-pri); border-radius:99px; transition:width .05s linear; }
+        .su-arc > b { position:absolute; top:0; bottom:0; width:2px; background:#C99A2E; }
         /* v89: الوضع الداكن */
         .mk-path button { color:#1F2937 !important; }
         html.dark body.simple-ui #wordsGridContainer { background:var(--su-card); }
@@ -581,7 +635,7 @@
 
     <!-- v80: الواجهة المبسّطة -->
     <header id="suTop">
-        <div class="flex flex-col min-w-0 flex-1 su-tbtn" role="button" tabindex="0" aria-label="فهرس السور والأجزاء" onclick="suOpenIndex()" onkeydown="if(event.key==='Enter')suOpenIndex()">
+        <div class="flex flex-col min-w-0 flex-1 su-tbtn" role="button" tabindex="0" aria-label="فهرس السور والأجزاء" onclick="suOpenIndex()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();suOpenIndex()}">
             <span class="su-title" id="suTitle">المصحف</span>
             <span class="su-sub" id="suSub"></span>
         </div>
@@ -620,6 +674,7 @@
         </div>
     </div>
     <div id="suWordCard" role="dialog" aria-label="الكلمة"></div>
+    <div id="suHunt" role="status" aria-live="polite"></div>
     <div id="suRepeat" role="dialog" aria-label="مشغّل التكرار"><div class="su-full" id="suRepeatWrap"></div></div>
     <div id="suNextQ" role="dialog" aria-label="اختبار الحفظ"><div class="su-full" id="suNextQWrap"></div></div>
     <div id="suIndex" role="dialog" aria-label="الفهرس">
@@ -1304,7 +1359,7 @@
             schema: 'quranSchemaVersion',
             mastery: 'quranMastery'
         };
-        const APP_VERSION = 108;
+        const APP_VERSION = 109;
 
         const DEFAULT_SETTINGS = {
             reciter: '6', speed: 1, multiDefault: false, multiReciters: ['6', '7'],
@@ -1475,6 +1530,7 @@
 
         function applyDarkMode() {
             document.documentElement.classList.toggle('dark', Boolean(settings.darkMode));
+            try { suSyncThemeMeta(); } catch (e) {}
             const btn = $('darkToggleBtn');
             if (btn) btn.textContent = settings.darkMode ? '☀️' : '🌙';
         }
@@ -4716,6 +4772,7 @@
         function openPolicy() { openInfoModal('📜 السياسة العامة للواجهات', POLICY_HTML); }
 
         const CHANGELOG = [
+            ['v109', '2026-11-28', ['«مختبر التلاوة» في ☰: ثلاث أدوات جديدة.', '🎯 صيد الأحكام: لعبة تطلب منك أن تجد في صفحتك كلمات فيها حكم معيّن (الإخفاء، القلقلة، المد المتصل…) والأحكام مخفية، مع تلميح ونقاط وأفضل وقت.', '⏱ ميزان المدّ: تسمع إيقاع الحركات لكل نوع مدّ، ثم تنقر معه فيقيس عدد نقراتك وانتظامها. ويظهر زر «ميزان المد» في بطاقة أي كلمة فيها مد.', '🪞 مرآة التلاوة: سجّل تلاوتك لأي آية واسمعها، وقارنها بصوت القارئ. ووضع «اختبار الحفظ» يخفي الآية وأنت تسجّل. التسجيلات تبقى على جهازك فقط.', '🎙 مقياس المدّ الصوتي: امدد حرف المد في الميكروفون، فيقيس زمن مدّك بالحركات ويقارنه بالمطلوب.', '🛡 حارس المتشابهات: في الحفظ تظهر علامة 🔀 عند الآيات التي يكثر فيها الخلط، تكشف لك موضع الفرق قبل أن تقع فيه، و«فخاخي» تجمع المواضع التي أخطأت فيها لتراجعها.', 'لون شريط الهاتف العلوي يتبع لون الواجهة والوضع الداكن، وإصلاح نبض نقطة «يُتلى الآن».']],
             ['v108', '2026-11-27', ['الدليل التفاعلي صار دورة كاملة من 7 فصول تجرّب فيها كل قدرات التطبيق بنفسك: تثبيته على جهازك واختصاراته، والأساسيات، والمصحف والاستماع، والنطق، والتجويد، والحفظ، ويومي والأدوات.', 'يظهر الدليل على شاشة البداية لمن يفتح التطبيق أول مرة، مع زر دائم «تعلّم التطبيق خطوة بخطوة»، ويُكمل فصلاً بعد فصل، ويعيدك إلى واجهتك في النهاية.', 'قائمة «الدليل التفاعلي» في ☰ تعرض الفصول وعلامة ✓ لما أتممته، فتعيد أي فصل متى شئت.']],
             ['v107', '2026-11-27', ['دليل تفاعلي لأول مرة: يُبرز الأزرار الحقيقية على الشاشة ويطلب منك تجربتها بنفسك (اضغط كلمة، اضغط رقم آية، انتقل إلى الصفحة التالية). ويعاد من ☰ › الدليل التفاعلي.', 'شعار التطبيق: «اقرأ، واسمع، وأتقن».', 'تشغيل الصفحة كاملة يتوقف عند انقطاع الصوت.', 'البسملة في الصفحة الأولى لم تعد تخرج عن حافة الصفحة على الجوال.']],
             ['v106', '2026-11-27', ['شعار «رتّلها» بالبرغندي والذهبي. وإصلاحات من فحص شامل: الصفحة الجديدة تبدأ من أعلاها، والاستماع المتواصل يتوقف عند انقطاع الصوت، ولا تختفي الأزرار عند الانتقال الآلي، واسم السورة الصحيح في الأعلى، وبطاقة الكلمة لا تظهر بمجرد مرور الفأرة، وألوان أوضح في الوضع الداكن، ورسالة النجاح في اختبار الدرس.', 'اسم التطبيق الجديد «رتّلها» مع شعار وشاشة ترحيب قصيرة عند الفتح، وأيقونات جديدة للتثبيت على الجهاز.', 'إصلاحات بعد اختبار شامل بأربعة مختبِرين: إخفاء الكلمات يعمل الآن في «المصحف» داخل الحفظ مع زر 🙈 للتبديل ويُحفظ، ومشغّل التكرار واختبار الآية التالية لا يخرجان عن الشاشة مع الآيات الطويلة، ونصوص لوحة الحفظ واضحة في الوضع الداكن، واختبار «الآية التالية» لا يعبر حدود السورة، والختمة لا تظهر متأخرة في يومها الأول، وزر «✨ الواجهة المبسّطة» في الواجهة الكاملة للعودة، وكلمة بطاقة الكلمة واضحة في الوضع الداكن، والقارئ والسرعة يُحفظان، والنسخة الاحتياطية تشمل سجل القراءة والألوان والتفضيلات وتدمج العلامات ولا تقبل ملفاً غريباً، والهدف اليومي لا يحسب الصفحة إلا بعد قراءتها 15 ثانية، ولا تتكرر العلامة على الآية نفسها، وزر الرجوع وEsc يغلقان النوافذ، وبطاقة الكلمة لا تظهر قبل لمس كلمة.']],
@@ -6247,6 +6304,7 @@
             const g = (t, tiles) => `<div class="su-lbl">${t}</div><div class="su-tiles">${tiles.join('')}</div>`;
             suOpenSheet('<h2>المزيد</h2>' + `<div class="flex gap-2 mb-1"><input id="suGoto" inputmode="numeric" dir="ltr" placeholder="صفحة أو 2:255" class="flex-1 min-h-[52px] rounded-2xl px-4 text-center font-bold" style="background:var(--su-card);border:1px solid var(--su-line);color:var(--su-text)" onkeydown="if(event.key==='Enter')suGotoGo()"><button class="su-btn pri" style="width:auto" onclick="suGotoGo()">اذهب</button></div>`
                 + g('اقرأ واستمع', [suTile('📑', 'الفهرس', 'suOpenIndex()'), suTile('🎧', 'استماع متواصل', 'suListenSheet()'), suTile('🔖', 'علاماتي', 'suBookmarks()'), suTile('📅', 'الورد والختمة', 'openKhatma()'), suTile('🎯', 'وضع التركيز', 'toggleFocus(true)'), suTile('🏠', 'يومي', 'suOpenToday()')])
+                + g('مختبر التلاوة ✨', [suTile('🎯', 'صيد الأحكام', 'suHuntStart()'), suTile('⏱', 'ميزان المدّ', 'suMaddSheet()'), suTile('🪞', 'مرآة التلاوة', 'suMirrorList()')])
                 + g('أدواتي', [suTile('📚', 'كراساتي', 'openBooksModal()'), suTile('📤', 'ملازم PDF', 'openExportModal()'), suTile('❓', 'من أين أبدأ؟', 'openStartGuide()')])
                 + g('التطبيق', [suTile('⚙️', 'الإعدادات', 'suOpenSettings()'), suTile('🧭', 'تغيير الواجهة', "openModeChooser(true)"), suTile('🎨', 'الألوان', 'suThemeSheet()'), suTile('📲', 'دون إنترنت', 'openAppPanel()'), suTile('🔗', 'شارك التطبيق', 'suShareApp()'), suTile('🎓', 'الدليل التفاعلي', 'suCoachMenu()'), suTile('🧰', 'الواجهة الكاملة', 'setSimpleUI(false)')]));
         };
@@ -6310,8 +6368,9 @@
         function suApplyTheme() {
             const t = suTheme();
             if (t === 'green') document.documentElement.removeAttribute('data-su-theme'); else document.documentElement.setAttribute('data-su-theme', t);
-            const m = document.querySelector('meta[name="theme-color"]'); if (m) m.setAttribute('content', t === 'green' ? '#064e3b' : suThemeColor());
+            suSyncThemeMeta();
         }
+        function suSyncThemeMeta() { const m = document.querySelector('meta[name="theme-color"]'); if (!m) return; const dark = document.documentElement.classList.contains('dark'); m.setAttribute('content', dark ? '#0c0a09' : (suTheme() === 'green' ? '#064e3b' : suThemeColor())); }
         function suSwatches() { const cur = suTheme(); return SU_THEMES.map(([id, n, c]) => `<button class="${id === cur ? 'on' : ''}" data-th="${id}" onclick="suSetTheme('${id}')" aria-label="اللون ${n}"><span class="dot" style="background:${c}">${id === cur ? '✓' : ''}</span>${n}</button>`).join(''); }
         function suSetTheme(id) {
             try { localStorage.setItem('quranSuTheme', id); } catch (e) {}
@@ -6822,6 +6881,352 @@
                 }
                 if (suCo && !suCo.busy) return _tick.apply(this, arguments); if (suCo) suCoachPlace();
             };
+        })();
+
+        // v109: مختبر التلاوة — 1) صيد الأحكام
+        const SU_HUNT_CODES = ['ikhfa', 'idgham_ghunna', 'idgham_no_ghunna', 'iqlab', 'izhar_halqi', 'qalqala_sughra', 'qalqala_kubra', 'ghunna', 'madd_muttasil', 'madd_munfasil', 'madd_lazim_kalimi', 'madd_aarid', 'lam_shamsiya', 'lam_qamariya', 'ikhfa_shafawi', 'idgham_shafawi', 'izhar_shafawi', 'madd_sila_kubra', 'madd_badal', 'ra_tafkheem', 'jalala_tafkheem'];
+        let suH = null;
+        function suHuntWords() { return [...document.querySelectorAll('#wordsGridContainer .word-box')].map(b => ({ b, w: (currentPageAllWords || []).find(w => `${w.surah}:${w.ayah}` === b.dataset.verseKey && String(w.position) === b.dataset.wordIndex) })).filter(x => x.w); }
+        function suHuntStats() { try { return JSON.parse(localStorage.getItem('quranSuHunt') || '{}') || {}; } catch (e) { return {}; } }
+        function suHuntStart(prev) {
+            try { suCloseSheet(); suCloseWord(); } catch (e) {}
+            if ($('mushafView').classList.contains('hidden') || !['mushaf', 'train'].includes(currentSection)) { showSection(MODES[appMode].home === 'hifz' ? 'mushaf' : (['mushaf', 'train'].includes(MODES[appMode].home) ? MODES[appMode].home : 'mushaf')); }
+            if (typeof hifzHideOn !== 'undefined' && hifzHideOn) try { suHifzHideToggle(); } catch (e) {}
+            const ws = suHuntWords(), cnt = {};
+            ws.forEach(x => wordRuleCodes(x.w).forEach(c => { if (SU_HUNT_CODES.includes(c)) cnt[c] = (cnt[c] || 0) + 1; }));
+            let cands = Object.keys(cnt).filter(c => cnt[c] >= 2 && c !== prev);
+            if (!cands.length) cands = Object.keys(cnt).filter(c => c !== prev);
+            if (!cands.length) { showToast('لا توجد في هذه الصفحة أحكام كافية للعبة. جرّب صفحة أخرى.', 'info'); return; }
+            const code = cands[Math.floor(Math.random() * cands.length)];
+            suH = { code, need: Math.min(3, cnt[code]), total: cnt[code], found: new Set(), miss: 0, hints: 0, t0: Date.now() };
+            document.body.classList.add('su-hunt');
+            document.querySelectorAll('#wordsGridContainer .su-h-ok, #wordsGridContainer .su-h-bad').forEach(b => b.classList.remove('su-h-ok', 'su-h-bad'));
+            suHuntRender('');
+            clearInterval(suHuntStart.tk); suHuntStart.tk = setInterval(() => { if (suH && !suH.done) { const t = $('suHuntT'); if (t) t.textContent = suHuntTime(); } }, 1000);
+        }
+        function suHuntTime() { const s = Math.round((Date.now() - suH.t0) / 1000); return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; }
+        function suHuntRender(msg, cls) {
+            const nm = (RULE_CANON[suH.code] || {}).name || suH.code;
+            $('suHunt').innerHTML = `<div class="q">🎯 اعثر على <b>${suH.need}</b> ${suH.need === 1 ? 'كلمة' : 'كلمات'} فيها <b>«${escapeHtml(nm)}»</b>${suH.total > suH.need ? ` <span style="color:var(--su-muted);font-size:12px">(في الصفحة ${suH.total})</span>` : ''}</div>
+                <div class="bar"><span class="dots">${Array.from({ length: suH.need }, (_, i) => `<i class="${i < suH.found.size ? 'on' : ''}"></i>`).join('')}</span><span>⏱ <span id="suHuntT">${suHuntTime()}</span></span><button onclick="suHuntHint()">💡 تلميح</button><button onclick="suHuntEnd()" aria-label="إنهاء">✕</button></div>
+                <div class="msg ${cls || ''}">${msg || 'الأحكام مخفية. اضغط الكلمات التي تظن أن فيها هذا الحكم.'}</div>`;
+            $('suHunt').classList.add('on');
+        }
+        function suHuntHint() {
+            if (!suH || suH.done) return;
+            const x = suHuntWords().find(x => !suH.found.has(x.b.dataset.location) && wordRuleCodes(x.w).includes(suH.code));
+            if (!x) return;
+            suH.hints++; x.b.classList.remove('su-h-hint'); void x.b.offsetWidth; x.b.classList.add('su-h-hint');
+            window.suProgAt = Date.now(); x.b.scrollIntoView({ block: 'center', behavior: 'smooth' });
+            setTimeout(() => x.b.classList.remove('su-h-hint'), 2600);
+        }
+        function suHuntTap(box) {
+            const x = suHuntWords().find(y => y.b === box); if (!x || suH.done) return;
+            const key = box.dataset.location, codes = wordRuleCodes(x.w);
+            if (suH.found.has(key)) return;
+            if (codes.includes(suH.code)) {
+                suH.found.add(key); box.classList.add('su-h-ok');
+                if (suH.found.size >= suH.need) return suHuntWin();
+                suHuntRender(`✓ أحسنت! «${escapeHtml(x.w.text || '')}» فيها هذا الحكم.`, 'good');
+            } else {
+                suH.miss++; box.classList.remove('su-h-bad'); void box.offsetWidth; box.classList.add('su-h-bad'); setTimeout(() => box.classList.remove('su-h-bad'), 900);
+                const has = codes.map(c => (RULE_CANON[c] || {}).short || (RULE_CANON[c] || {}).name).filter(Boolean).slice(0, 3);
+                suHuntRender(`✗ ليست هذه. ${has.length ? `فيها: ${escapeHtml(has.join('، '))}` : 'لا حكم بارزاً فيها.'}`, 'bad');
+            }
+        }
+        function suHuntWin() {
+            suH.done = true; clearInterval(suHuntStart.tk);
+            const sec = Math.round((Date.now() - suH.t0) / 1000), stars = Math.max(1, 3 - suH.miss - suH.hints);
+            const st = suHuntStats(); st.wins = (st.wins || 0) + 1; st.best = st.best || {}; const nb = !st.best[suH.code] || sec < st.best[suH.code]; if (nb && !suH.hints) st.best[suH.code] = sec;
+            try { localStorage.setItem('quranSuHunt', JSON.stringify(st)); } catch (e) {}
+            const nm = (RULE_CANON[suH.code] || {}).name || suH.code;
+            $('suHunt').innerHTML = `<div class="q" style="text-align:center">🎉 وجدتها! ${'⭐'.repeat(stars)}${'☆'.repeat(3 - stars)}</div>
+                <div class="msg good" style="text-align:center">«${escapeHtml(nm)}» في ${suHuntTime()} · أخطاء ${suH.miss} · تلميحات ${suH.hints}${nb && !suH.hints ? ' · أفضل وقت 🏅' : ''} · مجموع الجولات ${st.wins}</div>
+                <div class="bar" style="justify-content:center"><button onclick="suHuntStart('${suH.code}')" style="background:var(--su-pri);color:var(--su-on-pri,#fff)">جولة أخرى ←</button><button onclick="openTajweedDetail(Object.assign({}, (currentPageAllWords||[]).find(w=>wordRuleCodes(w).includes('${suH.code}'))||{}), '${suH.code}')">📘 شرح الحكم</button><button onclick="suHuntEnd()">إنهاء</button></div>`;
+        }
+        function suHuntEnd() {
+            suH = null; clearInterval(suHuntStart.tk);
+            $('suHunt').classList.remove('on'); document.body.classList.remove('su-hunt');
+            document.querySelectorAll('#wordsGridContainer .su-h-ok, #wordsGridContainer .su-h-bad, #wordsGridContainer .su-h-hint').forEach(b => b.classList.remove('su-h-ok', 'su-h-bad', 'su-h-hint'));
+        }
+        document.addEventListener('click', e => {
+            if (!suH) return;
+            const box = e.target.closest && e.target.closest('#wordsGridContainer .word-box');
+            if (!box) return;
+            e.stopPropagation(); e.preventDefault(); suHuntTap(box);
+        }, true);
+
+        // 2) ميزان المدّ
+        const SU_MADD = [
+            ['madd_tabii', 'المد الطبيعي', [2], 'حركتان دائماً.'],
+            ['madd_muttasil', 'المد الواجب المتصل', [4, 5], 'أربع أو خمس حركات لحفص من الشاطبية، وتلتزم ما تختاره.'],
+            ['madd_munfasil', 'المد الجائز المنفصل', [4, 5], 'أربع أو خمس حركات، ويساوي المتصل في قراءتك.'],
+            ['madd_aarid', 'المد العارض للسكون', [2, 4, 6], 'عند الوقف: حركتان أو أربع أو ست.'],
+            ['madd_lazim_kalimi', 'المد اللازم الكلمي', [6], 'ست حركات لزوماً.'],
+            ['madd_lazim_harfi', 'المد اللازم الحرفي', [6], 'ست حركات في حروف «نقص عسلكم» من فواتح السور.'],
+            ['madd_badal', 'مد البدل', [2], 'حركتان لحفص.'],
+            ['madd_iwad', 'مد العوض', [2], 'حركتان عند الوقف على تنوين الفتح.'],
+            ['madd_sila_sughra', 'مد الصلة الصغرى', [2], 'حركتان في الوصل.'],
+            ['madd_sila_kubra', 'مد الصلة الكبرى', [4, 5], 'أربع أو خمس، مثل المنفصل.'],
+            ['madd_leen', 'مد اللين', [2, 4, 6], 'عند الوقف: حركتان أو أربع أو ست.']
+        ];
+        const SU_TEMPO = [['بطيء', 650], ['متوسط', 480], ['سريع', 360]];
+        let suMd = { code: 'madd_muttasil', n: 4, tempo: 1, taps: [], word: null };
+        let suMdCtx = null;
+        function suTick(hi) {
+            try { suMdCtx = suMdCtx || new (window.AudioContext || window.webkitAudioContext)(); const o = suMdCtx.createOscillator(), g = suMdCtx.createGain(); o.frequency.value = hi ? 1100 : 760; g.gain.setValueAtTime(.0001, suMdCtx.currentTime); g.gain.exponentialRampToValueAtTime(.25, suMdCtx.currentTime + .01); g.gain.exponentialRampToValueAtTime(.0001, suMdCtx.currentTime + .12); o.connect(g).connect(suMdCtx.destination); o.start(); o.stop(suMdCtx.currentTime + .14); } catch (e) {}
+        }
+        function suMaddFor(word) { const cs = wordRuleCodes(word || {}); return SU_MADD.find(m => cs.includes(m[0])) || null; }
+        function suMaddSheet(code, word) {
+            if (code) { const m = SU_MADD.find(x => x[0] === code); if (m) { suMd.code = code; if (!m[2].includes(suMd.n)) suMd.n = m[2][m[2].length > 1 ? 1 : 0] || m[2][0]; } }
+            suMd.word = word || null; suMd.taps = [];
+            suMaddRender();
+        }
+        function suMaddRender(res) {
+            const m = SU_MADD.find(x => x[0] === suMd.code) || SU_MADD[0];
+            if (!m[2].includes(suMd.n)) suMd.n = m[2][0];
+            const ms = SU_TEMPO[suMd.tempo][1];
+            suOpenSheet(`<h2>⏱ ميزان المدّ</h2>
+                ${suMd.word ? `<div class="su-ayah" style="text-align:center;font-size:30px;margin-bottom:6px">${escapeHtml(suMd.word.text || '')}</div>` : ''}
+                <div class="su-seg" style="margin-bottom:8px">${SU_MADD.map(x => `<button class="${x[0] === m[0] ? 'on' : ''}" onclick="suMd.code='${x[0]}'; suMd.taps=[]; suMaddRender()">${escapeHtml((RULE_CANON[x[0]] || {}).short || x[1])}</button>`).join('')}</div>
+                <div class="su-res">${escapeHtml(m[1])}: ${m[2].join(' أو ')} ${m[2].length === 1 && m[2][0] === 2 ? 'حركتان' : 'حركات'}</div>
+                <div class="su-note">${escapeHtml(m[3])} والحركة بمقدار قبض الإصبع أو بسطه بسرعة معتدلة.</div>
+                ${m[2].length > 1 ? `<div class="su-seg">${m[2].map(n => `<button class="${n === suMd.n ? 'on' : ''}" onclick="suMd.n=${n}; suMd.taps=[]; suMaddRender()">${n} حركات</button>`).join('')}</div>` : ''}
+                <div class="su-beats" id="suBeats">${Array.from({ length: suMd.n }, () => '<i></i>').join('')}</div>
+                <div class="su-seg" style="margin-bottom:8px">${SU_TEMPO.map((t, i) => `<button class="${i === suMd.tempo ? 'on' : ''}" onclick="suMd.tempo=${i}; suMaddRender()">${t[0]}</button>`).join('')}</div>
+                <div class="su-grid2" style="margin-bottom:8px"><button class="su-btn pri" onclick="suMaddPlay()">▶ اسمع الإيقاع</button>${suMd.word ? `<button class="su-btn out" onclick="playWordAction('${suMd.word.surah}:${suMd.word.ayah}', ${suMd.word.position}, 1)">🔊 الكلمة</button>` : `<button class="su-btn out" onclick="suMd.taps=[]; suMaddRender()">↺ من جديد</button>`}</div>
+                <button class="su-tapbig" id="suTapBig" onpointerdown="suMaddTap(event)">👆 جرّب: انقر مع كل حركة (${suMd.n})</button>
+                <div id="suMdRes" style="margin-top:8px">${res || ''}</div>`);
+            $('suSheetPanel').scrollTop = 0;
+        }
+        async function suMaddPlay() {
+            const ms = SU_TEMPO[suMd.tempo][1], bs = [...document.querySelectorAll('#suBeats i')];
+            for (let i = 0; i < bs.length; i++) { bs.forEach(b => b.classList.remove('on')); bs[i].classList.add('on'); suTick(i === 0); await new Promise(r => setTimeout(r, ms)); }
+            bs.forEach(b => b.classList.remove('on'));
+        }
+        function suMaddTap(e) {
+            if (e) e.preventDefault();
+            const now = performance.now(); suTick(false);
+            if (suMd.taps.length && now - suMd.taps[suMd.taps.length - 1] > 1800) suMd.taps = [];
+            suMd.taps.push(now);
+            const bs = [...document.querySelectorAll('#suBeats i')]; bs.forEach((b, i) => b.classList.toggle('tap', i < suMd.taps.length));
+            clearTimeout(suMaddTap.tk); suMaddTap.tk = setTimeout(suMaddJudge, 1300);
+        }
+        function suMaddJudge() {
+            const t = suMd.taps, n = t.length, want = suMd.n, ms = SU_TEMPO[suMd.tempo][1];
+            if (!n) return;
+            const iv = t.slice(1).map((x, i) => x - t[i]), avg = iv.length ? iv.reduce((a, b) => a + b, 0) / iv.length : 0;
+            const sd = iv.length ? Math.sqrt(iv.reduce((a, b) => a + (b - avg) * (b - avg), 0) / iv.length) : 0;
+            const even = iv.length < 2 || sd / avg < 0.25, near = !avg || Math.abs(avg - ms) / ms < 0.35;
+            let h;
+            if (n === want && even && near) h = `<div class="su-res" style="color:var(--su-pri)">✓ ممتاز: ${n} حركات منتظمة</div>`;
+            else if (n === want) h = `<div class="su-res">العدد صحيح (${n}) ${!even ? '، لكن النقرات غير متساوية. اجعل كل حركة بالمقدار نفسه.' : avg < ms ? '، لكنك أسرع من الإيقاع.' : '، لكنك أبطأ من الإيقاع.'}</div>`;
+            else h = `<div class="su-res" style="color:#B42318">نقرت ${n} ${n === 1 ? 'مرة' : 'مرات'} والمطلوب ${want}. ${n < want ? 'أطِل المدّ أكثر.' : 'قصّر المدّ قليلاً.'}</div>`;
+            suMd.taps = []; const r = $('suMdRes'); if (r) r.innerHTML = h;
+            setTimeout(() => document.querySelectorAll('#suBeats i').forEach(b => b.classList.remove('tap')), 900);
+        }
+
+        // 3) مرآة التلاوة
+        let suRecDb = null, suRecState = null;
+        function suRecOpen() { return suRecDb ? Promise.resolve(suRecDb) : new Promise((res, rej) => { const r = indexedDB.open('quranSuRec', 1); r.onupgradeneeded = () => r.result.createObjectStore('rec', { keyPath: 'k' }); r.onsuccess = () => { suRecDb = r.result; res(suRecDb); }; r.onerror = () => rej(r.error); }); }
+        async function suRecPut(o) { const db = await suRecOpen(); return new Promise((res, rej) => { const tx = db.transaction('rec', 'readwrite'); tx.objectStore('rec').put(o); tx.oncomplete = res; tx.onerror = () => rej(tx.error); }); }
+        async function suRecGet(k) { const db = await suRecOpen(); return new Promise(res => { const q = db.transaction('rec').objectStore('rec').get(k); q.onsuccess = () => res(q.result || null); q.onerror = () => res(null); }); }
+        async function suRecAll() { const db = await suRecOpen(); return new Promise(res => { const q = db.transaction('rec').objectStore('rec').getAll(); q.onsuccess = () => res(q.result || []); q.onerror = () => res([]); }); }
+        async function suRecDel(k) { const db = await suRecOpen(); return new Promise(res => { const tx = db.transaction('rec', 'readwrite'); tx.objectStore('rec').delete(k); tx.oncomplete = res; tx.onerror = res; }); }
+        let suMirrorHide = false, suRecAudio = null;
+        async function suMirror(key) {
+            key = key || currentAyahKey;
+            suRecStop(true);
+            let has = null; try { has = await suRecGet(key); } catch (e) {}
+            suOpenSheet(`<h2>🪞 مرآة التلاوة</h2>
+                <div class="su-ayah${suMirrorHide ? ' su-blur' : ''}" id="suMirAyah" style="margin-bottom:8px"><span class="ref">${escapeHtml(verseLabel(key))}</span>${escapeHtml(ayahPlain(key))}</div>
+                <button class="su-row" onclick="suMirrorHide=!suMirrorHide; $('suMirAyah').classList.toggle('su-blur', suMirrorHide); this.querySelector('.su-switch').classList.toggle('on', suMirrorHide)"><span class="i">🙈</span>اختبار الحفظ: أخفِ الآية وأنا أسجّل<span class="su-switch${suMirrorHide ? ' on' : ''}"></span></button>
+                <button class="su-rec" id="suRecBtn" onclick="suRecToggle('${key}')" aria-label="تسجيل">●</button>
+                <div class="su-note" id="suRecTx">${has ? `تسجيلك محفوظ (${Math.round(has.d)} ث). سجّل من جديد ليحلّ محله.` : 'اضغط الزر الأحمر وابدأ التلاوة، ثم اضغطه مرة أخرى للإيقاف.'}</div>
+                <div class="su-level" style="margin:6px 0 10px"><i id="suRecLv"></i></div>
+                <div class="su-grid2" style="margin-bottom:8px"><button class="su-btn pri" onclick="suRecPlay('${key}')" ${has ? '' : 'disabled style="opacity:.5"'} id="suRecMine">▶ تلاوتي</button><button class="su-btn out" onclick="playAyahAction('${key}')">🔊 القارئ</button></div>
+                <div class="su-grid2"><button class="su-btn out" onclick="suRecCompare('${key}')" ${has ? '' : 'disabled style="opacity:.5"'} id="suRecCmp">⇄ قارن: القارئ ثم أنا</button><button class="su-btn out" onclick="suRecRemove('${key}')" ${has ? '' : 'disabled style="opacity:.5"'} id="suRecDel">🗑 حذف</button></div>
+                <div class="su-note" style="margin-top:8px">🔒 التسجيل يبقى على جهازك فقط، ولا يُرفع إلى أي مكان.</div>`);
+        }
+        async function suRecToggle(key) {
+            if (suRecState) return suRecStop(false);
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !window.MediaRecorder) return showToast('هذا المتصفح لا يدعم التسجيل', 'error');
+            let stream; try { stream = await navigator.mediaDevices.getUserMedia({ audio: true }); } catch (e) { return showToast('لم يُسمح باستخدام الميكروفون. فعّله من إعدادات المتصفح.', 'error'); }
+            stopAllAudio();
+            const rec = new MediaRecorder(stream), chunks = [], t0 = Date.now();
+            suRecState = { rec, stream, key, t0 };
+            rec.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+            rec.onstop = async () => {
+                stream.getTracks().forEach(t => t.stop());
+                const st = suRecState; suRecState = null; clearInterval(st && st.tk); try { st.ac && st.ac.close(); } catch (e) {}
+                if (st && st.cancel) return;
+                const blob = new Blob(chunks, { type: rec.mimeType || 'audio/webm' }), d = (Date.now() - t0) / 1000;
+                if (d < 0.6 || !blob.size) { showToast('التسجيل قصير جداً', 'info'); return; }
+                try { await suRecPut({ k: key, blob, d, t: Date.now() }); } catch (e) { showToast('تعذّر حفظ التسجيل', 'error'); }
+                if ($('suRecBtn')) { $('suRecBtn').classList.remove('on'); $('suRecBtn').textContent = '●'; ['suRecMine', 'suRecCmp', 'suRecDel'].forEach(id => { const b = $(id); if (b) { b.disabled = false; b.style.opacity = ''; } }); $('suRecTx').textContent = `✓ حُفظ تسجيلك (${Math.round(d)} ث). استمع إليه أو قارنه بالقارئ.`; const lv = $('suRecLv'); if (lv) lv.style.width = '0'; }
+                if (suMirrorHide && $('suMirAyah')) { $('suMirAyah').classList.remove('su-blur'); }
+            };
+            rec.start();
+            $('suRecBtn').classList.add('on'); $('suRecBtn').textContent = '■'; $('suRecTx').textContent = '● يسجّل الآن… 0 ث';
+            try {
+                const ac = new (window.AudioContext || window.webkitAudioContext)(), an = ac.createAnalyser(); an.fftSize = 512; ac.createMediaStreamSource(stream).connect(an);
+                const buf = new Uint8Array(an.fftSize); suRecState.ac = ac;
+                suRecState.tk = setInterval(() => { an.getByteTimeDomainData(buf); let m = 0; for (const v of buf) m = Math.max(m, Math.abs(v - 128)); const lv = $('suRecLv'); if (lv) lv.style.width = Math.min(100, m * 1.6) + '%'; const tx = $('suRecTx'); if (tx && suRecState) tx.textContent = `● يسجّل الآن… ${Math.round((Date.now() - t0) / 1000)} ث`; if (Date.now() - t0 > 180000) suRecStop(false); }, 90);
+            } catch (e) {}
+        }
+        function suRecStop(cancel) { if (!suRecState) return; suRecState.cancel = !!cancel; try { suRecState.rec.stop(); } catch (e) {} }
+        async function suRecPlay(key, onEnd) {
+            const r = await suRecGet(key); if (!r) return;
+            try { stopAllAudio(); } catch (e) {}
+            if (suRecAudio) { suRecAudio.pause(); URL.revokeObjectURL(suRecAudio.src); }
+            suRecAudio = new Audio(URL.createObjectURL(r.blob));
+            if (onEnd) suRecAudio.onended = onEnd;
+            suRecAudio.play().catch(() => showToast('تعذّر تشغيل التسجيل', 'error'));
+        }
+        async function suRecCompare(key) {
+            showToast('🔊 القارئ أولاً، ثم تلاوتك', 'info');
+            const s = startSession(); const ok = await playClip(key, null, currentReciter); endSession(s);
+            if (!ok) showToast('صوت القارئ غير متاح الآن، فأشغّل تلاوتك وحدها', 'info');
+            await new Promise(r => setTimeout(r, 500)); suRecPlay(key);
+        }
+        async function suRecRemove(key) { await suRecDel(key); showToast('حُذف التسجيل', 'success'); suMirror(key); }
+        async function suMirrorList() {
+            let all = []; try { all = (await suRecAll()).sort((a, b) => b.t - a.t); } catch (e) {}
+            suOpenSheet(`<h2>🪞 مرآة التلاوة</h2><div class="su-note" style="text-align:right;margin-bottom:10px">سجّل تلاوتك لأي آية ثم قارنها بالقارئ. افتحها من زر الآية الحالية، أو من قائمة أي آية (اضغط رقمها).</div>
+                <button class="su-btn pri" style="margin-bottom:10px" onclick="suMirror(currentAyahKey)">● سجّل الآية الحالية (${escapeHtml(verseLabel(currentAyahKey))})</button>
+                <div class="su-lbl">تسجيلاتي (${all.length})</div>
+                ${all.length ? all.map(r => `<div class="su-row" style="cursor:default"><span class="i">🎙️</span><span style="flex:1">${escapeHtml(verseLabel(r.k))}<small style="display:block;color:var(--su-muted);font-size:12px">${Math.round(r.d)} ث · ${new Date(r.t).toLocaleDateString('ar')}</small></span><button class="su-mini" onclick="suRecPlay('${r.k}')" aria-label="تشغيل">▶</button><button class="su-mini" onclick="suCloseSheet(); goToVerse(${r.k.split(':')[0]}, ${r.k.split(':')[1]}).then(()=>suMirror('${r.k}'))" aria-label="فتح">↩</button></div>`).join('') : '<div class="su-note">لا تسجيلات بعد.</div>'}`);
+        }
+        (function suInstall109() {
+            const _as = suAyahSheet;
+            suAyahSheet = async function (key) {
+                const r = await _as.apply(this, arguments);
+                const p = $('suSheetPanel'), a = p && p.querySelector('.su-ayah');
+                if (a && !p.querySelector('.su-mirror-row')) a.insertAdjacentHTML('afterend', `<button class="su-row su-mirror-row" style="margin-bottom:8px;border-color:var(--su-pri)" onclick="suMirror('${key}')"><span class="i">🪞</span>سجّل تلاوتك وقارنها بالقارئ<span class="end" style="margin-inline-start:auto;color:var(--su-muted);font-size:13px">جديد</span></button>`);
+                return r;
+            };
+            const _sw = suShowWord;
+            suShowWord = function (word) {
+                const r = _sw.apply(this, arguments);
+                const m = suMaddFor(word), c = $('suWordCard');
+                if (m && c && c.classList.contains('on') && !c.querySelector('.su-madd-row')) {
+                    const g = c.querySelector('.grid2');
+                    if (g) g.insertAdjacentHTML('afterend', `<button class="su-btn out su-madd-row" style="width:100%;margin-top:8px;min-height:46px" onclick="suMaddSheet('${m[0]}', suWord)">⏱ ميزان المد: ${m[2].join(' أو ')} ${m[2].length === 1 && m[2][0] === 2 ? 'حركتان' : 'حركات'}</button>`);
+                }
+                return r;
+            };
+            const _calm = suCalm; suCalm = function (on) { if (on && suH) return; return _calm.apply(this, arguments); };
+            const _lp = loadPage;
+            loadPage = async function () { if (suH) suHuntEnd(); return _lp.apply(this, arguments); };
+            const _am = applyMode;
+            applyMode = function () { if (suH) suHuntEnd(); return _am.apply(this, arguments); };
+            const _cs = suCloseSheet;
+            suCloseSheet = function () { if (suRecState) suRecStop(false); if (suRecAudio) { try { suRecAudio.pause(); } catch (e) {} } return _cs.apply(this, arguments); };
+            document.addEventListener('keydown', e => { if (e.key === 'Escape' && suH && !document.querySelector('#suSheet.on, #tajweedModal:not(.hidden)')) suHuntEnd(); });
+        })();
+
+        // v109b: مقياس المد الصوتي
+        let suMic = null;
+        async function suMaddMic() {
+            if (suMic) return suMaddMicStop(true);
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return showToast('هذا المتصفح لا يدعم الميكروفون', 'error');
+            let stream; try { stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } }); } catch (e) { return showToast('لم يُسمح باستخدام الميكروفون. فعّله من إعدادات المتصفح.', 'error'); }
+            try { stopAllAudio(); } catch (e) {}
+            const ac = new (window.AudioContext || window.webkitAudioContext)(), an = ac.createAnalyser(); an.fftSize = 1024;
+            ac.createMediaStreamSource(stream).connect(an);
+            const buf = new Float32Array(an.fftSize), ms = SU_TEMPO[suMd.tempo][1], want = suMd.n, maxH = Math.max(7, want + 2);
+            suMic = { stream, ac, t0: performance.now(), noise: [], thr: 0.02, on: null, last: 0, best: 0, segStart: 0 };
+            const btn = $('suMicBtn'); if (btn) btn.textContent = '■ إيقاف';
+            const res = $('suMdRes'); if (res) res.innerHTML = `<div class="su-arc" id="suArc"><i></i>${Array.from({ length: maxH - 1 }, (_, i) => `<b style="left:${(i + 1) * 100 / maxH}%"></b>`).join('')}</div><div class="su-note" id="suMicTx">اسكت ثانية للمعايرة…</div>`;
+            const step = () => {
+                if (!suMic) return;
+                an.getFloatTimeDomainData(buf); let sum = 0; for (const v of buf) sum += v * v; const rms = Math.sqrt(sum / buf.length);
+                const now = performance.now(), el = now - suMic.t0, tx = $('suMicTx'), arc = document.querySelector('#suArc > i');
+                if (el < 700) { suMic.noise.push(rms); suMic.raf = requestAnimationFrame(step); return; }
+                if (!suMic.cal) { const nz = suMic.noise.sort((a, b) => a - b)[Math.floor(suMic.noise.length * 0.8)] || 0.005; suMic.thr = Math.max(0.015, nz * 3.5); suMic.cal = true; if (tx) tx.textContent = `الآن: امدد حرف المدّ وحده («آآآ» أو «ووو» أو «ييي») بمقدار ${want} حركات، ثم اسكت.`; }
+                const voiced = rms > suMic.thr;
+                if (voiced) { if (suMic.on === null) suMic.on = now; suMic.last = now; }
+                if (suMic.on !== null) {
+                    const dur = (voiced ? now : suMic.last) - suMic.on, h = dur / ms;
+                    if (arc) arc.style.width = Math.min(100, h * 100 / maxH) + '%';
+                    const bs = [...document.querySelectorAll('#suBeats i')]; bs.forEach((b, i) => b.classList.toggle('on', i < Math.floor(h)));
+                    if (!voiced && now - suMic.last > 260) {
+                        if (dur > 250) { suMic.best = Math.max(suMic.best, dur); return suMaddMicStop(false); }
+                        suMic.on = null;
+                    }
+                }
+                if (el > 12000) return suMaddMicStop(false);
+                suMic.raf = requestAnimationFrame(step);
+            };
+            suMic.raf = requestAnimationFrame(step);
+        }
+        function suMaddMicStop(cancel) {
+            const m = suMic; if (!m) return; suMic = null;
+            cancelAnimationFrame(m.raf); m.stream.getTracks().forEach(t => t.stop()); try { m.ac.close(); } catch (e) {}
+            const btn = $('suMicBtn'); if (btn) btn.textContent = '🎙 قِس مدّك بصوتك';
+            if (cancel) return;
+            const ms = SU_TEMPO[suMd.tempo][1], h = Math.round(m.best / ms * 10) / 10, opts = (SU_MADD.find(x => x[0] === suMd.code) || [0, 0, [suMd.n]])[2], want = suMd.n;
+            const tx = $('suMicTx'); if (!tx) return;
+            if (!m.best) { tx.innerHTML = 'لم أسمع صوتاً واضحاً. قرّب الهاتف وأعد المحاولة.'; return; }
+            const ok = Math.abs(h - want) <= 0.6, inOpts = opts.some(o => Math.abs(h - o) <= 0.6);
+            tx.innerHTML = `<div class="su-res" style="color:${ok ? 'var(--su-pri)' : inOpts ? 'inherit' : '#B42318'}">مددت نحو ${h} حركات (${(m.best / 1000).toFixed(1)} ث) — المطلوب ${want}${ok ? ' ✓ أحسنت' : inOpts ? ` · ${h} من الأوجه الجائزة، لكنك اخترت ${want}` : h < want ? ' · أطِل قليلاً' : ' · قصّر قليلاً'}</div><div class="su-note">القياس تقريبي ويعتمد على سرعة الإيقاع المختارة (${SU_TEMPO[suMd.tempo][0]}). غيّرها لتوافق سرعة تلاوتك.</div>`;
+        }
+
+        // v109b: حارس المتشابهات وفخاخي
+        function suTraps() { try { return JSON.parse(localStorage.getItem('quranSuTraps') || '{}') || {}; } catch (e) { return {}; } }
+        function suTrapHit(k) { const t = suTraps(); t[k] = { n: ((t[k] || {}).n || 0) + 1, t: Date.now() }; try { localStorage.setItem('quranSuTraps', JSON.stringify(t)); } catch (e) {} }
+        function suTrapPair(a, b) {
+            const ea = mtEntry(a, b), eb = mtEntry(b, a); if (!ea) return null;
+            const wa = ayahWordsPlain(a), wb = ayahWordsPlain(b), ma = new Set(ea[2]), mb = new Set(eb ? eb[2] : []);
+            let ia = wa.findIndex((w, i) => !ma.has(i) && ma.has(i - 1)), ib = wb.findIndex((w, i) => !mb.has(i) && mb.has(i - 1));
+            if (ia < 0) ia = wa.findIndex((w, i) => !ma.has(i));
+            if (ib < 0) ib = wb.findIndex((w, i) => !mb.has(i));
+            const seg = (ws, i, m) => { if (i < 0) return `<span class="dim">${escapeHtml(ws.slice(0, 6).join(' '))} …</span>`; return `<span class="dim">… ${escapeHtml(ws.slice(Math.max(0, i - 4), i).join(' '))}</span> <b>${escapeHtml(ws.slice(i, i + 2).join(' '))}</b> <span class="dim">…</span>`; };
+            return { a: seg(wa, ia), b: seg(wb, ib), r: ea[1] };
+        }
+        async function suTrapOpen(key) {
+            await loadMutashabihat(); await loadUthmaniWords();
+            const list = (mtData[key] || []).filter(x => x[1] >= 0.5).slice(0, 4);
+            if (!list.length) return;
+            const hits = (suTraps()[key] || {}).n || 0;
+            suOpenSheet(`<h2>🛡 انتبه: موضع متشابه</h2><div class="su-note" style="text-align:right;margin-bottom:8px">هذه الآية تشبه ${list.length === 1 ? 'آية أخرى' : list.length + ' آيات'}. الكلمة المختلفة باللون الأحمر، وهي الموضع الذي يقع فيه الخطأ عادة. اضغط النص لكشفه.</div>
+                <div class="su-cmp">${list.map(([k2]) => { const p = suTrapPair(key, k2); if (!p) return ''; return `<div><div class="ref">${escapeHtml(verseLabel(key))} (هنا)</div><div class="tx su-reveal" onclick="this.classList.add('on')">${p.a}</div><div class="ref" style="margin-top:4px">${escapeHtml(verseLabel(k2))}</div><div class="tx su-reveal" onclick="this.classList.add('on')">${p.b}</div></div>`; }).join('')}</div>
+                <div class="su-grid2" style="margin-top:10px"><button class="su-btn out" onclick="suTrapHit('${key}'); showToast('أُضيفت إلى «فخاخي» 🪤','success'); suCloseSheet(); suTrapDecorate()">🪤 أخطأت هنا${hits ? ` (${hits})` : ''}</button><button class="su-btn pri" onclick="suCloseSheet()">فهمت ✓</button></div>
+                <button class="su-row" style="margin-top:8px" onclick="openMutashabih('${key}')"><span class="i">🔀</span>المقارنة الكاملة</button>`);
+        }
+        async function suTrapDecorate() {
+            document.querySelectorAll('#wordsGridContainer .su-trap').forEach(e => e.remove());
+            if (!document.body.classList.contains('simple-ui') || appMode !== 'hifz') return;
+            try { await loadMutashabihat(); } catch (e) { return; }
+            const tr = suTraps(), done = new Set();
+            document.querySelectorAll('#wordsGridContainer .word-box').forEach(b => {
+                const k = b.dataset.verseKey; if (!k || done.has(k)) return; done.add(k);
+                const n = ((mtData || {})[k] || []).filter(x => x[1] >= 0.5).length; if (!n) return;
+                if (getComputedStyle(b).position === 'static') b.style.position = 'relative';
+                b.insertAdjacentHTML('afterbegin', `<span class="su-trap${tr[k] ? ' hit' : ''}" title="آية لها متشابهات" role="button" aria-label="تنبيه متشابهات" onclick="event.stopPropagation(); suTrapOpen('${k}')">🔀${tr[k] ? ' ' + tr[k].n : ''}</span>`);
+            });
+        }
+        async function suTrapList() {
+            await loadMutashabihat();
+            const t = suTraps(), ks = Object.keys(t).sort((a, b) => t[b].n - t[a].n || t[b].t - t[a].t);
+            suOpenSheet(`<h2>🪤 فخاخي</h2><div class="su-note" style="text-align:right;margin-bottom:10px">المواضع المتشابهة التي أخطأت فيها أثناء الحفظ. راجعها قبل وردك. وفي واجهة الحفظ تظهر علامة 🔀 على كل آية لها متشابهات.</div>
+                ${ks.length ? ks.map(k => `<div class="su-row" style="cursor:default"><span class="i">🪤</span><span style="flex:1">${escapeHtml(verseLabel(k))}<small style="display:block;color:var(--su-muted);font-size:12px">أخطأت ${t[k].n} ${t[k].n === 1 ? 'مرة' : 'مرات'} · ${((mtData || {})[k] || []).length} متشابهات</small></span><button class="su-mini" onclick="suTrapOpen('${k}')" aria-label="الفرق">🔀</button><button class="su-mini" onclick="suCloseSheet(); goToVerse(${k.split(':')[0]}, ${k.split(':')[1]})" aria-label="افتح">↩</button><button class="su-mini" onclick="const x=suTraps(); delete x['${k}']; localStorage.setItem('quranSuTraps', JSON.stringify(x)); suTrapList(); suTrapDecorate()" aria-label="حذف">✕</button></div>`).join('') : '<div class="su-note">لا فخاخ بعد. عند علامة 🔀 في الحفظ اضغط «أخطأت هنا».</div>'}`);
+        }
+        (function suInstall109b() {
+            const _mr = suMaddRender;
+            suMaddRender = function () {
+                const r = _mr.apply(this, arguments);
+                const tb = $('suTapBig'); if (tb && !$('suMicBtn')) tb.insertAdjacentHTML('afterend', `<button class="su-btn out" id="suMicBtn" style="width:100%;margin-top:8px;min-height:52px;border-color:#D92D20;color:#D92D20" onclick="suMaddMic()">🎙 قِس مدّك بصوتك</button>`);
+                return r;
+            };
+            const _cs = suCloseSheet;
+            suCloseSheet = function () { if (suMic) suMaddMicStop(true); return _cs.apply(this, arguments); };
+            let tk = null;
+            const mo = new MutationObserver(() => { if (document.querySelector('#wordsGridContainer .su-trap')) return; clearTimeout(tk); tk = setTimeout(suTrapDecorate, 250); });
+            mo.observe($('wordsGridContainer'), { childList: true });
+            const _am = applyMode; applyMode = function () { const r = _am.apply(this, arguments); setTimeout(suTrapDecorate, 400); return r; };
+            const _om = suOpenMore;
+            suOpenMore = function () { const r = _om.apply(this, arguments); const g = [...document.querySelectorAll('#suSheetPanel .su-tile')].find(t => t.textContent.includes('مرآة التلاوة')); if (g) g.insertAdjacentHTML('afterend', suTile('🪤', 'فخاخي', 'suTrapList()')); return r; };
         })();
         window.addEventListener('beforeunload', () => {
             localStorage.setItem('quranLastPage', String(currentPageNumber));
