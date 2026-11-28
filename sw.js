@@ -8,8 +8,9 @@ self.addEventListener('install', e => {
   e.waitUntil(caches.open(SHELL).then(c => Promise.all(SHELL_FILES.map(u => c.add(u).catch(() => null)))).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
+  // لا يحذف إلا ذاكرته القديمة (quran-…)، فتبقى ذاكرة تطبيقات العائلة على النطاق نفسه (بيان وميزان والمثاني)
   const keep = [SHELL, DATA, AUDIO, CDN, API];
-  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => !keep.includes(k)).map(k => caches.delete(k)))).then(() => self.clients.claim()));
+  e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('quran-') && !keep.includes(k)).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 
 async function fromAnyCache(req) { return caches.match(req, { ignoreSearch: false }); }
